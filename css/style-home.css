@@ -4575,7 +4575,7 @@ ul.in-content {
     white-space: nowrap;
     transition: background-color .2s cubic-bezier(.39,.575,.565,1),color .2s cubic-bezier(.39,.575,.565,1),border-color .2s cubic-bezier(.39,.575,.565,1);
     color: #fff;
-    background-color: #fc684e;
+    background-color: #00a1ef;
     position: relative;
     overflow: hidden
 }

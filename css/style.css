@@ -28,7 +28,7 @@
 
 /********** Template CSS **********/
 :root {
-    --primary: #FF3E41;
+    --primary: #00a1ef;
     --secondary: #51CFED;
     --light: #F8F2F0;
     --dark: #060315;
@@ -49,7 +49,7 @@
 /* FAQ */
 
 .box .heading{
-    background: #FF3E41;
+    background: #00a1ef;
     border-radius: 7px 7px 0px 0px;
     padding: 10px;
     color: #fff;
@@ -81,7 +81,7 @@
  details summary{
     color: white;
     outline: none;
-    background-color: #FF3E41;
+    background-color: #00a1ef;
     border-radius: 3px;
     padding-left: 8px;
     padding: 10px 10px;
