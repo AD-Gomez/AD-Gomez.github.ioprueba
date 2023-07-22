@@ -12,7 +12,7 @@ Hello! Welcome to the development of the first collaborative project CAYAD, a br
 
 ## **🔎 ¿QUÉ ES CAYAD?**
 
-Es una empresa familiar que nace de la fusion colaborativa de dos hermanos para brindar servicios de caracter profesional in diversos rubros de la industria moderna.CAYAD es la fucion de sus nombres: Carlos Alberto & Anyel Damian
+Es una empresa familiar que nace de la fusion colaborativa de dos hermanos para brindar servicios de caracter profesional en diversos rubros de la industria moderna. CAYAD es la fucion de sus nombres: Carlos Alberto & Anyel Damian
 
 It is a family business that was born from the collaborative merger of two brothers to provide professional services in various areas of modern industry. CAYAD is the fusion of their names: Carlos Alberto & Anyel Damian
 
@@ -46,9 +46,9 @@ Our ultimate goal is to create a system where everyone using our service is 100%
 
 ### Herramientas de Trabajo:
 
--  *CRM BATS , CENT5RAL-DISPATCH , RING-CENTRAL , META-ADS* 
+-  *CRM BATS , CENTRAL-DISPATCH , RING-CENTRAL , META-ADS* 
 
-## **😋 ¿CÓMO apoyar EN ESTE PROYECTO?**
+## **😋 ¿CÓMO APOYAR EN ESTE PROYECTO?**
 
 Puedes libremente hacerle fork a este proyecto y sugerirme cualquier modificacion, eliminacion o complemento para su mejora. 
 
@@ -59,5 +59,7 @@ You are free to fork this project and suggest any modifications, deletions or ad
 ## **✅ Colaboladores**
 
 Alneidismar Guaiquirima <3 
+
 Alejandro Gil (Alex G)
+
 Anyel Damian (AD-Gomez)
