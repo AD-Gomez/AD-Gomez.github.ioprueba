@@ -3056,7 +3056,16 @@ ul.in-content {
 }
 
 .flex-grid.is-centered {
-    align-items: center
+    align-items: center;
+    /* background: lightslategrey; */
+    /* border-radius: 15px;
+    opacity: .9; */
+}
+.pre-footer {
+    align-items: center;
+    background: lightslategrey;
+    border-radius: 15px;
+    opacity: .9;
 }
 
 .flex-grid.is-center-aligned {
@@ -10693,6 +10702,7 @@ button.button-green-on-white .loader,button.button-green-on-white [class*=" icon
     border-radius: 5px;
     display: block
 }
+
 
 .video-elements-wrap {
     transition: opacity .2s cubic-bezier(.39,.575,.565,1);
