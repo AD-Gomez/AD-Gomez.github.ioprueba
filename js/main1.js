@@ -11123,8 +11123,8 @@ object-assign
             }
         },
         mobilePhoneReplace: function() {
-            var t = this.formatPhone("9297581002")
-              , e = this.formatPhoneDisplay("9297581002");
+            var t = this.formatPhone("51261598xx")
+              , e = this.formatPhoneDisplay("51261598xx");
             /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && this.replacePhones({
                 phoneNumber: t,
                 phoneDisplay: e
@@ -11145,19 +11145,19 @@ object-assign
                 if (r.length > 0)
                     a = r;
                 else {
-                    switch ("snowbird" === o && (a = "9297581002"),
+                    switch ("snowbird" === o && (a = "51261598xx"),
                     e) {
                     case "chicago_bears":
-                        a = "9297581002";
+                        a = "51261598xx";
                         break;
                     case "move-org":
-                        a = "9297581002";
+                        a = "51261598xx";
                         break;
                     case "reviews-org":
-                        a = "9297581002";
+                        a = "51261598xx";
                         break;
                     case "mymovingreviews":
-                        a = "9297581002"
+                        a = "51261598xx"
                     }
                     switch (n) {
                     case "classiccars.com":
@@ -11171,8 +11171,8 @@ object-assign
         },
         replacePhoneOnMobile: function() {
             if (!i.a.get("rsphone") && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                var t = this.formatPhone("9297581002")
-                  , e = this.formatPhoneDisplay("9297581002");
+                var t = this.formatPhone("51261598xx")
+                  , e = this.formatPhoneDisplay("51261598xx");
                 this.replacePhones({
                     phoneNumber: t,
                     phoneDisplay: e
