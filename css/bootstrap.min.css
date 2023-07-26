@@ -199,7 +199,7 @@ a {
 }
 
 a:hover {
-    color: #cc3234
+    color: #007bef
 }
 
 a:not([href]):not([class]),a:not([href]):not([class]):hover {
@@ -2857,21 +2857,21 @@ textarea.form-control-lg {
 
 .btn-primary:hover {
     color: #000;
-    background-color: #ff5b5e;
-    border-color: #ff5154
+    background-color: #007bef;
+    border-color: #00a1ef
 }
 
 .btn-check:focus+.btn-primary,.btn-primary:focus {
     color: #000;
-    background-color: #ff5b5e;
-    border-color: #ff5154;
+    background-color: #007bef;
+    border-color: #00a1ef;
     box-shadow: 0 0 0 .25rem rgba(217,53,55,0.5)
 }
 
 .btn-check:checked+.btn-primary,.btn-check:active+.btn-primary,.btn-primary:active,.btn-primary.active,.show>.btn-primary.dropdown-toggle {
     color: #000;
-    background-color: #ff6567;
-    border-color: #ff5154
+    background-color: #007bef;
+    border-color: #00a1ef
 }
 
 .btn-check:checked+.btn-primary:focus,.btn-check:active+.btn-primary:focus,.btn-primary:active:focus,.btn-primary.active:focus,.show>.btn-primary.dropdown-toggle:focus {

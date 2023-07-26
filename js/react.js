@@ -5,11 +5,7 @@
     },
     142: function(e, t, n) {
         var r;
-        /*!
-      Copyright (c) 2018 Jed Watson.
-      Licensed under the MIT License (MIT), see
-      http://jedwatson.github.io/classnames
-    */
+    
         !function() {
             "use strict";
             var n = {}.hasOwnProperty;
