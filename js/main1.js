@@ -11123,8 +11123,8 @@ object-assign
             }
         },
         mobilePhoneReplace: function() {
-            var t = this.formatPhone("51261598xx")
-              , e = this.formatPhoneDisplay("51261598xx");
+            var t = this.formatPhone("4696190747")
+              , e = this.formatPhoneDisplay("4696190747");
             /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && this.replacePhones({
                 phoneNumber: t,
                 phoneDisplay: e
@@ -11145,23 +11145,23 @@ object-assign
                 if (r.length > 0)
                     a = r;
                 else {
-                    switch ("snowbird" === o && (a = "51261598xx"),
+                    switch ("snowbird" === o && (a = "4696190747"),
                     e) {
                     case "chicago_bears":
-                        a = "51261598xx";
+                        a = "4696190747";
                         break;
                     case "move-org":
-                        a = "51261598xx";
+                        a = "4696190747";
                         break;
                     case "reviews-org":
-                        a = "51261598xx";
+                        a = "4696190747";
                         break;
                     case "mymovingreviews":
-                        a = "51261598xx"
+                        a = "4696190747"
                     }
                     switch (n) {
                     case "classiccars.com":
-                        a = "8775938253"
+                        a = "4696190747"
                     }
                 }
                 a.length > 0 && i.a.set("rsphone", a, {
@@ -11171,8 +11171,8 @@ object-assign
         },
         replacePhoneOnMobile: function() {
             if (!i.a.get("rsphone") && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                var t = this.formatPhone("51261598xx")
-                  , e = this.formatPhoneDisplay("51261598xx");
+                var t = this.formatPhone("4696190747")
+                  , e = this.formatPhoneDisplay("4696190747");
                 this.replacePhones({
                     phoneNumber: t,
                     phoneDisplay: e
