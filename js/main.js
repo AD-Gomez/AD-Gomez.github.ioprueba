@@ -112,3 +112,19 @@
     
 })(jQuery);
 
+
+//formulario
+
+const origin = document.getElementById("origin")
+const destiny = document.getElementById("destiny")
+const year = document.getElementById("year")
+const make = document.getElementById("make")
+const model = document.getElementById("model")
+const open = document.getElementById("open")
+const enclosed = document.getElementById("enclosed")
+const op = document.getElementById("op")
+const inop = document.getElementById("inop")
+const date = document.getElementById("date")
+const name = document.getElementById("name")
+const phone = document.getElementById("phone")
+const email = document.getElementById("email")

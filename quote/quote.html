@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="/data/include/bsdp/css/bootstrap-datepicker.css" >
+<link rel="stylesheet" href="../css/bootstrap-datepicker.css" >
 
 
 
@@ -147,7 +147,7 @@ button:focus {
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><img src="../img/flag.svg" alt="" width="16" height="16" title=""></span>
   </div>
-  <input autocomplete="new-password" required id='city_zip_state_pickup' name='city_zip_state_pickup' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Zip Code or City" aria-label="Zip Code or City" aria-describedby="basic-addon1">
+  <input autocomplete="new-password" required id='origin' name='origin' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Zip Code or City" aria-label="Zip Code or City" aria-describedby="basic-addon1">
 
 <input type='hidden' name='city_zip_state_zip_pickup' id='city_zip_state_zip_pickup' value='' >
 <input type='hidden' name='city_zip_state_city_pickup' id='city_zip_state_city_pickup' value='' >
@@ -164,7 +164,7 @@ button:focus {
   <div class="input-group-prepend">
     <span class="input-group-text"  id="basic-addon1"><img src="../img/flag.svg" alt="" width="16" height="16" title=""></span>
   </div>
-  <input type="text" autocomplete="new-password"  id='city_zip_state_dropoff' name='city_zip_state_dropoff'  class="form-control"  data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location."  placeholder="Zip Code or City" aria-label="Zip Code or City" aria-describedby="basic-addon1" required>
+  <input type="text" autocomplete="new-password"  id='destiny' name='destiny'  class="form-control"  data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location."  placeholder="Zip Code or City" aria-label="Zip Code or City" aria-describedby="basic-addon1" required>
 
 <input type='hidden' name='city_zip_state_zip_dropoff' id='city_zip_state_zip_dropoff' value='' >
 <input type='hidden' name='city_zip_state_city_dropoff' id='city_zip_state_city_dropoff' value='' >
@@ -195,53 +195,50 @@ button:focus {
 
 
             
-
-            <div class="w3-row w3-full" id="mp_vehicles_area" style="padding-top:15px;">
+        <!--vehicle details start-->
+            <div class="w3-row w3-full" id="Formulario" style="padding-top:15px;">
                 <div class="w3-quarter" style="padding-left:15px;padding-right:15px;">
         
-                <div class="input-group mb-3 " style="border:0px solid white;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Y</span>
+                  <div class="input-group mb-3 " style="border:0px solid white;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Y</span>
+                    </div>
+                    <input autocomplete="new-password" required id='year' name='year' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Year" aria-label="Year" aria-describedby="basic-addon1">
                   </div>
-                  <input autocomplete="new-password" required id='city_zip_state_pickup' name='city_zip_state_pickup' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Year" aria-label="Year" aria-describedby="basic-addon1">
-                  </div>
-                  
-        
                 </div>
                 
                 <div class="w3-third" style="padding-left:15px;padding-right:15px;">
         
-                <div class="input-group mb-3 " style="border:0px solid white;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">M</span>
-                </div>
-                <input autocomplete="new-password" required id='city_zip_state_pickup' name='city_zip_state_pickup' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Vehicle make" aria-label="Vehicle make" aria-describedby="basic-addon1">
-                </div>
+                    <div class="input-group mb-3 " style="border:0px solid white;">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">M</span>
+                      </div>
+                          <input autocomplete="new-password" required id='make' name='make' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Vehicle make" aria-label="Vehicle make" aria-describedby="basic-addon1">
+                    </div>
         
                 </div>
                 
                 <div class="w3-rest" style="padding-left:15px;padding-right:15px;">
         
-                <div class="input-group mb-3 " style="border:0px solid white;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">M</span>
-                </div>
-                <input autocomplete="new-password" required id='city_zip_state_pickup' name='city_zip_state_pickup' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Vehicle model" aria-label="Vehicle model" aria-describedby="basic-addon1">
-                </div>
+                  <div class="input-group mb-3 " style="border:0px solid white;">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">M</span>
+                      </div>
+                    <input autocomplete="new-password" required id='model' name='model' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Vehicle model" aria-label="Vehicle model" aria-describedby="basic-addon1">
+                  </div>
         
                 </div>
-                </div>
-
-           
-
+            </div>
+        <!--vehicle details end-->
 
             <div class="w3-row" style='text-align:left;padding-left:15px;padding-top:15px;padding-bottom:15px;'>
-                <a  style='padding-left:15px;padding-bottom:15px; color:gray;cursor:pointer;' onclick="mp_show_current_vehicles(1)">Add another vehicle</a>
+                <a  style='padding-left:15px;padding-bottom:15px; color:gray;cursor:pointer;' 
+                onclick="mp_show_current_vehicles">Add another vehicle</a>
             </div>
 
 
 
-
+<!--open enclosed start-->
 
 <div class="w3-half w3-container"  style='padding-top:10px;'>
     
@@ -253,12 +250,12 @@ button:focus {
 
 <span style='border:1px solid #cccccc;padding:5px;'>&nbsp;
 <div class="form-check form-check-inline" style='color:gray;'>
-  <input class="form-check-input" type="radio" name="ship_via_id" id="ship_via_id1" value="1" checked>
-  <label class="form-check-label" for="ship_via_id1">Open/Standard</label>
+  <input class="form-check-input" type="radio" name="open" id="open" value="1" checked>
+  <label class="form-check-label" for="open">Open/Standard</label>
 </div>
 <div class="form-check form-check-inline"  style='color:gray;'>
-  <input class="form-check-input" type="radio" name="ship_via_id" id="ship_via_id2" value="2">
-  <label class="form-check-label" for="ship_via_id2">Enclosed</label>
+  <input class="form-check-input" type="radio" name="enclosed" id="enclosed" value="2">
+  <label class="form-check-label" for="enclosed">Enclosed</label>
 </div>
 </span>
 
@@ -268,8 +265,9 @@ button:focus {
 
   </div>
 
+<!--ope-enclosed end-->
 
-
+<!--inop-op start-->
 <div class="w3-half w3-container"  style='padding-top:10px;'>
     
 
@@ -280,12 +278,12 @@ button:focus {
 
 <span style='border:1px solid #cccccc;padding:5px;'>&nbsp;
 <div class="form-check form-check-inline" style='color:gray;'>
-  <input class="form-check-input" type="radio" name="vehicle_runs" id="vehicle_runs1" value="1" checked>
-  <label class="form-check-label" for="vehicle_runs1">Vehicle drives</label>
+  <input class="form-check-input" type="radio" name="op" id="op" value="1" checked>
+  <label class="form-check-label" for="op">Vehicle drives</label>
 </div>
 <div class="form-check form-check-inline"  style='color:gray;'>
-  <input class="form-check-input" type="radio" name="vehicle_runs" id="vehicle_runs2" value="0">
-  <label class="form-check-label" for="vehicle_runs2">Inoperable</label>
+  <input class="form-check-input" type="radio" name="inop" id="inop" value="0">
+  <label class="form-check-label" for="inop">Inoperable</label>
 </div>
 </span>
 
@@ -295,7 +293,7 @@ button:focus {
 
   </div>
 
-
+<!--inop-op end-->
 	
 
 
@@ -322,6 +320,8 @@ button:focus {
 </div>
 
 
+<!--shipment details start-->
+
 <div class="w3-row" style='border:1px solid #cccccc;'>
 
    <div class="w3-full w3-container" style='text-align:left;background-color:white;color:black;'>
@@ -335,7 +335,7 @@ button:focus {
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><img src="../img/calendar.svg" alt="" width="16" height="16" title=""></span>
   </div>
-  <input  required  type="text" name='estimated_ship_date' data-toggle="tooltip" data-placement="top" title="Select the first day your shipment will be available for pickup"  style='padding-left:10px;' class="form-control datepicker" placeholder="Ship Date" aria-label="Ship Date" aria-describedby="basic-addon1">
+  <input  required  type="text" name='date' id="date" data-toggle="tooltip" data-placement="top" title="Select the first day your shipment will be available for pickup"  style='padding-left:10px;' class="form-control datepicker" placeholder="Ship Date" aria-label="Ship Date" aria-describedby="basic-addon1">
 </div>
 
   </div>
@@ -346,7 +346,7 @@ button:focus {
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><img src="../img/person.svg" alt="" width="16" height="16" title=""></span>
   </div>
-  <input  required  type="text"  name='name' class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+  <input required  type="text"  name="name" id="name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
 </div>
 
 
@@ -358,7 +358,7 @@ button:focus {
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><img src="../img/envelope.svg" alt="" width="16" height="16" title=""></span>
   </div>
-  <input  required  type="email"  name='email' class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+  <input  required  type="email" id="email" name='email' class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
 </div>
 
   </div>
@@ -380,14 +380,17 @@ button:focus {
 
 </div>
 
+<!--shipment details end-->
+
 <div class="w3-row" >
 &nbsp;
 </div>
 
+<!--submit start-->
 <div class="w3-row w3-full w3-white">
 <br><input type='submit' value='Submit Quote Request' id='submit_button' onclick="mp_show_wait_animation_check_form('Please Wait...')";  style='background-color:#00a1ef;color:white;font-size:18px;padding:5px;border-radius:3px;width:200px;'>
 </div>
-
+<!--submit end-->
 
 <div class="w3-row" >
 &nbsp;
@@ -406,6 +409,9 @@ button:focus {
 </div>
 </center>
 
+<!-- Template Javascript -->
+<script src="../js/main.js"></script>
+<script src="../js/runtime.js"></script>
 
 <!-- Messenger plugin del chat Code START-->
 <div id="fb-root"></div>
@@ -418,7 +424,7 @@ button:focus {
   var chatbox = document.getElementById('fb-customer-chat');
   chatbox.setAttribute("page_id", "116222094837969");
   chatbox.setAttribute("attribution", "biz_inbox");
-</script>
+</>
 
 <!-- Your SDK code -->
 <script>
