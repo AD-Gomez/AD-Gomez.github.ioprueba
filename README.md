@@ -1,4 +1,4 @@
-![HenryLogo](./img/logocayad.png)
+![Cayad Services](./img/logo-cayad.png)
 
 # **🧑‍💻 CAYAD | SERVICES LLC 👩‍💻**
 
