@@ -71,7 +71,10 @@ h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
     font-family: "Roboto",sans-serif;
     font-weight: 700;
     line-height: 1.2;
-    color: #060315
+    color: #19171fd2
+}
+#se{
+    color: #00a1ef;
 }
 
 h1,.h1 {
@@ -7497,7 +7500,7 @@ textarea.form-control-lg {
 
 .py-5 {
     padding-top: 3rem !important;
-    padding-bottom: 3rem !important
+    /* padding-bottom: 3rem !important */
 }
 
 .pt-0 {
