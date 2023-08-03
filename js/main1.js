@@ -11172,10 +11172,10 @@ object-assign
         replacePhoneOnMobile: function() {
             if (!i.a.get("rsphone") && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                 var t = this.formatPhone("4696190747")
-                  , e = this.formatPhoneDisplay("4696190747");
+                  , e = this.formatPhoneDisplay();
                 this.replacePhones({
                     phoneNumber: t,
-                    phoneDisplay: e
+                    phoneDisplay: e,
                 })
             }
         }
