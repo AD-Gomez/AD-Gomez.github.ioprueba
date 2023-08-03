@@ -176,7 +176,7 @@
 /* FAQ */
 .faq-section {
     background: #fdfdfd;
-    min-height: 100vh;
+    min-height: 10vh;
     padding: 10vh 0 0;
 }
 .faq-title h2 {
