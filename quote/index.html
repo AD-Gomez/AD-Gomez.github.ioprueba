@@ -339,6 +339,8 @@
                     placeholder="Year"
                     aria-label="Year"
                     aria-describedby="basic-addon1"
+                    max="4"
+                    min="4"
                   />
                 </div>
               </div>
@@ -401,7 +403,7 @@
                     /></span>
                   </div>
 
-                  <span style="border: 1px solid #cccccc" class="p-1"
+                  <span style="border: 1px solid #cccccc" class="p-1" id="via"
                     >&nbsp;
                     <div
                       class="form-check form-check-inline"
@@ -412,7 +414,7 @@
                         type="radio"
                         name="ship_via_id"
                         id="ship_via_id1"
-                        value="1"
+                        value="Open/Standard"
                         checked
                       />
                       <label class="form-check-label" for="ship_via_id1"
@@ -428,7 +430,7 @@
                         type="radio"
                         name="ship_via_id"
                         id="ship_via_id2"
-                        value="2"
+                        value="Enclosed"
                       />
                       <label class="form-check-label" for="ship_via_id2"
                         >Enclosed</label
@@ -450,7 +452,7 @@
                     /></span>
                   </div>
 
-                  <span style="border: 1px solid #cccccc" class="p-1"
+                  <span style="border: 1px solid #cccccc" class="p-1" id="run"
                     >&nbsp;
                     <div
                       class="form-check form-check-inline"
@@ -461,7 +463,7 @@
                         type="radio"
                         name="vehicle_runs"
                         id="vehicle_runs1"
-                        value="1"
+                        value="drives"
                         checked
                       />
                       <label class="form-check-label" for="vehicle_runs1"
@@ -477,7 +479,7 @@
                         type="radio"
                         name="vehicle_runs"
                         id="vehicle_runs2"
-                        value="0"
+                        value="inoperable"
                       />
                       <label class="form-check-label" for="vehicle_runs"
                         >Inoperable</label
@@ -490,7 +492,10 @@
           </div>
 
           <div class="row justify-content-end">
-            <label class="text-secondary" onclick="addVehicle()"
+            <label
+              class="text-secondary"
+              style="cursor: pointer"
+              onclick="addVehicle()"
               >+ Add vehicle</label
             >
           </div>
@@ -522,7 +527,8 @@
                 required
                 type="date"
                 name="date"
-                id="date"
+                id="dateShipment"
+                placeholder="mm/dd/yyyy"
                 data-toggle="tooltip"
                 data-placement="top"
                 title="Select the first day your shipment will be available for pickup"
@@ -658,7 +664,7 @@
                   onblur="validYear(event)"
                   autocomplete="new-password"
                   required
-                  id="year"
+                  id="year_"
                   name="year"
                   type="number"
                   data-toggle="tooltip"
@@ -668,6 +674,8 @@
                   placeholder="Year"
                   aria-label="Year"
                   aria-describedby="basic-addon1"
+                  max="4"
+                  min="4"
                 />
               </div>
             </div>
@@ -732,18 +740,18 @@
                   /></span>
                 </div>
 
-                <span style="border: 1px solid #cccccc" class="p-1"
+                <span style="border: 1px solid #cccccc" class="p-1" id="via"
                   >&nbsp;
                   <div class="form-check form-check-inline" style="color: gray">
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="ship_via_id"
+                      name="ship_via_id_"
                       id="ship_via_id1"
                       value="1"
                       checked
                     />
-                    <label class="form-check-label" for="ship_via_id1"
+                    <label class="form-check-label" for="ship_via_id1_"
                       >Open/Standard</label
                     >
                   </div>
@@ -751,11 +759,11 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="ship_via_id"
+                      name="ship_via_id_"
                       id="ship_via_id2"
                       value="2"
                     />
-                    <label class="form-check-label" for="ship_via_id2"
+                    <label class="form-check-label" for="ship_via_id2_"
                       >Enclosed</label
                     >
                   </div>
@@ -775,13 +783,13 @@
                   /></span>
                 </div>
 
-                <span style="border: 1px solid #cccccc" class="p-1"
+                <span style="border: 1px solid #cccccc" class="p-1" id="run"
                   >&nbsp;
                   <div class="form-check form-check-inline" style="color: gray">
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="vehicle_runs"
+                      name="vehicle_runs_"
                       id="vehicle_runs1"
                       value="1"
                       checked
@@ -794,7 +802,7 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="vehicle_runs"
+                      name="vehicle_runs_"
                       id="vehicle_runs2"
                       value="0"
                     />
@@ -807,11 +815,17 @@
             </div>
           </div>
         </div>
-        <div
+        <span
+          role="button"
           class="col-1 bg-light d-flex justify-content-center align-items-center"
         >
-          <i style="font-size: 12px" class="fa">&#x2715;</i>
-        </div>
+          <i
+            style="font-size: 12px; cursor: pointer"
+            class="fa"
+            onclick="deleteVehicle(event)"
+            >&#x2715;</i
+          >
+        </span>
       </div>
     </template>
 
@@ -856,41 +870,69 @@
 
     <!-- Messenger plugin del chat Code END-->
     <script>
+      const formResult = {
+        typeAddess: "",
+        origin: "",
+        destination: "",
+        vehicles: [],
+        shipmentDate: "",
+        shipmentName: "",
+        shipmentEmail: "",
+        shipmentPhone: "",
+      };
       function maskPhone() {
-        console.log("<<<<<<<");
-        document.getElementById("phone").addEventListener("blur", function (e) {
-          var x = e.target.value
-            .replace(/\D/g, "")
-            .match(/(\d{3})(\d{3})(\d{4})/);
-          e.target.value = "(" + x[1] + ") " + x[2] + "-" + x[3];
+        $("#phone").keyup(function () {
+          $(this).val(
+            $(this)
+              .val()
+              .replace(/^(\d{3})(\d{3})(\d+)$/, "($1) $2-$3")
+          );
         });
       }
 
       window.onload = function () {
         maskPhone();
+        const fechaActual = new Date();
+        const unDiaEnMilisegundos = 24 * 60 * 60 * 1000; // 24 horas * 60 minutos * 60 segundos * 1000 milisegundos
+        const tomorrow = new Date(fechaActual.getTime() + unDiaEnMilisegundos);
+
+        const añoActual = tomorrow.getFullYear();
+        const mesActual = (tomorrow.getMonth() + 1).toString().padStart(2, "0"); // +1 porque los meses son indexados en base 0
+        const diaActual = tomorrow.getDate().toString().padStart(2, "0");
+
+        const dateShipment = document.getElementById("dateShipment");
+        dateShipment.setAttribute(
+          "min",
+          `${añoActual}-${mesActual}-${diaActual}`
+        );
+        dateShipment.setAttribute(
+          "value",
+          `-${mesActual}-${diaActual}-${añoActual}`
+        );
       };
       function onlyNumbers(event) {
         const input = event.target;
         const inputValue = input.value;
 
-        // Eliminar cualquier caracter que no sea un dígito numérico
         const numericValue = inputValue.replace(/[^\d]/g, "");
 
-        // Actualizar el valor del campo con solo los dígitos numéricos
         input.value = numericValue;
       }
 
       function validYear(event) {
-        if (event.target.value < 1900 || event.target.value > 2099) {
-          alert("Ingrese un año válido");
-          const checkZip = document.getElementById("year");
-          const date = new Date();
+        const date = new Date();
+
+        if (
+          event.target.value < 1900 ||
+          event.target.value > date.getFullYear()
+        ) {
+          alert("Enter a valid year");
+          const checkZip = document.getElementById(event.srcElement.id);
           checkZip.value = date.getFullYear();
         }
       }
 
       function checkTypeAddress(value, event) {
-        console.log(value, event.target.value);
         const $miCheckbox = document.querySelector("#zipCheck");
 
         if (value == "zip") {
@@ -921,18 +963,150 @@
           cityDestination.style.display = "";
         }
       }
-
+      function deleteVehicle(event) {
+        console.log(event.srcElement.parentNode.parentNode.id);
+        const vehicle = document.getElementById(
+          event.srcElement.parentNode.parentNode.id
+        );
+        const vehicleList = document.getElementById("vehicleList");
+        vehicleList.removeChild(vehicle);
+      }
       function addVehicle() {
         const vehicleList = document.getElementById("vehicleList");
-        const template = document.querySelector("#add-vehicle");
-        const my_template_clone = template.content.cloneNode(true);
-        const my_ul = my_template_clone.getElementById("vehicle_");
+        const children = vehicleList.childElementCount;
+        if (children < 9) {
+          if (validVehicles()) {
+            const template = document.querySelector("#add-vehicle");
+            const my_template_clone = template.content.cloneNode(true);
+            console.log(typeof my_template_clone);
+            const newVehicle = my_template_clone.getElementById("vehicle_");
+            let newID = "";
+            let index = 0;
+            do {
+              index++;
+              newID = `vehicle_${children + index}`;
+              const existID = document.getElementById(newID);
+              result = existID ? true : false;
+            } while (result);
 
-        vehicleList.appendChild(my_ul);
+            newVehicle.id = newID;
+
+            const id = newID.split("_")[1];
+
+            // radiobutton
+            const eleVia = my_template_clone.querySelector(
+              'input[name="ship_via_id_"]'
+            );
+            const eleRun = my_template_clone.querySelector(
+              'input[name="vehicle_runs_"]'
+            );
+            const eleYear =
+              my_template_clone.querySelector('input[id="year_"]');
+            console.log(eleYear, "ELEYEAR");
+
+            eleVia.name = `ship_via_id_${id}`;
+            eleRun.name = `vehicle_runs_${id}`;
+            eleYear.id = `year_${id}`;
+
+            vehicleList.appendChild(newVehicle);
+          }
+        } else {
+          alert("Has reached the maximum number of vehicles");
+        }
       }
 
-      function mp_show_wait_animation_check_form() {
+      function validVehicles() {
+        const years = document.getElementsByName("year");
+        const vehicleMake = document.getElementsByName("make");
+        const vehicleModel = document.getElementsByName("model");
+        if (Array.from(years).some((e) => e.value === null || e.value === "")) {
+          alert("Enter a valid year");
+          return false;
+        }
+        if (
+          Array.from(vehicleMake).some(
+            (e) => e.value === null || e.value === ""
+          )
+        ) {
+          alert("Enter a valid vehicle make");
+
+          return false;
+        }
+        if (
+          Array.from(vehicleModel).some(
+            (e) => e.value === null || e.value === ""
+          )
+        ) {
+          alert("Enter a valid vehicle model");
+
+          return false;
+        }
+        return true;
+      }
+
+      function mp_show_wait_animation_check_form(e) {
+        const formResult = {
+          typeAddess: "",
+          origin: "",
+          destination: "",
+          vehicles: [],
+          shipmentDate: "",
+          shipmentName: "",
+          shipmentEmail: "",
+          shipmentPhone: "",
+        };
         console.log("submit");
+        const eleZipCheck = document.getElementById("zipCheck");
+
+        if (eleZipCheck.checked) {
+          formResult.typeAddess = "zip";
+          formResult.origin = document.getElementById("zip_origin").value;
+          formResult.destination =
+            document.getElementById("zip_destination").value;
+        } else {
+          formResult.typeAddess = "city";
+
+          formResult.origin = document.getElementById("city_origin").value;
+          formResult.destination =
+            document.getElementById("city_destination").value;
+        }
+
+        vehicleList = document.getElementById("vehicleList");
+        console.log(vehicleList, vehicleList.children, "lista");
+        for (let i = 0; i < vehicleList.childElementCount; i++) {
+          const vehicle = Array.from(vehicleList.children)[i];
+          console.log(vehicle);
+          year = vehicle.querySelector('input[name="year"]').value;
+          make = vehicle.querySelector('input[name="make"]').value;
+          model = vehicle.querySelector('input[name="model"]').value;
+
+          optionsTransport = vehicle.querySelectorAll(
+            'input[name="ship_via_id"]'
+          );
+          transportType = "";
+          for (const option of optionsTransport) {
+            if (option.checked) {
+              transportType = option.value;
+            }
+          }
+
+          optionsRuns = vehicle.querySelectorAll('input[name="vehicle_runs"]');
+          run = "";
+          for (const option of optionsRuns) {
+            if (option.checked) {
+              run = option.value;
+            }
+          }
+          const data = { year, make, model, transportType, run };
+          formResult.vehicles.push(data);
+        }
+
+        formResult.shipmentDate = document.getElementById("dateShipment").value;
+        formResult.shipmentName = document.getElementById("name").value;
+        formResult.shipmentEmail = document.getElementById("email").value;
+        formResult.shipmentPhone = document.getElementById("phone").value;
+
+        console.log(formResult);
       }
     </script>
   </body>
