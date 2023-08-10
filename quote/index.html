@@ -316,7 +316,7 @@
             <div>Vehicle Details</div>
           </div>
           <div class="" id="vehicleList">
-            <div class="row border-bottom">
+            <div class="row border-bottom" id="vehicle_0">
               <div class="col-4">
                 <div class="input-group" style="border: 0px solid white">
                   <div class="input-group-prepend">
@@ -339,8 +339,8 @@
                     placeholder="Year"
                     aria-label="Year"
                     aria-describedby="basic-addon1"
-                    max="4"
-                    min="4"
+                    maxlength="4"
+                    minlength="4"
                   />
                 </div>
               </div>
@@ -412,7 +412,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="ship_via_id"
+                        name="ship_via_id_0"
                         id="ship_via_id1"
                         value="Open/Standard"
                         checked
@@ -428,7 +428,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="ship_via_id"
+                        name="ship_via_id_0"
                         id="ship_via_id2"
                         value="Enclosed"
                       />
@@ -461,7 +461,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="vehicle_runs"
+                        name="vehicle_runs_0"
                         id="vehicle_runs1"
                         value="drives"
                         checked
@@ -477,9 +477,9 @@
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="vehicle_runs"
+                        name="vehicle_runs_0"
                         id="vehicle_runs2"
-                        value="inoperable"
+                        value="Inoperable"
                       />
                       <label class="form-check-label" for="vehicle_runs"
                         >Inoperable</label
@@ -589,6 +589,7 @@
                 placeholder="Email"
                 aria-label="Email"
                 aria-describedby="basic-addon1"
+                maxlength="32"
                 required
               />
             </div>
@@ -617,6 +618,7 @@
                 maxlength="14"
                 minlength="14"
                 required
+                oninput="onlyNumbers(event)"
               />
             </div>
           </div>
@@ -674,8 +676,8 @@
                   placeholder="Year"
                   aria-label="Year"
                   aria-describedby="basic-addon1"
-                  max="4"
-                  min="4"
+                  maxlength="4"
+                  minlength="4"
                 />
               </div>
             </div>
@@ -748,7 +750,7 @@
                       type="radio"
                       name="ship_via_id_"
                       id="ship_via_id1"
-                      value="1"
+                      value="Open/Standard"
                       checked
                     />
                     <label class="form-check-label" for="ship_via_id1_"
@@ -761,7 +763,7 @@
                       type="radio"
                       name="ship_via_id_"
                       id="ship_via_id2"
-                      value="2"
+                      value="Enclosed"
                     />
                     <label class="form-check-label" for="ship_via_id2_"
                       >Enclosed</label
@@ -791,7 +793,7 @@
                       type="radio"
                       name="vehicle_runs_"
                       id="vehicle_runs1"
-                      value="1"
+                      value="drives"
                       checked
                     />
                     <label class="form-check-label" for="vehicle_runs1"
@@ -804,7 +806,7 @@
                       type="radio"
                       name="vehicle_runs_"
                       id="vehicle_runs2"
-                      value="0"
+                      value="Inoperable"
                     />
                     <label class="form-check-label" for="vehicle_runs"
                       >Inoperable</label
@@ -893,11 +895,11 @@
       window.onload = function () {
         maskPhone();
         const fechaActual = new Date();
-        const unDiaEnMilisegundos = 24 * 60 * 60 * 1000; // 24 horas * 60 minutos * 60 segundos * 1000 milisegundos
+        const unDiaEnMilisegundos = 24 * 60 * 60 * 1000;
         const tomorrow = new Date(fechaActual.getTime() + unDiaEnMilisegundos);
 
         const añoActual = tomorrow.getFullYear();
-        const mesActual = (tomorrow.getMonth() + 1).toString().padStart(2, "0"); // +1 porque los meses son indexados en base 0
+        const mesActual = (tomorrow.getMonth() + 1).toString().padStart(2, "0");
         const diaActual = tomorrow.getDate().toString().padStart(2, "0");
 
         const dateShipment = document.getElementById("dateShipment");
@@ -964,7 +966,6 @@
         }
       }
       function deleteVehicle(event) {
-        console.log(event.srcElement.parentNode.parentNode.id);
         const vehicle = document.getElementById(
           event.srcElement.parentNode.parentNode.id
         );
@@ -978,10 +979,9 @@
           if (validVehicles()) {
             const template = document.querySelector("#add-vehicle");
             const my_template_clone = template.content.cloneNode(true);
-            console.log(typeof my_template_clone);
             const newVehicle = my_template_clone.getElementById("vehicle_");
             let newID = "";
-            let index = 0;
+            let index = 1;
             do {
               index++;
               newID = `vehicle_${children + index}`;
@@ -994,18 +994,21 @@
             const id = newID.split("_")[1];
 
             // radiobutton
-            const eleVia = my_template_clone.querySelector(
+            const eleVia = my_template_clone.querySelectorAll(
               'input[name="ship_via_id_"]'
             );
-            const eleRun = my_template_clone.querySelector(
+            for (const checkButton of eleVia) {
+              checkButton.name = `ship_via_id_${id}`;
+            }
+            const eleRun = my_template_clone.querySelectorAll(
               'input[name="vehicle_runs_"]'
             );
+            for (const check of eleRun) {
+              check.name = `vehicle_runs_${id}`;
+            }
             const eleYear =
               my_template_clone.querySelector('input[id="year_"]');
-            console.log(eleYear, "ELEYEAR");
 
-            eleVia.name = `ship_via_id_${id}`;
-            eleRun.name = `vehicle_runs_${id}`;
             eleYear.id = `year_${id}`;
 
             vehicleList.appendChild(newVehicle);
@@ -1055,7 +1058,6 @@
           shipmentEmail: "",
           shipmentPhone: "",
         };
-        console.log("submit");
         const eleZipCheck = document.getElementById("zipCheck");
 
         if (eleZipCheck.checked) {
@@ -1072,16 +1074,14 @@
         }
 
         vehicleList = document.getElementById("vehicleList");
-        console.log(vehicleList, vehicleList.children, "lista");
         for (let i = 0; i < vehicleList.childElementCount; i++) {
           const vehicle = Array.from(vehicleList.children)[i];
-          console.log(vehicle);
           year = vehicle.querySelector('input[name="year"]').value;
           make = vehicle.querySelector('input[name="make"]').value;
           model = vehicle.querySelector('input[name="model"]').value;
-
+          id = vehicle.id.split("_")[1];
           optionsTransport = vehicle.querySelectorAll(
-            'input[name="ship_via_id"]'
+            `input[name="ship_via_id_${id}"]`
           );
           transportType = "";
           for (const option of optionsTransport) {
@@ -1090,7 +1090,9 @@
             }
           }
 
-          optionsRuns = vehicle.querySelectorAll('input[name="vehicle_runs"]');
+          optionsRuns = vehicle.querySelectorAll(
+            `input[name="vehicle_runs_${id}"]`
+          );
           run = "";
           for (const option of optionsRuns) {
             if (option.checked) {
