@@ -1,454 +1,1118 @@
 <!DOCTYPE html>
-<html  lang="en">
-<head>
-
-  <title>Free quote | Cayad Auto Transport</title>
-
-
-
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
- <link rel="shortcut icon" href="../img/title-icon.png" />
-
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="../css/bootstrap-datepicker.css" >
-
-
-
-
-<style>
-
-input{
-  border:none;
-  background-color: transparent;
-}
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-
-.fa-user-circle-o{
-  color: gray;
-}
-
-.input-group{
-  border: 1px gray solid;
-  padding: 10px;
-}
-</style>
-
-<script src="/javascript/jquery-3.3.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    <script src="/data/include/bsdp/js/bootstrap-datepicker.min.js" ></script>
-
-
-<style>
-.tooltip-main {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  font-weight: 700;
-  background: #f3f3f3;
-  border: 1px solid #737373;
-  color: #737373;
-  margin: 4px 121px 0 5px;
-  float: right;
-  text-align: left !important;
-}
-
-.tooltip-qm {
-  float: left;
-  margin: -2px 0px 3px 4px;
-  font-size: 12px;
-}
-
-.tooltip-inner {
-  max-width: 236px !important;
-  height: 56px;
-  font-size: 12px;
-  padding: 10px 15px 10px 20px;
-  background: #FFFFFF;
-  color: rgb(0, 0, 0, .7);
-  border: 1px solid #cccccc;
-  text-align: left;
-}
-
-.tooltip.show {
-  opacity: 1;
-}
-
-.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
-.bs-tooltip-bottom .arrow::before {
-  border-bottom-color: #f00;
-  /* Red */
-}
-</style>
-
-</head>
-<body style='background-color:#cccccc;'>
-
-
-
-<center> 
-
-
-<div class="w3-container w3-white" style='max-width:750px;border:1px solid white;border-radius:10px;'>
-
-<div class="w3-row w3-third w3-white" style='padding-top:15px;'>
-
-<img src='../img/logo-cayad.png' style='max-height:50px;'>
-
-</div>
-
-<div class="w3-row w3-twothird w3-white" style='padding-top:15px;'>
-<b style='font-size:18px;'>Free Quote Request</b>
-<br><span style='color:grey;'></span>
-</div>
-
-
-<div class="w3-row" >
-&nbsp;
-</div>
-
-
-
-
-
-<script src="/data/include/mask/jquery.inputmask.bundle.js"></script>
-
-
-<form method='post' id='main_form' autocomplete='off' >
-
-<input type='hidden' name='page' value='1' ' >
-
-
-
-
-<div class="w3-row" style='border:1px solid #cccccc;border-radius:3px;'>
-
-   <div class="w3-full w3-container" style='text-align:left;background-color:white;color:black;'>
-    <div style='padding:7px;font-size:15px;display:inline-block;'><b>1</b></div> <div style='padding:7px;font-size:15px;display:inline-block;'>Origin & Destination</div>
-  </div>
-
-  <div class="w3-half w3-container " style='padding-top:10px;'>
- 
-
-<div class="input-group mb-3" style='border:0px solid white;'>
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><img src="../img/flag.svg" alt="" width="16" height="16" title=""></span>
-  </div>
-  <input autocomplete="new-password" required id='origin' name='origin' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Zip Code or City" aria-label="Zip Code or City" aria-describedby="basic-addon1">
-
-<input type='hidden' name='city_zip_state_zip_pickup' id='city_zip_state_zip_pickup' value='' >
-<input type='hidden' name='city_zip_state_city_pickup' id='city_zip_state_city_pickup' value='' >
-<input type='hidden' name='city_zip_state_state_pickup' id='city_zip_state_state_pickup' value='' >
-
-</div>
-
-
-  </div>
-  <div class="w3-half w3-container" style='padding-top:10px;'>
-
-
-<div class="input-group mb-3" style='border:0px solid white;'>
-  <div class="input-group-prepend">
-    <span class="input-group-text"  id="basic-addon1"><img src="../img/flag.svg" alt="" width="16" height="16" title=""></span>
-  </div>
-  <input type="text" autocomplete="new-password"  id='destiny' name='destiny'  class="form-control"  data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location."  placeholder="Zip Code or City" aria-label="Zip Code or City" aria-describedby="basic-addon1" required>
-
-<input type='hidden' name='city_zip_state_zip_dropoff' id='city_zip_state_zip_dropoff' value='' >
-<input type='hidden' name='city_zip_state_city_dropoff' id='city_zip_state_city_dropoff' value='' >
-<input type='hidden' name='city_zip_state_state_dropoff' id='city_zip_state_state_dropoff' value='' >
-
-
-</div>
-
-  </div>
-
-
-</div>
-
-
-
-<div class="w3-row" >
-&nbsp;
-</div>
-
-
-<div class="w3-row" style='border:1px solid #cccccc;'>
-
-    <div class="w3-full w3-container " style='text-align:left;background-color:white;color:black;'>
-        <div style='padding:7px;font-size:15px;display:inline-block;'><b>2</b>
-        </div> 
-            <div style='padding:7px;font-size:15px;display:inline-block;'>Vehicle Details
+<html lang="en">
+  <head>
+    <title>Free quote | Cayad Auto Transport</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <link rel="shortcut icon" href="../img/title-icon.png" />
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css" />
+
+    <style>
+      input {
+        border: none;
+        background-color: transparent;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus,
+      button:focus {
+        outline: none;
+      }
+
+      .fa-user-circle-o {
+        color: gray;
+      }
+
+      .input-group {
+        border: 1px gray solid;
+        padding: 10px;
+      }
+    </style>
+
+    <script src="/javascript/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/data/include/bsdp/js/bootstrap-datepicker.min.js"></script>
+
+    <style>
+      .tooltip-main {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        font-weight: 700;
+        background: #f3f3f3;
+        border: 1px solid #737373;
+        color: #737373;
+        margin: 4px 121px 0 5px;
+        float: right;
+        text-align: left !important;
+      }
+
+      .tooltip-qm {
+        float: left;
+        margin: -2px 0px 3px 4px;
+        font-size: 12px;
+      }
+
+      .tooltip-inner {
+        max-width: 236px !important;
+        height: 56px;
+        font-size: 12px;
+        padding: 10px 15px 10px 20px;
+        background: #ffffff;
+        color: rgb(0, 0, 0, 0.7);
+        border: 1px solid #cccccc;
+        text-align: left;
+      }
+
+      .tooltip.show {
+        opacity: 1;
+      }
+
+      .bs-tooltip-auto[x-placement^="bottom"] .arrow::before,
+      .bs-tooltip-bottom .arrow::before {
+        border-bottom-color: #f00;
+        /* Red */
+      }
+    </style>
+  </head>
+  <body style="background-color: #cccccc">
+    <form
+      class="container px-5 pb-5"
+      method="post"
+      id="main_form"
+      autocomplete="off"
+      style="
+        max-width: 900px;
+        border: 1px solid white;
+        border-radius: 10px;
+        background-color: white;
+      "
+    >
+      <div class="w3-row w3-third w3-white" style="padding-top: 15px">
+        <img src="../img/logo-cayad.png" style="max-height: 50px" />
+      </div>
+
+      <div class="w3-row w3-twothird" style="position:absolute; right: -20rem; top: 2rem;" >
+        <b style="font-size: 18px">Free Quote Request</b>
+        <br /><span style="color: grey"></span>
+      </div>
+
+      <div class="w3-row">&nbsp;</div>
+
+      <script src="/data/include/mask/jquery.inputmask.bundle.js"></script>
+      <div class="px-5"></div>
+      <div
+        class="row border mb-3 rounded p-3 px-4"
+        style="border: 1px #ececec solid"
+      >
+        <div class="col-12">
+          <div class="row d-flex gap-2" style="gap: 20px">
+            <div>
+              <b>1</b>
             </div>
-
-
-            
-        <!--vehicle details start-->
-            <div class="w3-row w3-full" id="Formulario" style="padding-top:15px;">
-                <div class="w3-quarter" style="padding-left:15px;padding-right:15px;">
-        
-                  <div class="input-group mb-3 " style="border:0px solid white;">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">Y</span>
-                    </div>
-                    <input autocomplete="new-password" required id='year' name='year' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Year" aria-label="Year" aria-describedby="basic-addon1">
-                  </div>
-                </div>
-                
-                <div class="w3-third" style="padding-left:15px;padding-right:15px;">
-        
-                    <div class="input-group mb-3 " style="border:0px solid white;">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">M</span>
-                      </div>
-                          <input autocomplete="new-password" required id='make' name='make' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Vehicle make" aria-label="Vehicle make" aria-describedby="basic-addon1">
-                    </div>
-        
-                </div>
-                
-                <div class="w3-rest" style="padding-left:15px;padding-right:15px;">
-        
-                  <div class="input-group mb-3 " style="border:0px solid white;">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">M</span>
-                      </div>
-                    <input autocomplete="new-password" required id='model' name='model' type="text" data-toggle="tooltip" data-placement="top" title="Begin typing a zip code or city and click a suggested location." class="form-control " placeholder="Vehicle model" aria-label="Vehicle model" aria-describedby="basic-addon1">
-                  </div>
-        
-                </div>
+            <div>Origin & Destination</div>
+          </div>
+          <div class="row col-12 my-2">
+            <div class="col-4">
+              <label class="text-secondary">Select an option:</label>
             </div>
-        <!--vehicle details end-->
-
-            <div class="w3-row" style='text-align:left;padding-left:15px;padding-top:15px;padding-bottom:15px;'>
-                <a  style='padding-left:15px;padding-bottom:15px; color:gray;cursor:pointer;' 
-                onclick="mp_show_current_vehicles">Add another vehicle</a>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-6">
+                  <input
+                    id="zipCheck"
+                    name="typeAddress"
+                    checked
+                    onchange="checkTypeAddress('zip', event)"
+                    type="checkbox"
+                  />
+                  <label>Zip code</label>
+                </div>
+                <div class="col-6">
+                  <input
+                    id="cityCheck"
+                    name="typeAddress"
+                    onchange="checkTypeAddress('city', event)"
+                    type="checkbox"
+                  />
+                  <label>City</label>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="input-group" style="border: 0px solid white">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><img
+                      src="../img/flag.svg"
+                      alt=""
+                      width="16"
+                      height="16"
+                      title=""
+                  /></span>
+                </div>
+                <input
+                  oninput="onlyNumbers(event)"
+                  maxlength="5"
+                  minlength="5"
+                  autocomplete="new-password"
+                  required
+                  id="zip_origin"
+                  name="zip_origin"
+                  type="tel"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  class="form-control"
+                  placeholder="Zip Code"
+                  aria-label="Zip Code"
+                  aria-describedby="basic-addon1"
+                />
+                <input
+                  style="display: none"
+                  autocomplete="new-password"
+                  required
+                  id="city_origin"
+                  name="city_origin"
+                  type="tel"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  class="form-control"
+                  placeholder="City"
+                  aria-label="City"
+                  aria-describedby="basic-addon1"
+                  maxlength="32"
+                  minlength="3"
+                />
 
+                <input
+                  type="hidden"
+                  name="city_zip_state_zip_pickup"
+                  id="city_zip_state_zip_pickup"
+                  value=""
+                />
+                <input
+                  type="hidden"
+                  name="city_zip_state_city_pickup"
+                  id="city_zip_state_city_pickup"
+                  value=""
+                />
+                <input
+                  type="hidden"
+                  name="city_zip_state_state_pickup"
+                  id="city_zip_state_state_pickup"
+                  value=""
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="input-group" style="border: 0px solid white">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><img
+                      src="../img/flag.svg"
+                      alt=""
+                      width="16"
+                      height="16"
+                      title=""
+                  /></span>
+                </div>
+                <input
+                  oninput="onlyNumbers(event)"
+                  maxlength="5"
+                  minlength="5"
+                  type="tel"
+                  autocomplete="new-password"
+                  id="zip_destination"
+                  name="zip_destination"
+                  class="form-control"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  placeholder="Zip Code"
+                  aria-label="Zip Code"
+                  aria-describedby="basic-addon1"
+                  required
+                />
+                <input
+                  style="display: none"
+                  autocomplete="new-password"
+                  required
+                  id="city_destination"
+                  name="city_destination"
+                  type="tel"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  class="form-control"
+                  placeholder="City"
+                  aria-label="City"
+                  aria-describedby="basic-addon1"
+                  maxlength="32"
+                  minlength="3"
+                />
 
-
-<!--open enclosed start-->
-
-<div class="w3-half w3-container"  style='padding-top:10px;'>
-    
-
-<div class="input-group mb-3" style='border:0px solid white;'>
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><img src="../img/truck-flatbed.svg" alt="" width="16" height="16" title=""></span>
-  </div>
-
-<span style='border:1px solid #cccccc;padding:5px;'>&nbsp;
-<div class="form-check form-check-inline" style='color:gray;'>
-  <input class="form-check-input" type="radio" name="ship_via_id" id="ship_via_id1" value="1" checked>
-  <label class="form-check-label" for="ship_via_id1">Open/Standard</label>
-</div>
-<div class="form-check form-check-inline" style='color:gray;'>
-  <input class="form-check-input" type="radio" name="ship_via_id" id="ship_via_id2" value="2">
-  <label class="form-check-label" for="ship_via_id2">Enclosed</label>
-</div>
-</span>
-
-
-
-</div>
-
-  </div>
-
-<!--ope-enclosed end-->
-
-<!--inop-op start-->
-<div class="w3-half w3-container"  style='padding-top:10px;'>
-    
-
-<div class="input-group mb-3" style='border:0px solid white;'>
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><img src="../img/truck.svg" alt="" width="16" height="16" title=""></span>
-  </div>
-
-<span style='border:1px solid #cccccc;padding:5px;'>&nbsp;
-<div class="form-check form-check-inline" style='color:gray;'>
-  <input class="form-check-input" type="radio" name="vehicle_runs" id="vehicle_runs1" value="1" checked>
-  <label class="form-check-label" for="vehicle_runs1">Vehicle drives</label>
-</div>
-<div class="form-check form-check-inline"  style='color:gray;'>
-  <input class="form-check-input" type="radio" name="vehicle_runs" id="vehicle_runs2" value="0">
-  <label class="form-check-label" for="vehicle_runs">Inoperable</label>
-</div>
-</span>
-
-
-
-</div>
-
-  </div>
-
-<!--inop-op end-->
-	
-
-
-
-
-</div>
-  <div class="w3-row">
-&nbsp;
-</div>
-
-
-
-
-
-
-
-  
-
-
-
-
-<div class="w3-row">
-&nbsp;
-</div>
-
-
-<!--shipment details start-->
-
-<div class="w3-row" style='border:1px solid #cccccc;'>
-
-   <div class="w3-full w3-container" style='text-align:left;background-color:white;color:black;'>
-    <div style='padding:7px;font-size:15px;display:inline-block;'><b>3</b></div> <div style='padding:7px;font-size:15px;display:inline-block;'>Shipment Details</div>
-  </div>
-
-  <div class="w3-half w3-container"  style='padding-top:10px;'>
-    
-
-<div class="input-group mb-3" style='border:0px solid white;'>
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><img src="../img/calendar.svg" alt="" width="16" height="16" title=""></span>
-  </div>
-  <input  required  type="text" name='date' id="date" data-toggle="tooltip" data-placement="top" title="Select the first day your shipment will be available for pickup"  style='padding-left:10px;' class="form-control datepicker" placeholder="Ship Date" aria-label="Ship Date" aria-describedby="basic-addon1">
-</div>
-
-  </div>
-  <div class="w3-half w3-container"  style='padding-top:10px;'>
-
-
-<div class="input-group mb-3" style='border:0px solid white;'>
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><img src="../img/person.svg" alt="" width="16" height="16" title=""></span>
-  </div>
-  <input required  type="text"  name="name" id="name" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
-</div>
-
-
-  </div>
-
-  <div class="w3-half w3-container "  style='padding-top:5px;'>
-
-<div class="input-group mb-3" style='border:0px solid white;'>
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><img src="../img/envelope.svg" alt="" width="16" height="16" title=""></span>
-  </div>
-  <input  required  type="email" id="email" name='email' class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
-</div>
-
-  </div>
-  <div class="w3-half w3-container"  style='padding-top:5px;'>
-    
-
-    <div class="input-group mb-3" style='border:0px solid white;'>
-        <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1"><img src="../img/phone1.svg" alt="" width="16" height="16" title=""></span>
+                <input
+                  type="hidden"
+                  name="city_zip_state_zip_dropoff"
+                  id="city_zip_state_zip_dropoff"
+                  value=""
+                />
+                <input
+                  type="hidden"
+                  name="city_zip_state_city_dropoff"
+                  id="city_zip_state_city_dropoff"
+                  value=""
+                />
+                <input
+                  type="hidden"
+                  name="city_zip_state_state_dropoff"
+                  id="city_zip_state_state_dropoff"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <input  required  type="text"  name='phone' id='phone' class="form-control mp_phone" placeholder="Phone" aria-label="Phone" aria-describedby="basic-addon1">
-    </div>
+      </div>
+      <div
+        class="row border mb-3 rounded p-3 px-4"
+        style="border: 1px #ececec solid"
+      >
+        <div class="col-12">
+          <div class="row d-flex gap-2" style="gap: 20px">
+            <div>
+              <b>2</b>
+            </div>
+            <div>Vehicle Details</div>
+          </div>
+          <div class="" id="vehicleList">
+            <div class="row border-bottom" id="vehicle_0">
+              <div class="col-4">
+                <div class="input-group" style="border: 0px solid white">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Y</span>
+                  </div>
+                  <input
+                    min="1900"
+                    max="2099"
+                    step="1"
+                    onblur="validYear(event)"
+                    autocomplete="new-password"
+                    required
+                    id="year"
+                    name="year"
+                    type="number"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Begin typing a zip code or city and click a suggested location."
+                    class="form-control"
+                    placeholder="Year"
+                    aria-label="Year"
+                    aria-describedby="basic-addon1"
+                    maxlength="4"
+                    minlength="4"
+                  />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="input-group mb-3" style="border: 0px solid white">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">M</span>
+                  </div>
+                  <input
+                    autocomplete="new-password"
+                    required
+                    id="make"
+                    name="make"
+                    type="text"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Begin typing a zip code or city and click a suggested location."
+                    class="form-control"
+                    placeholder="Vehicle make"
+                    aria-label="Vehicle make"
+                    aria-describedby="basic-addon1"
+                    maxlength="32"
+                    minlength="3"
+                  />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="input-group mb-3" style="border: 0px solid white">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">M</span>
+                  </div>
+                  <input
+                    autocomplete="new-password"
+                    required
+                    id="model"
+                    name="model"
+                    type="text"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Begin typing a zip code or city and click a suggested location."
+                    class="form-control"
+                    placeholder="Vehicle model"
+                    aria-label="Vehicle model"
+                    aria-describedby="basic-addon1"
+                    maxlength="32"
+                    minlength="3"
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="input-group" style="border: 0px solid white">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                      ><img
+                        src="../img/truck-flatbed.svg"
+                        alt=""
+                        width="16"
+                        height="16"
+                        title=""
+                    /></span>
+                  </div>
 
-    
+                  <span style="border: 1px solid #cccccc" class="p-1" id="via"
+                    >&nbsp;
+                    <div
+                      class="form-check form-check-inline"
+                      style="color: gray"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="ship_via_id_0"
+                        id="ship_via_id1"
+                        value="Open/Standard"
+                        checked
+                      />
+                      <label class="form-check-label" for="ship_via_id1"
+                        >Open</label
+                      >
+                    </div>
+                    <div
+                      class="form-check form-check-inline"
+                      style="color: gray"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="ship_via_id_0"
+                        id="ship_via_id2"
+                        value="Enclosed"
+                      />
+                      <label class="form-check-label" for="ship_via_id2"
+                        >Enclosed</label
+                      >
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="input-group mb-3" style="border: 0px solid white">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                      ><img
+                        src="../img/truck.svg"
+                        alt=""
+                        width="16"
+                        height="16"
+                        title=""
+                    /></span>
+                  </div>
 
+                  <span style="border: 1px solid #cccccc" class="p-1" id="run"
+                    >&nbsp;
+                    <div
+                      class="form-check form-check-inline"
+                      style="color: gray"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="vehicle_runs_0"
+                        id="vehicle_runs1"
+                        value="drives"
+                        checked
+                      />
+                      <label class="form-check-label" for="vehicle_runs1"
+                        >Operable</label
+                      >
+                    </div>
+                    <div
+                      class="form-check form-check-inline"
+                      style="color: gray"
+                    >
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="vehicle_runs_0"
+                        id="vehicle_runs2"
+                        value="Inoperable"
+                      />
+                      <label class="form-check-label" for="vehicle_runs"
+                        >Inoperable</label
+                      >
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  </div>
+          <div class="row justify-content-end">
+            <label
+              class="text-secondary"
+              style="cursor: pointer"
+              onclick="addVehicle()"
+              >+ Add vehicle</label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row border mb-3 rounded p-3 px-4">
+        <div class="col-12">
+          <div class="row d-flex gap-2" style="gap: 20px">
+            <div>
+              <b>3</b>
+            </div>
+            <div>Shipment Details</div>
+          </div>
+        </div>
+        <div class="row col-12">
+          <div class="col-6">
+            <div class="input-group mb-3" style="border: 0px solid white">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><img
+                    src="../img/calendar.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                    title=""
+                /></span>
+              </div>
+              <input
+                required
+                type="date"
+                name="date"
+                id="dateShipment"
+                placeholder="mm/dd/yyyy"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Select the first day your shipment will be available for pickup"
+                style="padding-left: 10px"
+                class="form-control datepicker"
+                placeholder="Ship Date"
+                aria-label="Ship Date"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3" style="border: 0px solid white">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><img
+                    src="../img/person.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                    title=""
+                /></span>
+              </div>
+              <input
+                required
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                placeholder="Name"
+                aria-label="Name"
+                aria-describedby="basic-addon1"
+                maxlength="32"
+                minlength="3"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row col-12">
+          <div class="col-6">
+            <div class="input-group mb-3" style="border: 0px solid white">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><img
+                    src="../img/envelope.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                    title=""
+                /></span>
+              </div>
+              <input
+                required
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Email"
+                aria-label="Email"
+                aria-describedby="basic-addon1"
+                maxlength="32"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3" style="border: 0px solid white">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"
+                  ><img
+                    src="../img/phone1.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                    title=""
+                /></span>
+              </div>
+              <input
+                required
+                type="tel"
+                name="phone"
+                id="phone"
+                class="form-control mp_phone"
+                placeholder="Phone"
+                aria-label="Phone"
+                aria-describedby="basic-addon1"
+                maxlength="14"
+                minlength="14"
+                required
+                oninput="onlyNumbers(event)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <div class="w3-row w3-full w3-white">
+          <br /><input
+            type="submit"
+            value="Submit Quote Request"
+            id="submit_button"
+            onclick="mp_show_wait_animation_check_form('Please Wait...')"
+            style="
+              background-color: #00a1ef;
+              color: white;
+              font-size: 18px;
+              padding: 5px;
+              border-radius: 3px;
+              width: 200px;
+            "
+          />
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <div class="w3-row w3-full w3-white">
+          <span style="color: gray"
+            ><a href="/index.html" target="_blank">Cayad Auto Transport</a>
+          </span>
+        </div>
+      </div>
+    </form>
+    <template id="add-vehicle">
+      <div class="row border-bottom" id="vehicle_">
+        <div class="col-11">
+          <div class="row">
+            <div class="col-4">
+              <div class="input-group" style="border: 0px solid white">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Y</span>
+                </div>
+                <input
+                  min="1900"
+                  max="2099"
+                  step="1"
+                  onblur="validYear(event)"
+                  autocomplete="new-password"
+                  required
+                  id="year_"
+                  name="year"
+                  type="number"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Begin typing a zip code or city and click a suggested location."
+                  class="form-control"
+                  placeholder="Year"
+                  aria-label="Year"
+                  aria-describedby="basic-addon1"
+                  maxlength="4"
+                  minlength="4"
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="input-group" style="border: 0px solid white">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">M</span>
+                </div>
+                <input
+                  autocomplete="new-password"
+                  required
+                  id="make"
+                  name="make"
+                  type="text"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Begin typing a zip code or city and click a suggested location."
+                  class="form-control"
+                  placeholder="Vehicle make"
+                  aria-label="Vehicle make"
+                  aria-describedby="basic-addon1"
+                  maxlength="32"
+                  minlength="3"
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="input-group" style="border: 0px solid white">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">M</span>
+                </div>
+                <input
+                  autocomplete="new-password"
+                  required
+                  id="model"
+                  name="model"
+                  type="text"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Begin typing a zip code or city and click a suggested location."
+                  class="form-control"
+                  placeholder="Vehicle model"
+                  aria-label="Vehicle model"
+                  aria-describedby="basic-addon1"
+                  maxlength="32"
+                  minlength="3"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="input-group" style="border: 0px solid white">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><img
+                      src="../img/truck-flatbed.svg"
+                      alt=""
+                      width="16"
+                      height="16"
+                      title=""
+                  /></span>
+                </div>
 
+                <span style="border: 1px solid #cccccc" class="p-1" id="via"
+                  >&nbsp;
+                  <div class="form-check form-check-inline" style="color: gray">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="ship_via_id_"
+                      id="ship_via_id1"
+                      value="Open/Standard"
+                      checked
+                    />
+                    <label class="form-check-label" for="ship_via_id1_"
+                      >Open/Standard</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline" style="color: gray">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="ship_via_id_"
+                      id="ship_via_id2"
+                      value="Enclosed"
+                    />
+                    <label class="form-check-label" for="ship_via_id2_"
+                      >Enclosed</label
+                    >
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="input-group" style="border: 0px solid white">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"
+                    ><img
+                      src="../img/truck.svg"
+                      alt=""
+                      width="16"
+                      height="16"
+                      title=""
+                  /></span>
+                </div>
 
-</div>
+                <span style="border: 1px solid #cccccc" class="p-1" id="run"
+                  >&nbsp;
+                  <div class="form-check form-check-inline" style="color: gray">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vehicle_runs_"
+                      id="vehicle_runs1"
+                      value="drives"
+                      checked
+                    />
+                    <label class="form-check-label" for="vehicle_runs1"
+                      >Vehicle drives</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline" style="color: gray">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vehicle_runs_"
+                      id="vehicle_runs2"
+                      value="Inoperable"
+                    />
+                    <label class="form-check-label" for="vehicle_runs"
+                      >Inoperable</label
+                    >
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span
+          role="button"
+          class="col-1 bg-light d-flex justify-content-center align-items-center"
+        >
+          <i
+            style="font-size: 12px; cursor: pointer"
+            class="fa"
+            onclick="deleteVehicle(event)"
+            >&#x2715;</i
+          >
+        </span>
+      </div>
+    </template>
 
-<!--shipment details end-->
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/runtime.js"></script>
+    <script src="../js/jquery-3.3.1min.js"></script>
 
-<div class="w3-row" >
-&nbsp;
-</div>
+    <!-- Messenger plugin del chat Code START-->
+    <div id="fb-root"></div>
 
-<!--submit start-->
-<div class="w3-row w3-full w3-white">
-<br><input type='submit' value='Submit Quote Request' id='submit_button' onclick="mp_show_wait_animation_check_form('Please Wait...')";  style='background-color:#00a1ef;color:white;font-size:18px;padding:5px;border-radius:3px;width:200px;'>
-</div>
-<!--submit end-->
+    <!-- Your plugin del chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
 
-<div class="w3-row" >
-&nbsp;
-</div>
+    <script>
+      var chatbox = document.getElementById("fb-customer-chat");
+      chatbox.setAttribute("page_id", "116222094837969");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
 
-</form>
-<script>
-  $(".mp_phone").inputmask({"mask": "(999) 999-9999"});
-  </script>
-<div class="w3-row w3-full w3-white">
-<span style='color:gray;'><a href="/index.html" target=_blank>Cayad Auto Transport</a> </span>
-</div>
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          xfbml: true,
+          version: "v17.0",
+        });
+      };
 
-<div class="w3-row" >
-&nbsp;
-</div>
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
 
-</div>
-</center>
+      // cambio de campos segun checkbox
+    </script>
 
-<!-- Template Javascript -->
-<script src="../js/main.js"></script>
-<script src="../js/runtime.js"></script>
-<script src="../js/jquery-3.3.1min.js"></script>
+    <!-- Messenger plugin del chat Code END-->
 
-<!-- Messenger plugin del chat Code START-->
-<div id="fb-root"></div>
+    <!-- quote START-->
+    <script>
+      const formResult = {
+        typeAddess: "",
+        origin: "",
+        destination: "",
+        vehicles: [],
+        shipmentDate: "",
+        shipmentName: "",
+        shipmentEmail: "",
+        shipmentPhone: "",
+      };
+      function maskPhone() {
+        $("#phone").keyup(function () {
+          $(this).val(
+            $(this)
+              .val()
+              .replace(/^(\d{3})(\d{3})(\d+)$/, "($1) $2-$3")
+          );
+        });
+      }
 
-<!-- Your plugin del chat code -->
-<div id="fb-customer-chat" class="fb-customerchat">
-</div>
+      window.onload = function () {
+        maskPhone();
+        const fechaActual = new Date();
 
-<script>
-  var chatbox = document.getElementById('fb-customer-chat');
-  chatbox.setAttribute("page_id", "116222094837969");
-  chatbox.setAttribute("attribution", "biz_inbox");
-</script>
+        const añoActual = fechaActual.getFullYear();
+        const mesActual = (fechaActual.getMonth() + 1)
+          .toString()
+          .padStart(2, "0");
+        const diaActual = fechaActual.getDate().toString().padStart(2, "0");
 
-<!-- Your SDK code -->
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      xfbml            : true,
-      version          : 'v17.0'
-    });
-  };
+        const dateShipment = document.getElementById("dateShipment");
+        dateShipment.setAttribute(
+          "min",
+          `${añoActual}-${mesActual}-${diaActual}`
+        );
+        dateShipment.setAttribute(
+          "value",
+          `-${mesActual}-${diaActual}-${añoActual}`
+        );
+      };
+      function onlyNumbers(event) {
+        const input = event.target;
+        const inputValue = input.value;
 
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-<!-- Messenger plugin del chat Code END-->
+        const numericValue = inputValue.replace(/[^\d]/g, "");
 
+        input.value = numericValue;
+      }
 
+      function validYear(event) {
+        const date = new Date();
 
-</body>
+        if (
+          event.target.value < 1900 ||
+          event.target.value > date.getFullYear()
+        ) {
+          alert("Enter a valid year");
+          const checkZip = document.getElementById(event.srcElement.id);
+          checkZip.value = date.getFullYear();
+        }
+      }
+
+      function checkTypeAddress(value, event) {
+        const $miCheckbox = document.querySelector("#zipCheck");
+
+        if (value == "zip") {
+          const checkZip = document.getElementById("cityCheck");
+          checkZip.checked = false;
+
+          const zipOrigin = document.getElementById("zip_origin");
+          zipOrigin.style.display = "";
+          const zipDestination = document.getElementById("zip_destination");
+          zipDestination.style.display = "";
+
+          const cityOrigin = document.getElementById("city_origin");
+          cityOrigin.style.display = "none";
+          const cityDestination = document.getElementById("city_destination");
+          cityDestination.style.display = "none";
+        } else if (value == "city") {
+          const checkCity = document.getElementById("zipCheck");
+          checkCity.checked = false;
+
+          const zipOrigin = document.getElementById("zip_origin");
+          zipOrigin.style.display = "none";
+          const zipDestination = document.getElementById("zip_destination");
+          zipDestination.style.display = "none";
+
+          const cityOrigin = document.getElementById("city_origin");
+          cityOrigin.style.display = "";
+          const cityDestination = document.getElementById("city_destination");
+          cityDestination.style.display = "";
+        }
+      }
+      function deleteVehicle(event) {
+        const vehicle = document.getElementById(
+          event.srcElement.parentNode.parentNode.id
+        );
+        const vehicleList = document.getElementById("vehicleList");
+        vehicleList.removeChild(vehicle);
+      }
+      function addVehicle() {
+        const vehicleList = document.getElementById("vehicleList");
+        const children = vehicleList.childElementCount;
+        if (children < 9) {
+          if (validVehicles()) {
+            const template = document.querySelector("#add-vehicle");
+            const my_template_clone = template.content.cloneNode(true);
+            const newVehicle = my_template_clone.getElementById("vehicle_");
+            let newID = "";
+            let index = 1;
+            do {
+              index++;
+              newID = `vehicle_${children + index}`;
+              const existID = document.getElementById(newID);
+              result = existID ? true : false;
+            } while (result);
+
+            newVehicle.id = newID;
+
+            const id = newID.split("_")[1];
+
+            // radiobutton
+            const eleVia = my_template_clone.querySelectorAll(
+              'input[name="ship_via_id_"]'
+            );
+            for (const checkButton of eleVia) {
+              checkButton.name = `ship_via_id_${id}`;
+            }
+            const eleRun = my_template_clone.querySelectorAll(
+              'input[name="vehicle_runs_"]'
+            );
+            for (const check of eleRun) {
+              check.name = `vehicle_runs_${id}`;
+            }
+            const eleYear =
+              my_template_clone.querySelector('input[id="year_"]');
+
+            eleYear.id = `year_${id}`;
+
+            vehicleList.appendChild(newVehicle);
+          }
+        } else {
+          alert("Has reached the maximum number of vehicles");
+        }
+      }
+
+      function validVehicles() {
+        const years = document.getElementsByName("year");
+        const vehicleMake = document.getElementsByName("make");
+        const vehicleModel = document.getElementsByName("model");
+        if (Array.from(years).some((e) => e.value === null || e.value === "")) {
+          alert("Enter a valid year");
+          return false;
+        }
+        if (
+          Array.from(vehicleMake).some(
+            (e) => e.value === null || e.value === ""
+          )
+        ) {
+          alert("Enter a valid vehicle make");
+
+          return false;
+        }
+        if (
+          Array.from(vehicleModel).some(
+            (e) => e.value === null || e.value === ""
+          )
+        ) {
+          alert("Enter a valid vehicle model");
+
+          return false;
+        }
+        return true;
+      }
+
+      function mp_show_wait_animation_check_form(e) {
+        const formResult = {
+          typeAddess: "",
+          origin: "",
+          destination: "",
+          vehicles: [],
+          shipmentDate: "",
+          shipmentName: "",
+          shipmentEmail: "",
+          shipmentPhone: "",
+        };
+        const eleZipCheck = document.getElementById("zipCheck");
+
+        if (eleZipCheck.checked) {
+          formResult.typeAddess = "zip";
+          formResult.origin = document.getElementById("zip_origin").value;
+          formResult.destination =
+            document.getElementById("zip_destination").value;
+        } else {
+          formResult.typeAddess = "city";
+
+          formResult.origin = document.getElementById("city_origin").value;
+          formResult.destination =
+            document.getElementById("city_destination").value;
+        }
+
+        vehicleList = document.getElementById("vehicleList");
+        for (let i = 0; i < vehicleList.childElementCount; i++) {
+          const vehicle = Array.from(vehicleList.children)[i];
+          year = vehicle.querySelector('input[name="year"]').value;
+          make = vehicle.querySelector('input[name="make"]').value;
+          model = vehicle.querySelector('input[name="model"]').value;
+          id = vehicle.id.split("_")[1];
+          optionsTransport = vehicle.querySelectorAll(
+            `input[name="ship_via_id_${id}"]`
+          );
+          transportType = "";
+          for (const option of optionsTransport) {
+            if (option.checked) {
+              transportType = option.value;
+            }
+          }
+
+          optionsRuns = vehicle.querySelectorAll(
+            `input[name="vehicle_runs_${id}"]`
+          );
+          run = "";
+          for (const option of optionsRuns) {
+            if (option.checked) {
+              run = option.value;
+            }
+          }
+          const data = { year, make, model, transportType, run };
+          formResult.vehicles.push(data);
+        }
+
+        formResult.shipmentDate = document.getElementById("dateShipment").value;
+        formResult.shipmentName = document.getElementById("name").value;
+        formResult.shipmentEmail = document.getElementById("email").value;
+        formResult.shipmentPhone = document.getElementById("phone").value;
+
+        console.log(formResult);
+      }
+    </script>
+    <!-- quote END -->
+  </body>
 </html>
