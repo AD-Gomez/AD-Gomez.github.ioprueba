@@ -1,261 +1,559 @@
 <!DOCTYPE html>
 
-<html lang="en"><head>
-
+<html lang="en">
+  <head>
     <title>Quote | Cayad Auto Transport</title>
-  
-  
-  
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  
-   <link rel="shortcut icon" href="../img/title-icon.png">
-  
-   <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="/data/include/bsdp/css/bootstrap-datepicker.css">
-  
-  
-  
-  
-  <style>
-  
-  input{
-    border:none;
-    background-color: transparent;
-  }
-  input:focus,
-  select:focus,
-  textarea:focus,
-  button:focus {
-      outline: none;
-  }
-  
-  .fa-user-circle-o{
-    color: gray;
-  }
-  
-  .input-group{
-    border: 1px gray solid;
-    padding: 10px;
-  }
-  </style>
-  
-  
-  
-  <style>
-  .tooltip-main {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    font-weight: 700;
-    background: #f3f3f3;
-    border: 1px solid #737373;
-    color: #737373;
-    margin: 4px 121px 0 5px;
-    float: right;
-    text-align: left !important;
-  }
-  
-  .tooltip-qm {
-    float: left;
-    margin: -2px 0px 3px 4px;
-    font-size: 12px;
-  }
-  
-  .tooltip-inner {
-    max-width: 236px !important;
-    height: 56px;
-    font-size: 12px;
-    padding: 10px 15px 10px 20px;
-    background: #FFFFFF;
-    color: rgb(0, 0, 0, .7);
-    border: 1px solid #cccccc;
-    text-align: left;
-  }
-  
-  .tooltip.show {
-    opacity: 1;
-  }
-  
-  .bs-tooltip-auto[x-placement^=bottom] .arrow::before,
-  .bs-tooltip-bottom .arrow::before {
-    border-bottom-color: #f00;
-    /* Red */
-  }
-  .credit_cards {
-    
-    height: 35px;
-    width: 300px; 
-  }
-  </style>
-  
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+    <link rel="shortcut icon" href="../img/title-icon.png" />
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="/data/include/bsdp/css/bootstrap-datepicker.css"
+    />
+
+    <style>
+      input {
+        border: none;
+        background-color: transparent;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus,
+      button:focus {
+        outline: none;
+      }
+
+      .fa-user-circle-o {
+        color: gray;
+      }
+
+      .input-group {
+        border: 1px gray solid;
+        padding: 10px;
+      }
+    </style>
+
+    <style>
+      .tooltip-main {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        font-weight: 700;
+        background: #f3f3f3;
+        border: 1px solid #737373;
+        color: #737373;
+        margin: 4px 121px 0 5px;
+        float: right;
+        text-align: left !important;
+      }
+
+      .tooltip-qm {
+        float: left;
+        margin: -2px 0px 3px 4px;
+        font-size: 12px;
+      }
+
+      .tooltip-inner {
+        max-width: 236px !important;
+        height: 56px;
+        font-size: 12px;
+        padding: 10px 15px 10px 20px;
+        background: #ffffff;
+        color: rgb(0, 0, 0, 0.7);
+        border: 1px solid #cccccc;
+        text-align: left;
+      }
+
+      .tooltip.show {
+        opacity: 1;
+      }
+
+      .bs-tooltip-auto[x-placement^="bottom"] .arrow::before,
+      .bs-tooltip-bottom .arrow::before {
+        border-bottom-color: #f00;
+        /* Red */
+      }
+      .credit_cards {
+        height: 35px;
+        width: 300px;
+      }
+    </style>
   </head>
-  <body style="background-color:#cccccc;">
-  
-  
-  
-  <center> 
-  
-  
-  <div class="w3-container w3-white" style="max-width:750px;border:1px solid white;border-radius:10px;">
-  
-  <div class="w3-row w3-third w3-white" style="padding-top:15px;">
-  
-  <img src="../img/logo-cayad.png" style="max-height:50px;">
-  
-  </div>
-  
-  <div class="w3-row w3-twothird w3-white" style="padding-top:15px;">
-  <b style="font-size:18px;">Your Quote</b>
-  <br><span style="color:grey;">Thank You! We will contact you shortly…</span>
-  </div>
-  
-  
-  <div class="w3-row">
-  &nbsp;
-  </div>
-  
-  
-  
-  
-  
-  <script src="/data/include/mask/jquery.inputmask.bundle.js"></script>
-  <form method="post" id="main_form" autocomplete="off">
-  
-  <input type="hidden" name="page" value="2">
-  
-  
-  <div class="w3-row" style="border:0px solid #cccccc;">
-  
-    <div class="w3-half w3-container" style="text-align:left;background-color:white;color:black; padding:0px;">
-        <div class="w3-full" style="text-align:left;background-color:white;color:black;border-top:1px solid #cccccc;border-left:1px solid #cccccc;border-right:1px solid #cccccc;">
-          <div style="padding:7px;font-size:15px;display:inline-block;">Customer Name</div>
-        </div>
-  
-      <div class="w3-full" style="text-align:left;background-color:white;color:black;border:1px solid #cccccc;">
-  
-  
-        <table width="100%" cellpadding="5px">
-              <tbody><tr><td style="background-color:#ecf5fe;">Pickup From</td><td>Tomball, TX 77375(vaciar aca la inf)</td></tr>
-              <tr><td style="background-color:#ecf5fe;">Deliver To</td><td>Tomball, TX 77375(vaciar aca la inf)</td></tr>
-              <tr><td style="background-color:#ecf5fe;">Vehicle(s)</td><td>2023 Alfa Romeo 147 3 Doors(vaciar aca la inf)</td></tr>
-              </tbody>
-        </table>
-  
-      </div>
-  
-        <div class="w3-full" style="text-align:left;background-color:white;color:black;border-top:1px solid #cccccc;border-left:1px solid #cccccc;border-right:1px solid #cccccc;">
-          &nbsp;
-        </div>
-  
-  <div class="w3-full" style="text-align:left;background-color:white;color:black;border-top:1px solid #cccccc;border-left:1px solid #cccccc;border-right:1px solid #cccccc;">
-          &nbsp;
-        </div>
-  
-      <div class="w3-full" style="text-align:left;background-color:white;color:black;border:1px solid #cccccc;">
-        <table width="100%" cellpadding="5px">
-          <tbody><tr><td rowspan="2"></td><td style="font-size:12px;"><img src="../img/green_checkbox.png" style="width:10px;">&nbsp;&nbsp;Dedicated Advisors</td><td style="font-size:12px;"><img src="../img/green_checkbox.png" style="width:10px;">&nbsp;&nbsp;No Hidden Fees</td></tr>
-              <tr><td style="font-size:12px;"><img src="../img/green_checkbox.png" style="width:10px;">&nbsp;&nbsp;Ensured Carrier</td><td style="font-size:12px;"><img src="../img/green_checkbox.png" style="width:10px;">&nbsp;&nbsp;Customer Portal</td></tr>
-              
-          </tbody>
-        </table>
-  
-        <table width="100%" cellpadding="5px">
-          <tbody>
-              <tr>
-                  <td style="color:gray;"><br><img src="../img/truck-flatbed.svg" alt="" width="16" height="16" title="">&nbsp;&nbsp;Open Car Carrier</td>
-                  <td style="color:gray;"><br><img src="../img/truck.svg" alt="" width="16" height="16" title="">&nbsp;&nbsp;All Vehicles Run</td>
-                  
-              </tr>
-          </tbody>
-        </table>
+  <body
+    class="d-flex justify-content-center align-items-center"
+    style="background-color: #cccccc"
+  >
+    <div
+      class="w3-container w3-white"
+      style="max-width: 750px; border: 1px solid white; border-radius: 10px"
+    >
+      <div class="w3-row w3-third w3-white" style="padding-top: 15px">
+        <img src="../img/logo-cayad.png" style="max-height: 50px" />
       </div>
 
-      <div class="w3-full w3-container" style="text-align:left;background-color:white;color:black;">
-        <div>
-          <img src="../img/credit_cards.png" class="credit_cards"><br>
-        </div>
+      <div class="w3-row w3-twothird w3-white" style="padding-top: 15px">
+        <b style="font-size: 18px">Your Quote</b>
+        <br /><span style="color: grey"
+          >Thank You! We will contact you shortly…</span
+        >
       </div>
-  
-    </div>
-  
-    <div class="w3-half w3-container" style="text-align:left;background-color:white;color:black;">
-  
-          <div class="w3-full w3-container" style="text-align:left;background-color:white;color:black;border:1px solid #cccccc;">
-            <table width="100%">
-              <tbody><tr><td style="padding:5px;"><img src="../img/point_a.png"></td><td align="center" style="border-bottom:1px solid #cccccc;color:#34a5e5;font-weight:bold;">Origin &nbsp;-&nbsp; Destination</td>
-                <td style="padding:5px;" align="right"><img width="8px" src="../img/point_b.png"></td></tr>
-                <tr><td style="color:gray;">TX(TDF)</td><td align="center" style="color:gray;">ETA 500 MILEAGE DAY</td><td align="right" style="color:gray;">TX(TDF)</td></tr>
-              </tbody>
-            </table> 
-        </div>
 
-          <div class="w3-row">&nbsp;</div>
+      <div class="w3-row">&nbsp;</div>
 
-        <div class="w3-full " style="text-align:left;background-color:white;color:black;border:1px solid #cccccc;padding-top:6px;padding-bottom:6px;">
-            inventar algo alli.....
-        </div>
+      <script src="/data/include/mask/jquery.inputmask.bundle.js"></script>
+      <form method="post" id="main_form" autocomplete="off">
+        <input type="hidden" name="page" value="2" />
+
+        <div class="w3-row" style="border: 0px solid #cccccc">
+          <div
+            class="w3-half w3-container"
+            style="
+              text-align: left;
+              background-color: white;
+              color: black;
+              padding: 0px;
+            "
+          >
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border-top: 1px solid #cccccc;
+                border-left: 1px solid #cccccc;
+                border-right: 1px solid #cccccc;
+              "
+            >
+              <div style="padding: 7px; font-size: 15px; display: inline-block">
+                Customer Name: <span id="customerName"></span>
+              </div>
+            </div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border: 1px solid #cccccc;
+              "
+            >
+              <table width="100%" cellpadding="5px">
+                <tbody id="leadInfo">
+                  <tr>
+                    <td style="background-color: #ecf5fe">Pickup From</td>
+                    <td id="origin"></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #ecf5fe">Deliver To</td>
+                    <td id="destination"></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #ecf5fe">Vehicle(s)</td>
+                    <td id="vehicle-list"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border-top: 1px solid #cccccc;
+                border-left: 1px solid #cccccc;
+                border-right: 1px solid #cccccc;
+              "
+            >
+              &nbsp;
+            </div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border-top: 1px solid #cccccc;
+                border-left: 1px solid #cccccc;
+                border-right: 1px solid #cccccc;
+              "
+            >
+              &nbsp;
+            </div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border: 1px solid #cccccc;
+              "
+            >
+              <table width="100%" cellpadding="5px">
+                <tbody>
+                  <tr>
+                    <td rowspan="2"></td>
+                    <td style="font-size: 12px">
+                      <img
+                        src="../img/green_checkbox.png"
+                        style="width: 10px"
+                      />&nbsp;&nbsp;Dedicated Advisors
+                    </td>
+                    <td style="font-size: 12px">
+                      <img
+                        src="../img/green_checkbox.png"
+                        style="width: 10px"
+                      />&nbsp;&nbsp;No Hidden Fees
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 12px">
+                      <img
+                        src="../img/green_checkbox.png"
+                        style="width: 10px"
+                      />&nbsp;&nbsp;Ensured Carrier
+                    </td>
+                    <td style="font-size: 12px">
+                      <img
+                        src="../img/green_checkbox.png"
+                        style="width: 10px"
+                      />&nbsp;&nbsp;Customer Portal
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table width="100%" cellpadding="5px">
+                <tbody>
+                  <tr>
+                    <td style="color: gray">
+                      <br /><img
+                        src="../img/truck-flatbed.svg"
+                        alt=""
+                        width="16"
+                        height="16"
+                        title=""
+                      />&nbsp;&nbsp;
+                      <div id="transportType"></div>
+                    </td>
+                    <td style="color: gray">
+                      <br /><img
+                        src="../img/truck.svg"
+                        alt=""
+                        width="16"
+                        height="16"
+                        title=""
+                      />&nbsp;&nbsp;
+                      <div id="drives"></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              class="w3-full w3-container"
+              style="text-align: left; background-color: white; color: black"
+            >
+              <div>
+                <img src="../img/credit_cards.png" class="credit_cards" /><br />
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w3-half w3-container"
+            style="text-align: left; background-color: white; color: black"
+          >
+            <div
+              class="w3-full w3-container"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border: 1px solid #cccccc;
+              "
+            >
+              <div class="container">
+                <div class="row justify-content-between">
+                  <div><img src="../img/point_a.png" /></div>
+                  <div class="font-weight-bold" style="color: #34a5e5">
+                    Origin &nbsp;-&nbsp; Destination
+                  </div>
+                  <div><img width="8px" src="../img/point_b.png" /></div>
+                </div>
+                <div class="row mt-2">
+                  <div
+                    style="width: 100%; height: 1px; background-color: #e8e8e8"
+                  ></div>
+                </div>
+
+                <div class="row justify-content-between mt-3 mb-2">
+                  <div id="origin_txt"></div>
+                  <div id="destination_txt"></div>
+                </div>
+              </div>
+            </div>
 
             <div class="w3-row">&nbsp;</div>
-  
-          <div class="w3-full w3-container" style="text-align:left;background-color:white;color:black;display:inline-block;">
-            <b>Have questions about your transport?</b>
-            <br><br>
-            <span style="text-align: justify;display: inline-block;">Our shipping experts are standing by to help. 
-              Call (469)619-0747 to discuss your transport with a vehicle shipping coordinator and let us answer any questions you may have.
-            </span>
-            <br><br>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border: 1px solid #cccccc;
+                padding-top: 6px;
+                padding-bottom: 6px;
+              "
+            >
+              <div id="map" style="width: 100%; height: 250px"></div>
+            </div>
+
+            <div class="w3-row">&nbsp;</div>
+
+            <div
+              class="w3-full w3-container"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                display: inline-block;
+              "
+            >
+              <b>Have questions about your transport?</b>
+              <br /><br />
+              <span style="text-align: justify; display: inline-block"
+                >Our shipping experts are standing by to help. Call
+                (469)619-0747 to discuss your transport with a vehicle shipping
+                coordinator and let us answer any questions you may have.
+              </span>
+              <br /><br />
+            </div>
           </div>
+        </div>
+      </form>
+      <template id="add-vehicle">
+        <div>
+          <div id="vehicleInfo"></div>
+          <div
+            style="width: 100%; height: 1px; background-color: #e8e8e8"
+          ></div>
+        </div>
+      </template>
+      <div class="w3-row w3-full w3-white">
+        <span style="color: gray"
+          ><a href="/index.html" target="_blank">Cayad Auto Transport</a>
+        </span>
+      </div>
+
+      <div class="w3-row">&nbsp;</div>
     </div>
-  </div>
-  
-  </form>
-  
-  
-  <div class="w3-row w3-full w3-white">
-  <span style="color:gray;"><a href="/index.html" target="_blank">Cayad Auto Transport</a> </span>
-  </div>
-  
-  <div class="w3-row">&nbsp;</div>
-  
-  </div>
-  </center>
 
-  <!-- Messenger plugin del chat Code START-->
-<div id="fb-root"></div>
+    <!-- Messenger plugin del chat Code START-->
+    <div id="fb-root"></div>
 
-<!-- Your plugin del chat code -->
-<div id="fb-customer-chat" class="fb-customerchat">
-</div>
+    <!-- Your plugin del chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
+    <script type="module" src="map.js"></script>
 
-<script>
-  var chatbox = document.getElementById('fb-customer-chat');
-  chatbox.setAttribute("page_id", "116222094837969");
-  chatbox.setAttribute("attribution", "biz_inbox");
-</script>
+    <script>
+      var chatbox = document.getElementById("fb-customer-chat");
+      chatbox.setAttribute("page_id", "116222094837969");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
 
-<!-- Your SDK code -->
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      xfbml            : true,
-      version          : 'v17.0'
-    });
-  };
+    <!-- Your SDK code -->
+    <script>
+      const apiKey =
+        "sk.eyJ1IjoibmFpcmVseXNoeiIsImEiOiJjbGw2eDNlbHMwam0zM2RvMGFpeXgxOHBwIn0.aypcPDmWMhyRZatQGJgPBw";
+      window.fbAsyncInit = function () {
+        FB.init({
+          xfbml: true,
+          version: "v17.0",
+        });
+      };
 
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-<!-- Messenger plugin del chat Code END-->
-  
-  
-  </body></html>
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+    <!-- Messenger plugin del chat Code END-->
+    <script>
+      let map = null;
+      window.onload = function () {
+        map = L.map("map").setView([51.505, -0.09], 13);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "© OpenStreetMap",
+        }).addTo(map);
+        L.tileLayer(
+          "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=" +
+            apiKey,
+          {
+            attribution:
+              '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> contributors',
+          }
+        ).addTo(map);
+
+        const data = localStorage.getItem("lead");
+        if (!data) return (location.href = "www.google.com");
+        const dataLead = JSON.parse(data);
+        loadMap(dataLead);
+
+        // fill info
+        const customerElem = document.getElementById("customerName");
+        customerElem.textContent = dataLead.first_name;
+        // origin and deliver
+        const originElem = document.getElementById("origin");
+        const destinationElem = document.getElementById("destination");
+        const originTextElem = document.getElementById("origin_txt");
+        const destinationTextElem = document.getElementById("destination_txt");
+
+        originTextElem.textContent =
+          dataLead.origin_city !== ""
+            ? dataLead.origin_city
+            : dataLead.origin_postal_code;
+        destinationTextElem.textContent =
+          dataLead.destination_city !== ""
+            ? dataLead.destination_city
+            : dataLead.destination_postal_code;
+
+        originElem.textContent =
+          dataLead.origin_city !== ""
+            ? dataLead.origin_city
+            : dataLead.origin_postal_code;
+        destinationElem.textContent =
+          dataLead.destination_city !== ""
+            ? dataLead.destination_city
+            : dataLead.destination_postal_code;
+        transportTypeElem = document.getElementById("transportType");
+        transportTypeElem.textContent =
+          dataLead.transport_type == "1"
+            ? "Open Car Carrier"
+            : "Enclosed Card carrier";
+        //vehicle
+        const template = document.querySelector("#add-vehicle");
+        const my_template_clone = template.content.cloneNode(true);
+        const newVehicle = my_template_clone.getElementById("vehicleInfo");
+        dataLead.Vehicles.map((v) => {
+          const my_template_clone = template.content.cloneNode(true);
+          const newVehicle = my_template_clone.getElementById("vehicleInfo");
+          newVehicle.textContent = `${v.vehicle_make} ${v.vehicle_model} ${
+            v.vehicle_model_year
+          } Inop: ${v.vehicle_inop === "1" ? "Yes" : "No"}`;
+          const table = document.getElementById("vehicle-list");
+          table.appendChild(my_template_clone);
+        });
+
+        const runs = document.getElementById("drives");
+        if (dataLead.Vehicles.some((e) => e.vehicle_inop === "0")) {
+          runs.textContent = " Not all vehicles runs";
+        } else {
+          runs.textContent = "All vehicles runs";
+        }
+      };
+
+      async function loadMap(dataLead) {
+        const coorOrigin = await search(
+          dataLead.origin_city !== ""
+            ? dataLead.origin_city
+            : dataLead.origin_postal_code
+        );
+
+        const coorDestination = await search(
+          dataLead.destination_city !== ""
+            ? dataLead.destination_city
+            : dataLead.destination_postal_code
+        );
+
+        fetch(
+          `https://api.mapbox.com/directions/v5/mapbox/driving/${coorOrigin[0]},${coorOrigin[1]};${coorDestination[0]},${coorDestination[1]}?geometries=geojson&access_token=${apiKey}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            var routeCoordinates = data.routes[0].geometry.coordinates;
+            const allCoors = routeCoordinates.map((e) => e.reverse());
+
+            const polyline = L.polyline(allCoors, {
+              color: "#00a1ef",
+              weight: 3,
+            }).addTo(map);
+            map.fitBounds(polyline.getBounds());
+          });
+      }
+
+      function search(address) {
+        return new Promise((resolve, reject) => {
+          // Realiza una búsqueda de dirección utilizando la API de geocodificación de Mapbox
+          fetch(
+            "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
+              encodeURIComponent(address + " , USA") +
+              ".json?access_token=" +
+              apiKey
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              // Obtiene las coordenadas del primer resultado
+              var coordenadas = data.features[0].center;
+
+              // Crea un marcador en las coordenadas
+              L.marker([coordenadas[1], coordenadas[0]])
+                .addTo(map)
+                .bindPopup(address)
+                .openPopup();
+
+              // Centra el mapa en las coordenadas del marcador
+              map.setView([coordenadas[1], coordenadas[0]], 14);
+              resolve([coordenadas[0], coordenadas[1]]);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
