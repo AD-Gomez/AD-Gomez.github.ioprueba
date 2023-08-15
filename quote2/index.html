@@ -303,7 +303,7 @@
             style="text-align: left; background-color: white; color: black"
           >
             <div
-              class="w3-full w3-container"
+              class="w3-full w3-container mt-4 mt-sm-0"
               style="
                 text-align: left;
                 background-color: white;
@@ -379,7 +379,7 @@
           ></div>
         </div>
       </template>
-      <div class="w3-row w3-full w3-white">
+      <div class="row justify-content-center">
         <span style="color: gray"
           ><a href="/index.html" target="_blank">Cayad Auto Transport</a>
         </span>
@@ -473,7 +473,7 @@
             : dataLead.destination_postal_code;
         transportTypeElem = document.getElementById("transportType");
         transportTypeElem.textContent =
-        dataLead.transport_type == "1"
+          dataLead.transport_type == "1"
             ? "Open Car Carrier"
             : "Enclosed Card carrier";
         //vehicle
@@ -481,79 +481,79 @@
         const my_template_clone = template.content.cloneNode(true);
         const newVehicle = my_template_clone.getElementById("vehicleInfo");
         dataLead.Vehicles.map((v) => {
-        const my_template_clone = template.content.cloneNode(true);
-        const newVehicle = my_template_clone.getElementById("vehicleInfo");
-        newVehicle.textContent = `${v.vehicle_make} ${v.vehicle_model} ${
+          const my_template_clone = template.content.cloneNode(true);
+          const newVehicle = my_template_clone.getElementById("vehicleInfo");
+          newVehicle.textContent = `${v.vehicle_make} ${v.vehicle_model} ${
             v.vehicle_model_year
-        } Inop: ${v.vehicle_inop === "1" ? "Yes" : "No"}`;
-        const table = document.getElementById("vehicle-list");
-        table.appendChild(my_template_clone);
+          } Inop: ${v.vehicle_inop === "1" ? "Yes" : "No"}`;
+          const table = document.getElementById("vehicle-list");
+          table.appendChild(my_template_clone);
         });
 
         const runs = document.getElementById("drives");
         if (dataLead.Vehicles.some((e) => e.vehicle_inop === "0")) {
-        runs.textContent = " Not all vehicles runs";
+          runs.textContent = " Not all vehicles runs";
         } else {
-        runs.textContent = "All vehicles runs";
+          runs.textContent = "All vehicles runs";
         }
-        };
+      };
 
-        async function loadMap(dataLead) {
+      async function loadMap(dataLead) {
         const coorOrigin = await search(
-        dataLead.origin_city !== ""
+          dataLead.origin_city !== ""
             ? dataLead.origin_city
             : dataLead.origin_postal_code
         );
 
         const coorDestination = await search(
-        dataLead.destination_city !== ""
+          dataLead.destination_city !== ""
             ? dataLead.destination_city
             : dataLead.destination_postal_code
         );
 
         fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/driving/${coorOrigin[0]},${coorOrigin[1]};${coorDestination[0]},${coorDestination[1]}?geometries=geojson&access_token=${apiKey}`
+          `https://api.mapbox.com/directions/v5/mapbox/driving/${coorOrigin[0]},${coorOrigin[1]};${coorDestination[0]},${coorDestination[1]}?geometries=geojson&access_token=${apiKey}`
         )
-        .then((response) => response.json())
-        .then((data) => {
+          .then((response) => response.json())
+          .then((data) => {
             var routeCoordinates = data.routes[0].geometry.coordinates;
             const allCoors = routeCoordinates.map((e) => e.reverse());
 
             const polyline = L.polyline(allCoors, {
-            color: "#00a1ef",
-            weight: 3,
+              color: "#00a1ef",
+              weight: 3,
             }).addTo(map);
             map.fitBounds(polyline.getBounds());
-        });
-        }
+          });
+      }
 
-        function search(address) {
+      function search(address) {
         return new Promise((resolve, reject) => {
           // Realiza una búsqueda de dirección utilizando la API de geocodificación de Mapbox
-        fetch(
+          fetch(
             "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
-            encodeURIComponent(address + " , USA") +
-            ".json?access_token=" +
-            apiKey
-            )
+              encodeURIComponent(address + " , USA") +
+              ".json?access_token=" +
+              apiKey
+          )
             .then((response) => response.json())
             .then((data) => {
-            console.log(data);
+              console.log(data);
               // Obtiene las coordenadas del primer resultado
-            var coordenadas = data.features[0].center;
+              var coordenadas = data.features[0].center;
 
               // Crea un marcador en las coordenadas
-            L.marker([coordenadas[1], coordenadas[0]])
+              L.marker([coordenadas[1], coordenadas[0]])
                 .addTo(map)
                 .bindPopup(address)
                 .openPopup();
 
               // Centra el mapa en las coordenadas del marcador
-            map.setView([coordenadas[1], coordenadas[0]], 14);
-            resolve([coordenadas[0], coordenadas[1]]);
+              map.setView([coordenadas[1], coordenadas[0]], 14);
+              resolve([coordenadas[0], coordenadas[1]]);
             });
         });
-        }
+      }
     </script>
-    </body>
+  </body>
 </html>

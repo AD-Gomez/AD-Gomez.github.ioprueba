@@ -26,6 +26,18 @@
     />
     <link rel="stylesheet" href="../css/bootstrap-datepicker.css" />
 
+    <style></style>
+
+    <!-- <script src="/javascript/jquery-3.3.1.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- <script src="/data/include/bsdp/js/bootstrap-datepicker.min.js"></script> -->
+
     <style>
       input {
         border: none;
@@ -46,24 +58,6 @@
         border: 1px gray solid;
         padding: 10px;
       }
-    </style>
-
-    <script src="/javascript/jquery-3.3.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-
-    <script src="/data/include/bsdp/js/bootstrap-datepicker.min.js"></script>
-
-    <style>
       .tooltip-main {
         width: 15px;
         height: 15px;
@@ -107,12 +101,10 @@
   </head>
   <body style="background-color: #cccccc">
     <form
-      class="container px-5 pb-5"
-      method="post"
+      class="container w-full w-md-75 px-4 px-sm-5 pb-5 needs-validation"
       id="main_form"
-      autocomplete="off"
+      novalidate
       style="
-        max-width: 900px;
         border: 1px solid white;
         border-radius: 10px;
         background-color: white;
@@ -129,10 +121,9 @@
 
       <div class="w3-row">&nbsp;</div>
 
-      <script src="/data/include/mask/jquery.inputmask.bundle.js"></script>
       <div class="px-5"></div>
       <div
-        class="row border mb-3 rounded p-3 px-4"
+        class="row border mb-3 rounded p-1 p-md-3 px-md-4"
         style="border: 1px #ececec solid"
       >
         <div class="col-12">
@@ -142,13 +133,13 @@
             </div>
             <div>Origin & Destination</div>
           </div>
-          <div class="row col-12 my-2">
-            <div class="col-4">
+          <div class="row my-2">
+            <div class="col-12 col-md-4">
               <label class="text-secondary">Select an option:</label>
             </div>
-            <div class="col-8">
+            <div class="col-12 col-md-8">
               <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                   <input
                     id="zipCheck"
                     name="typeAddress"
@@ -158,7 +149,7 @@
                   />
                   <label>Zip code</label>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                   <input
                     id="cityCheck"
                     name="typeAddress"
@@ -171,7 +162,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
               <div class="input-group" style="border: 0px solid white">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"
@@ -210,15 +201,8 @@
                   aria-label="City"
                   aria-describedby="basic-addon1"
                   maxlength="32"
-                  minlength="3"
                 />
 
-                <!-- <input
-                  type="hidden"
-                  name="city_zip_state_zip_pickup"
-                  id="city_zip_state_zip_pickup"
-                  value=""
-                /> -->
                 <input
                   type="hidden"
                   name="city_zip_state_city_pickup"
@@ -233,7 +217,7 @@
                 />
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
               <div class="input-group" style="border: 0px solid white">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"
@@ -273,15 +257,7 @@
                   aria-label="City"
                   aria-describedby="basic-addon1"
                   maxlength="32"
-                  minlength="3"
                 />
-
-                <!-- <input
-                  type="hidden"
-                  name="city_zip_state_zip_dropoff"
-                  id="city_zip_state_zip_dropoff"
-                  value=""
-                /> -->
                 <input
                   type="hidden"
                   name="city_zip_state_city_dropoff"
@@ -310,9 +286,9 @@
             </div>
             <div>Vehicle Details</div>
           </div>
-          <div class="" id="vehicleList">
+          <div class="row" id="vehicleList">
             <div class="row border-bottom" id="vehicle_0">
-              <div class="col-4">
+              <div class="col-12 col-md-4">
                 <div class="input-group" style="border: 0px solid white">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Y</span>
@@ -339,7 +315,7 @@
                   />
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-12 col-md-4">
                 <div class="input-group mb-3" style="border: 0px solid white">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">M</span>
@@ -362,7 +338,7 @@
                   />
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-12 col-md-4">
                 <div class="input-group mb-3" style="border: 0px solid white">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">M</span>
@@ -385,7 +361,8 @@
                   />
                 </div>
               </div>
-              <div class="col-6">
+
+              <div class="col-12 col-md-6">
                 <div class="input-group" style="border: 0px solid white">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"
@@ -398,7 +375,11 @@
                     /></span>
                   </div>
 
-                  <span style="border: 1px solid #cccccc" class="p-1" id="via"
+                  <span
+                    class="form-control d-flex"
+                    style="border: 1px solid #cccccc"
+                    class="p-1"
+                    id="via"
                     >&nbsp;
                     <div
                       class="form-check form-check-inline"
@@ -412,8 +393,8 @@
                         value="1"
                         checked
                       />
-                      <label class="form-check-label" for="ship_via_id1"
-                        >Open</label
+                      <small class="form-check-label" for="ship_via_id1"
+                        >Open</small
                       >
                     </div>
                     <div
@@ -427,14 +408,14 @@
                         id="ship_via_id2"
                         value="2"
                       />
-                      <label class="form-check-label" for="ship_via_id2"
-                        >Enclosed</label
+                      <small class="form-check-label" for="ship_via_id2"
+                        >Enclosed</small
                       >
                     </div>
                   </span>
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-md-6">
                 <div class="input-group mb-3" style="border: 0px solid white">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"
@@ -447,7 +428,11 @@
                     /></span>
                   </div>
 
-                  <span style="border: 1px solid #cccccc" class="p-1" id="run"
+                  <span
+                    class="form-control d-flex"
+                    style="border: 1px solid #cccccc"
+                    class="p-1"
+                    id="run"
                     >&nbsp;
                     <div
                       class="form-check form-check-inline"
@@ -461,8 +446,8 @@
                         value="1"
                         checked
                       />
-                      <label class="form-check-label" for="vehicle_runs1"
-                        >Vehicle drives</label
+                      <small class="form-check-label" for="vehicle_runs1"
+                        >Vehicle drives</small
                       >
                     </div>
                     <div
@@ -476,8 +461,8 @@
                         id="vehicle_runs2"
                         value="0"
                       />
-                      <label class="form-check-label" for="vehicle_runs"
-                        >Inoperable</label
+                      <small class="form-check-label" for="vehicle_runs"
+                        >Inoperable</small
                       >
                     </div>
                   </span>
@@ -491,7 +476,7 @@
               class="text-secondary"
               style="cursor: pointer"
               onclick="addVehicle()"
-              >Add vehicle</label
+              >+ Add vehicle</label
             >
           </div>
         </div>
@@ -505,8 +490,8 @@
             <div>Shipment Details</div>
           </div>
         </div>
-        <div class="row col-12">
-          <div class="col-6">
+        <div class="row">
+          <div class="col-12 col-md-6">
             <div class="input-group mb-3" style="border: 0px solid white">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"
@@ -535,7 +520,7 @@
               />
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <div class="input-group mb-3" style="border: 0px solid white">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"
@@ -561,9 +546,7 @@
               />
             </div>
           </div>
-        </div>
-        <div class="row col-12">
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <div class="input-group mb-3" style="border: 0px solid white">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"
@@ -589,7 +572,7 @@
               />
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6">
             <div class="input-group mb-3" style="border: 0px solid white">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"
@@ -625,7 +608,6 @@
             type="submit"
             value="Submit Quote Request"
             id="submit_button"
-            onclick="mp_show_wait_animation_check_form(event)"
             style="
               background-color: #00a1ef;
               color: white;
@@ -649,7 +631,7 @@
       <div class="row border-bottom" id="vehicle_">
         <div class="col-11">
           <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-md-6">
               <div class="input-group" style="border: 0px solid white">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">Y</span>
@@ -676,7 +658,7 @@
                 />
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6">
               <div class="input-group" style="border: 0px solid white">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">M</span>
@@ -699,7 +681,7 @@
                 />
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-6">
               <div class="input-group" style="border: 0px solid white">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1">M</span>
@@ -722,9 +704,7 @@
                 />
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
               <div class="input-group" style="border: 0px solid white">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"
@@ -737,7 +717,11 @@
                   /></span>
                 </div>
 
-                <span style="border: 1px solid #cccccc" class="p-1" id="run"
+                <span
+                  class="form-control d-flex"
+                  style="border: 1px solid #cccccc"
+                  class="p-1"
+                  id="run"
                   >&nbsp;
                   <div class="form-check form-check-inline" style="color: gray">
                     <input
@@ -748,8 +732,8 @@
                       value="1"
                       checked
                     />
-                    <label class="form-check-label" for="vehicle_runs1"
-                      >Vehicle drives</label
+                    <small class="form-check-label" for="vehicle_runs1"
+                      >Vehicle drives</small
                     >
                   </div>
                   <div class="form-check form-check-inline" style="color: gray">
@@ -760,8 +744,8 @@
                       id="vehicle_runs2"
                       value="0"
                     />
-                    <label class="form-check-label" for="vehicle_runs"
-                      >Inoperable</label
+                    <small class="form-check-label" for="vehicle_runs"
+                      >Inoperable</small
                     >
                   </div>
                 </span>
@@ -773,20 +757,20 @@
           role="button"
           class="col-1 bg-light d-flex justify-content-center align-items-center"
         >
-          <i
-            style="font-size: 12px; cursor: pointer"
-            class="fa"
+          <img
+            src="../img/delete.svg"
+            style="cursor: pointer"
             onclick="deleteVehicle(event)"
-            
-            >&#x2715;</i>
+            class="credit_cards"
+          /><br />
         </span>
       </div>
     </template>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
-    <script src="../js/runtime.js"></script>
-    <script src="../js/jquery-3.3.1min.js"></script>
+    <!-- <script src="../js/main.js"></script>
+    <script src="../js/runtime.js"></script> -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
 
     <!-- Messenger plugin del chat Code START-->
     <div id="fb-root"></div>
@@ -794,316 +778,8 @@
     <!-- Your plugin del chat code -->
     <div id="fb-customer-chat" class="fb-customerchat"></div>
 
-    <script>
-      var chatbox = document.getElementById("fb-customer-chat");
-      chatbox.setAttribute("page_id", "116222094837969");
-      chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
+    <script src="./quote.js"></script>
 
-    <!-- Your SDK code -->
-    <script>
-      window.fbAsyncInit = function () {
-        FB.init({
-          xfbml: true,
-          version: "v17.0",
-        });
-      };
-
-      (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, "script", "facebook-jssdk");
-
-      // cambio de campos segun checkbox
-    </script>
-
-    <!-- Messenger plugin del chat Code END-->
-    <script>
-      const formResult = {
-        typeAddess: "",
-        origin: "",
-        destination: "",
-        Vehicles: [],
-        shipmentDate: "",
-        shipmentName: "",
-        shipmentEmail: "",
-        shipmentPhone: "",
-      };
-      function maskPhone() {
-        $("#phone").keyup(function () {
-          $(this).val(
-            $(this)
-              .val()
-              .replace(/^(\d{3})(\d{3})(\d+)$/, "($1) $2-$3")
-          );
-        });
-      }
-
-      window.onload = function () {
-        maskPhone();
-        const fechaActual = new Date();
-
-        const añoActual = fechaActual.getFullYear();
-        const mesActual = (fechaActual.getMonth() + 1)
-          .toString()
-          .padStart(2, "0");
-        const diaActual = fechaActual.getDate().toString().padStart(2, "0");
-
-        const dateShipment = document.getElementById("dateShipment");
-        dateShipment.setAttribute(
-          "min",
-          `${añoActual}-${mesActual}-${diaActual}`
-        );
-        dateShipment.setAttribute(
-          "value",
-          `-${mesActual}-${diaActual}-${añoActual}`
-        );
-      };
-      function onlyNumbers(event) {
-        const input = event.target;
-        const inputValue = input.value;
-
-        const numericValue = inputValue.replace(/[^\d]/g, "");
-
-        input.value = numericValue;
-      }
-
-      function validYear(event) {
-        const date = new Date();
-
-        if (
-          event.target.value < 1900 ||
-          event.target.value > date.getFullYear()
-        ) {
-          alert("Enter a valid year");
-          const checkZip = document.getElementById(event.srcElement.id);
-          checkZip.value = date.getFullYear();
-        }
-      }
-
-      function checkTypeAddress(value, event) {
-        const $miCheckbox = document.querySelector("#zipCheck");
-
-        if (value == "zip") {
-          const checkZip = document.getElementById("cityCheck");
-          checkZip.checked = false;
-
-          const zipOrigin = document.getElementById("zip_origin");
-          zipOrigin.style.display = "";
-          zipOrigin.setAttribute("required", "true");
-          const zipDestination = document.getElementById("zip_destination");
-          zipDestination.style.display = "";
-          zipDestination.setAttribute("required", "true");
-
-          const cityOrigin = document.getElementById("city_origin");
-          cityOrigin.style.display = "none";
-          const cityDestination = document.getElementById("city_destination");
-          cityDestination.style.display = "none";
-        } else if (value == "city") {
-          const checkCity = document.getElementById("zipCheck");
-          checkCity.checked = false;
-
-          const zipOrigin = document.getElementById("zip_origin");
-          zipOrigin.style.display = "none";
-          const zipDestination = document.getElementById("zip_destination");
-          zipDestination.style.display = "none";
-
-          const cityOrigin = document.getElementById("city_origin");
-          cityOrigin.style.display = "";
-          cityOrigin.setAttribute("required", "true");
-          const cityDestination = document.getElementById("city_destination");
-          cityDestination.style.display = "";
-          cityDestination.setAttribute("required", "true");
-        }
-      }
-      function deleteVehicle(event) {
-        const vehicle = document.getElementById(
-          event.srcElement.parentNode.parentNode.id
-        );
-        const vehicleList = document.getElementById("vehicleList");
-        vehicleList.removeChild(vehicle);
-      }
-      function addVehicle() {
-        const vehicleList = document.getElementById("vehicleList");
-        const children = vehicleList.childElementCount;
-        if (children < 9) {
-          if (validVehicles()) {
-            const template = document.querySelector("#add-vehicle");
-            const my_template_clone = template.content.cloneNode(true);
-            const newVehicle = my_template_clone.getElementById("vehicle_");
-            let newID = "";
-            let index = 1;
-            do {
-              index++;
-              newID = `vehicle_${children + index}`;
-              const existID = document.getElementById(newID);
-              result = existID ? true : false;
-            } while (result);
-
-            newVehicle.id = newID;
-
-            const id = newID.split("_")[1];
-
-            // radiobutton
-            const eleVia = my_template_clone.querySelectorAll(
-              'input[name="ship_via_id_"]'
-            );
-            for (const checkButton of eleVia) {
-              checkButton.name = `ship_via_id_${id}`;
-            }
-            const eleRun = my_template_clone.querySelectorAll(
-              'input[name="vehicle_runs_"]'
-            );
-            for (const check of eleRun) {
-              check.name = `vehicle_runs_${id}`;
-            }
-            const eleYear =
-              my_template_clone.querySelector('input[id="year_"]');
-
-            eleYear.id = `year_${id}`;
-
-            vehicleList.appendChild(newVehicle);
-          }
-        } else {
-          alert("Has reached the maximum number of vehicles");
-        }
-      }
-
-      function validVehicles() {
-        const years = document.getElementsByName("year");
-        const vehicleMake = document.getElementsByName("make");
-        const vehicleModel = document.getElementsByName("model");
-        if (Array.from(years).some((e) => e.value === null || e.value === "")) {
-          alert("Enter a valid year");
-          return false;
-        }
-        if (
-          Array.from(vehicleMake).some(
-            (e) => e.value === null || e.value === ""
-          )
-        ) {
-          alert("Enter a valid vehicle make");
-
-          return false;
-        }
-        if (
-          Array.from(vehicleModel).some(
-            (e) => e.value === null || e.value === ""
-          )
-        ) {
-          alert("Enter a valid vehicle model");
-
-          return false;
-        }
-        return true;
-      }
-
-      function mp_show_wait_animation_check_form(event) {
-        const form = document.getElementById("main_form");
-        if (!form.checkValidity()) {
-          alert("Please, enter a valid information");
-          return;
-        }
-        // event.stopPropagation();
-        const formResult = {
-          origin_city: "",
-          destination_city: "",
-          origin_postal_code: "",
-          destination_postal_code: "",
-          Vehicles: [],
-          ship_date: "",
-          first_name: "",
-          email: "",
-          phone: "",
-        };
-        const eleZipCheck = document.getElementById("zipCheck");
-
-        if (eleZipCheck.checked) {
-          formResult.origin_postal_code =
-            document.getElementById("zip_origin").value;
-          formResult.destination_postal_code =
-            document.getElementById("zip_destination").value;
-        } else {
-          formResult.origin_city = document.getElementById("city_origin").value;
-          formResult.destination_city =
-            document.getElementById("city_destination").value;
-        }
-
-        vehicleList = document.getElementById("vehicleList");
-
-        optionsTransport = document.getElementsByName(`ship_via_id_0`);
-        transport_type = "";
-        for (const option of optionsTransport) {
-          if (option.checked) {
-            transport_type = option.value;
-          }
-        }
-
-        for (let i = 0; i < vehicleList.childElementCount; i++) {
-          const vehicle = Array.from(vehicleList.children)[i];
-          vehicle_model_year =
-            vehicle.querySelector('input[name="year"]').value;
-          vehicle_make = vehicle.querySelector('input[name="make"]').value;
-          vehicle_model = vehicle.querySelector('input[name="model"]').value;
-          id = vehicle.id.split("_")[1];
-
-          optionsRuns = vehicle.querySelectorAll(
-            `input[name="vehicle_runs_${id}"]`
-          );
-          vehicle_inop = "";
-          for (const option of optionsRuns) {
-            if (option.checked) {
-              vehicle_inop = option.value;
-            }
-          }
-          const data = {
-            vehicle_model_year,
-            vehicle_make,
-            vehicle_model,
-            vehicle_inop,
-          };
-          formResult.Vehicles.push(data);
-        }
-
-        formResult.ship_date = document.getElementById("dateShipment").value;
-        const format = new Date(formResult.ship_date).toLocaleDateString(
-          "en-US",
-          { day: "2-digit", month: "2-digit", year: "numeric" }
-        );
-        formResult.ship_date = format;
-        formResult.first_name = document.getElementById("name").value;
-        formResult.email = document.getElementById("email").value;
-        formResult.phone = document.getElementById("phone").value;
-
-        sendLead({ ...formResult, transport_type });
-      }
-
-      function sendLead(data) {
-        const dataToSend = {
-          AuthKey: "8c00130d-872f-4912-81c9-553f38ec61e0",
-          ...data,
-          comment_from_shipper: "",
-          origin_state: "",
-          origin_country: "USA",
-          destination_state: "",
-
-          destination_country: "USA",
-        };
-        localStorage.setItem("lead", JSON.stringify(dataToSend));
-
-        fetch(`https://api.batscrm.com/leads-sandbox/sandbox`, {
-          method: "POST",
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            location.href = "/quote2/index.html";
-          });
-      }
-    </script>
+    <script></script>
   </body>
 </html>
