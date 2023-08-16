@@ -51,8 +51,9 @@ function maskPhone() {
       form.addEventListener(
         "submit",
         function (event) {
-          console.log("submit");
+          console.log("submit", event);
           if (form.checkValidity() === false) {
+            console.log("error");
             event.preventDefault();
             event.stopPropagation();
           } else {
@@ -118,16 +119,24 @@ function checkTypeAddress(value, event) {
 
     const cityOrigin = document.getElementById("city_origin");
     cityOrigin.style.display = "none";
+    cityOrigin.setAttribute("required", "false");
+
     const cityDestination = document.getElementById("city_destination");
     cityDestination.style.display = "none";
+    cityDestination.setAttribute("required", "false");
   } else if (value == "city") {
     const checkCity = document.getElementById("zipCheck");
     checkCity.checked = false;
 
     const zipOrigin = document.getElementById("zip_origin");
     zipOrigin.style.display = "none";
+    zipOrigin.setAttribute("required", "false");
+    zipOrigin.setAttribute("type", "hidden");
+
     const zipDestination = document.getElementById("zip_destination");
     zipDestination.style.display = "none";
+    zipDestination.setAttribute("required", "false");
+    zipDestination.setAttribute("type", "hidden");
 
     const cityOrigin = document.getElementById("city_origin");
     cityOrigin.style.display = "";
