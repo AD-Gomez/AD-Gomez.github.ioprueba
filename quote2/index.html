@@ -269,6 +269,7 @@
                         width="16"
                         height="16"
                         title=""
+                        id="transportTypeIcon"
                       />&nbsp;&nbsp;
                       <div id="transportType"></div>
                     </td>
@@ -279,6 +280,7 @@
                         width="16"
                         height="16"
                         title=""
+                        id="inop"
                       />&nbsp;&nbsp;
                       <div id="drives"></div>
                     </td>
@@ -480,9 +482,14 @@
             : dataLead.destination_postal_code;
         transportTypeElem = document.getElementById("transportType");
         transportTypeElem.textContent =
-          dataLead.transport_type == "0"
+          dataLead.transport_type == "1"
             ? "Open Car Carrier"
             : "Enclosed Card carrier";
+        const transportTypeIcon = document.getElementById("transportTypeIcon");
+        transportTypeIcon.src =
+          dataLead.transport_type == "1"
+            ? "../img/truck-flatbed.svg"
+            : "../img/truck.svg";
         //vehicle
         const template = document.querySelector("#add-vehicle");
         const my_template_clone = template.content.cloneNode(true);
@@ -498,10 +505,14 @@
         });
 
         const runs = document.getElementById("drives");
-        if (dataLead.Vehicles.some((e) => e.vehicle_inop === "0")) {
-          runs.textContent = " All vehicles runs";
+        const image = document.getElementById("inop");
+
+        if (dataLead.Vehicles.some((e) => e.vehicle_inop === "1")) {
+          runs.textContent = "Not All vehicles runs";
+          image.src = "../img/inop.png";
         } else {
-          runs.textContent = "Not all vehicles runs";
+          runs.textContent = "All vehicles runs";
+          image.src = "../img/op.png";
         }
       };
       async function goback() {
