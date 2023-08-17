@@ -24,6 +24,13 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    /> -->
+
     <link rel="stylesheet" href="../css/bootstrap-datepicker.css" />
 
     <style></style>
@@ -396,9 +403,13 @@
                         value="1"
                         checked
                       />
-                      <small class="form-check-label" for="ship_via_id1"
-                        >Open</small
+                      <small
+                        class="form-check-label d-flex"
+                        for="ship_via_id1"
+                        style="gap: 10px"
                       >
+                        <div>Open</div>
+                      </small>
                     </div>
                     <div
                       class="form-check form-check-inline"
@@ -414,6 +425,28 @@
                       <small class="form-check-label" for="ship_via_id2"
                         >Enclosed</small
                       >
+                    </div>
+                  </span>
+                  <span
+                    class="input-group-text rounded-end"
+                    style="
+                      border-top-left-radius: 0px;
+                      border-bottom-left-radius: 0px;
+                    "
+                  >
+                    <div
+                      class="ml-1 d-flex align-items-center"
+                      style="cursor: pointer"
+                      data-bs-trigger="click"
+                      data-bs-placement="top"
+                      data-bs-toggle="popover"
+                      data-bs-title="Transport type"
+                      data-bs-content="Open is a standar haul truck where vehicles will be moved free, enclosed is covered and prevent damage for whether, trash, snow, etc."
+                    >
+                      <img
+                        style="height: 18px; width: 18px"
+                        src="/img/infoIcon.jpeg"
+                      />
                     </div>
                   </span>
                 </div>
@@ -446,7 +479,7 @@
                         type="radio"
                         name="vehicle_runs_0"
                         id="vehicle_runs1"
-                        value="1"
+                        value="0"
                         checked
                       />
                       <small class="form-check-label" for="vehicle_runs1"
@@ -462,11 +495,33 @@
                         type="radio"
                         name="vehicle_runs_0"
                         id="vehicle_runs2"
-                        value="0"
+                        value="1"
                       />
                       <small class="form-check-label" for="vehicle_runs"
                         >Inoperable</small
                       >
+                    </div>
+                  </span>
+                  <span
+                    class="input-group-text rounded-end"
+                    style="
+                      border-top-left-radius: 0px;
+                      border-bottom-left-radius: 0px;
+                    "
+                  >
+                    <div
+                      class="ml-1 d-flex align-items-center"
+                      style="cursor: pointer"
+                      data-bs-trigger="click"
+                      data-bs-placement="top"
+                      data-bs-toggle="popover"
+                      data-bs-title="Vehicle state"
+                      data-bs-content="Inoperable (INOP) means that the vehicle doesn't turn on and move under it own power."
+                    >
+                      <img
+                        style="height: 18px; width: 18px"
+                        src="/img/infoIcon.jpeg"
+                      />
                     </div>
                   </span>
                 </div>
@@ -573,6 +628,28 @@
                 maxlength="32"
                 required
               />
+              <span
+                class="input-group-text rounded-end"
+                style="
+                  border-top-left-radius: 0px;
+                  border-bottom-left-radius: 0px;
+                "
+              >
+                <div
+                  class="ml-1 d-flex align-items-center"
+                  style="cursor: pointer"
+                  data-bs-trigger="click"
+                  data-bs-placement="top"
+                  data-bs-toggle="popover"
+                  data-bs-title="Email"
+                  data-bs-content=" By providing your email address and clicking through, you agree to our Terms, Privacy Policy, and authorize us to make or initiate sales emails, ask information and follow up to that email. Your agreement is not a condition of purchasing products, goods or services. You may opt out at any time."
+                >
+                  <img
+                    style="height: 18px; width: 18px"
+                    src="/img/infoIcon.jpeg"
+                  />
+                </div>
+              </span>
             </div>
           </div>
           <div class="col-12 col-md-6">
@@ -601,6 +678,29 @@
                 required
                 oninput="onlyNumbers(event)"
               />
+              <span
+                class="input-group-text rounded-end"
+                style="
+                  border-top-left-radius: 0px;
+                  border-bottom-left-radius: 0px;
+                "
+              >
+                <div
+                  class="ml-1 d-flex align-items-center"
+                  style="cursor: pointer"
+                  data-bs-trigger="click"
+                  data-bs-placement="top"
+                  data-bs-toggle="popover"
+                  data-bs-title="Phone number "
+                  data-bs-content="
+                  By providing your phone number and clicking through, you agree to our Terms, Privacy Policy, and authorize us to make or initiate sales calls, text msgs, and prerecorded voicemails to that number. Your agreement is not a condition of purchasing products, goods or services. You may opt out at any time."
+                >
+                  <img
+                    style="height: 18px; width: 18px"
+                    src="/img/infoIcon.jpeg"
+                  />
+                </div>
+              </span>
             </div>
           </div>
         </div>
@@ -632,7 +732,7 @@
     </form>
     <template id="add-vehicle">
       <div class="row border-bottom" id="vehicle_">
-        <div class="col-11">
+        <div class="col-12 col-md-11">
           <div class="row">
             <div class="col-12 col-md-6">
               <div class="input-group" style="border: 0px solid white">
@@ -732,7 +832,7 @@
                       type="radio"
                       name="vehicle_runs_"
                       id="vehicle_runs1"
-                      value="1"
+                      value="0"
                       checked
                     />
                     <small class="form-check-label" for="vehicle_runs1"
@@ -745,11 +845,33 @@
                       type="radio"
                       name="vehicle_runs_"
                       id="vehicle_runs2"
-                      value="0"
+                      value="1"
                     />
                     <small class="form-check-label" for="vehicle_runs"
                       >Inoperable</small
                     >
+                  </div>
+                </span>
+                <span
+                  class="input-group-text rounded-end"
+                  style="
+                    border-top-left-radius: 0px;
+                    border-bottom-left-radius: 0px;
+                  "
+                >
+                  <div
+                    class="ml-1 d-flex align-items-center"
+                    style="cursor: pointer"
+                    data-bs-trigger="click"
+                    data-bs-placement="top"
+                    data-bs-toggle="popover"
+                    data-bs-title="Vehicle state"
+                    data-bs-content="Inoperable (INOP) means that the vehicle doesn't turn on and move under it own power."
+                  >
+                    <img
+                      style="height: 18px; width: 18px"
+                      src="/img/infoIcon.jpeg"
+                    />
                   </div>
                 </span>
               </div>
@@ -758,7 +880,7 @@
         </div>
         <span
           role="button"
-          class="col-1 bg-light d-flex justify-content-center align-items-center"
+          class="col-12 col-md-1 bg-light d-flex justify-content-center align-items-center"
         >
           <img
             src="../img/delete.svg"
@@ -774,6 +896,11 @@
     <!-- <script src="../js/main.js"></script>
     <script src="../js/runtime.js"></script> -->
     <script src="../js/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Messenger plugin del chat Code START-->
     <div id="fb-root"></div>
@@ -783,6 +910,13 @@
 
     <script src="../js/quote.js"></script>
 
-    <script></script>
+    <script type="text/javascript">
+      const popoverTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="popover"]'
+      );
+      const popoverList = [...popoverTriggerList].map(
+        (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
+      );
+    </script>
   </body>
 </html>
