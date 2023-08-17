@@ -199,6 +199,9 @@ function addVehicle() {
       for (const check of eleRun) {
         check.name = `vehicle_runs_${id}`;
       }
+      const inopIcon = my_template_clone.querySelector('img[id="inop_"]');
+
+      inopIcon.id = `inop_${id}`;
       const eleYear = my_template_clone.querySelector('input[id="year_"]');
 
       eleYear.id = `year_${id}`;
@@ -407,14 +410,27 @@ function sendLead(data) {
   });
 }
 
-function changeImage(type) {
+function changeImage(type, event) {
   switch (type) {
     case "open":
       const image = document.getElementById("typeTransport");
+      image.src = "../img/truck-flatbed.svg";
       break;
     case "enclosed":
       const imageA = document.getElementById("typeTransport");
-
+      imageA.src = "../img/truck.svg";
+      break;
+    case "operable":
+      console.log(event.target.name);
+      const index = event.target.name.split("vehicle_runs_")[1];
+      const imageB = document.getElementById(`inop_${index}`);
+      imageB.src = "../img/op.png";
+      break;
+    case "inoperable":
+      console.log(event.target.name);
+      const indexA = event.target.name.split("vehicle_runs_")[1];
+      const imageC = document.getElementById(`inop_${indexA}`);
+      imageC.src = "../img/inop.png";
       break;
     default:
       break;

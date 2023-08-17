@@ -400,7 +400,7 @@
                         name="ship_via_id_0"
                         id="ship_via_id1"
                         value="1"
-                        onchange="changeImage('open')"
+                        onclick="changeImage('open')"
                         checked
                       />
                       <small
@@ -421,7 +421,7 @@
                         name="ship_via_id_0"
                         id="ship_via_id2"
                         value="2"
-                        onchange="changeImage('enclosed')"
+                        onclick="changeImage('enclosed')"
                       />
                       <small class="form-check-label" for="ship_via_id2"
                         >Enclosed</small
@@ -457,7 +457,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"
                       ><img
-                        src="../img/truck.svg"
+                        id="inop_0"
+                        src="../img/op.png"
                         alt=""
                         width="16"
                         height="16"
@@ -481,6 +482,7 @@
                         name="vehicle_runs_0"
                         id="vehicle_runs1"
                         value="0"
+                        onclick="changeImage('operable', event)"
                         checked
                       />
                       <small class="form-check-label" for="vehicle_runs1"
@@ -496,6 +498,7 @@
                         type="radio"
                         name="vehicle_runs_0"
                         id="vehicle_runs2"
+                        onclick="changeImage('inoperable', event)"
                         value="1"
                       />
                       <small class="form-check-label" for="vehicle_runs"
@@ -813,7 +816,8 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"
                     ><img
-                      src="../img/truck.svg"
+                      id="inop_"
+                      src="../img/op.png"
                       alt=""
                       width="16"
                       height="16"
@@ -834,6 +838,7 @@
                       name="vehicle_runs_"
                       id="vehicle_runs1"
                       value="0"
+                      onclick="changeImage('operable', event)"
                       checked
                     />
                     <small class="form-check-label" for="vehicle_runs1"
@@ -847,6 +852,7 @@
                       name="vehicle_runs_"
                       id="vehicle_runs2"
                       value="1"
+                      onclick="changeImage('inoperable', event)"
                     />
                     <small class="form-check-label" for="vehicle_runs"
                       >Inoperable</small
