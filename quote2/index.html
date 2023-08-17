@@ -379,6 +379,14 @@
           ></div>
         </div>
       </template>
+      <div
+        class="row justify-content-center"
+        style="margin-top: 30px; margin-bottom: 15px"
+      >
+        <button type="button" class="btn btn-primary" onclick="goback()">
+          Create a new quote
+        </button>
+      </div>
       <div class="row justify-content-center">
         <span style="color: gray"
           ><a href="/index.html" target="_blank">Cayad Auto Transport</a>
@@ -439,7 +447,8 @@
         }).addTo(map);
 
         const data = localStorage.getItem("lead");
-        if (!data) return (location.href = "www.google.com");
+        // if (!data) return (location.href = "www.google.com");
+        // location.href = "../quote2/index.html";
         const dataLead = JSON.parse(data);
         loadMap(dataLead);
 
@@ -471,7 +480,7 @@
             : dataLead.destination_postal_code;
         transportTypeElem = document.getElementById("transportType");
         transportTypeElem.textContent =
-          dataLead.transport_type == "1"
+          dataLead.transport_type == "0"
             ? "Open Car Carrier"
             : "Enclosed Card carrier";
         //vehicle
@@ -490,12 +499,14 @@
 
         const runs = document.getElementById("drives");
         if (dataLead.Vehicles.some((e) => e.vehicle_inop === "0")) {
-          runs.textContent = " Not all vehicles runs";
+          runs.textContent = " All vehicles runs";
         } else {
-          runs.textContent = "All vehicles runs";
+          runs.textContent = "Not all vehicles runs";
         }
       };
-
+      async function goback() {
+        location.href = "../quote/index.html";
+      }
       async function loadMap(dataLead) {
         const coorOrigin = await search(
           dataLead.origin_city !== ""

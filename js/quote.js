@@ -39,6 +39,7 @@ function maskPhone() {
 
 (function () {
   window.onload = async function () {
+    console.log("load");
     const lead = await localStorage.getItem("lead");
     if (lead) {
       await localStorage.removeItem("lead");
@@ -62,6 +63,7 @@ function maskPhone() {
             mp_show_wait_animation_check_form(event);
           }
           form.classList.add("was-validated");
+          console.log("was validate");
         },
         false
       );
@@ -115,17 +117,22 @@ function checkTypeAddress(value, event) {
     const zipOrigin = document.getElementById("zip_origin");
     zipOrigin.style.display = "";
     zipOrigin.setAttribute("required", "true");
+    zipOrigin.setAttribute("type", "");
+
     const zipDestination = document.getElementById("zip_destination");
     zipDestination.style.display = "";
     zipDestination.setAttribute("required", "true");
+    zipDestination.setAttribute("type", "");
 
     const cityOrigin = document.getElementById("city_origin");
     cityOrigin.style.display = "none";
     cityOrigin.setAttribute("required", "false");
+    cityOrigin.setAttribute("type", "hidden");
 
     const cityDestination = document.getElementById("city_destination");
     cityDestination.style.display = "none";
     cityDestination.setAttribute("required", "false");
+    cityDestination.setAttribute("type", "hidden");
   } else if (value == "city") {
     const checkCity = document.getElementById("zipCheck");
     checkCity.checked = false;
@@ -143,9 +150,12 @@ function checkTypeAddress(value, event) {
     const cityOrigin = document.getElementById("city_origin");
     cityOrigin.style.display = "";
     cityOrigin.setAttribute("required", "true");
+    cityOrigin.setAttribute("type", "");
+
     const cityDestination = document.getElementById("city_destination");
     cityDestination.style.display = "";
     cityDestination.setAttribute("required", "true");
+    cityDestination.setAttribute("type", "");
   }
 }
 function deleteVehicle(event) {
@@ -189,6 +199,9 @@ function addVehicle() {
       for (const check of eleRun) {
         check.name = `vehicle_runs_${id}`;
       }
+      const inopIcon = my_template_clone.querySelector('img[id="inop_"]');
+
+      inopIcon.id = `inop_${id}`;
       const eleYear = my_template_clone.querySelector('input[id="year_"]');
 
       eleYear.id = `year_${id}`;
@@ -289,7 +302,10 @@ async function mp_show_wait_animation_check_form(event) {
   }
 
   formResult.ship_date = document.getElementById("dateShipment").value;
-  const format = new Date(formResult.ship_date).toLocaleDateString("en-US", {
+  console.log(formResult.ship_date);
+  const format = new Date(
+    formResult.ship_date.replaceAll("-", "/")
+  ).toLocaleDateString("en-US", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -302,7 +318,6 @@ async function mp_show_wait_animation_check_form(event) {
   const submitBTN = document.getElementById("submit_button");
   submitBTN.value = "Sending request...";
   submitBTN.disabled = true;
-
   const emailSend = await sendEmail({ ...formResult, transport_type });
   const leadSend = await sendLead({ ...formResult, transport_type });
   submitBTN.value = "Submit Quote Request";
@@ -393,4 +408,31 @@ function sendLead(data) {
         resolve(false);
       });
   });
+}
+
+function changeImage(type, event) {
+  switch (type) {
+    case "open":
+      const image = document.getElementById("typeTransport");
+      image.src = "../img/truck-flatbed.svg";
+      break;
+    case "enclosed":
+      const imageA = document.getElementById("typeTransport");
+      imageA.src = "../img/truck.svg";
+      break;
+    case "operable":
+      console.log(event.target.name);
+      const index = event.target.name.split("vehicle_runs_")[1];
+      const imageB = document.getElementById(`inop_${index}`);
+      imageB.src = "../img/op.png";
+      break;
+    case "inoperable":
+      console.log(event.target.name);
+      const indexA = event.target.name.split("vehicle_runs_")[1];
+      const imageC = document.getElementById(`inop_${indexA}`);
+      imageC.src = "../img/inop.png";
+      break;
+    default:
+      break;
+  }
 }
