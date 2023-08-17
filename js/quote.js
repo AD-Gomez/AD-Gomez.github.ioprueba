@@ -361,7 +361,7 @@ function sendEmail(data) {
         delete send[key];
       }
     });
-    fetch("https://formsubmit.co/ajax/info@cayadservices.com", {
+    fetch("https://formsubmit.com/ajax/info@cayadservices.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
