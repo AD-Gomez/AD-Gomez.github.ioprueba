@@ -224,12 +224,10 @@
                 />
               </div>
             </div>
-            
+
             <div class="col-12 col-md-6">
               <div class="input-group" style="border: 0px solid white">
-                
                 <div class="input-group-prepend">
-                  
                   <span class="input-group-text" id="basic-addon1"
                     ><b>To</b>&#160;<img
                       src="../img/flag.svg"
@@ -325,7 +323,7 @@
                   />
                 </div>
               </div>
-              
+
               <div class="col-12 col-md-4">
                 <div class="input-group mb-3" style="border: 0px solid white">
                   <div class="input-group-prepend">
@@ -377,6 +375,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"
                       ><img
+                        id="typeTransport"
                         src="../img/truck-flatbed.svg"
                         alt=""
                         width="16"
@@ -401,6 +400,7 @@
                         name="ship_via_id_0"
                         id="ship_via_id1"
                         value="1"
+                        onchange="changeImage('open')"
                         checked
                       />
                       <small
@@ -421,6 +421,7 @@
                         name="ship_via_id_0"
                         id="ship_via_id2"
                         value="2"
+                        onchange="changeImage('enclosed')"
                       />
                       <small class="form-check-label" for="ship_via_id2"
                         >Enclosed</small
@@ -709,7 +710,7 @@
         <div class="w3-row w3-full w3-white">
           <br /><input
             type="submit"
-            value="Submit Quote Request"
+            value="Submit Quote Request "
             id="submit_button"
             style="
               background-color: #00a1ef;
