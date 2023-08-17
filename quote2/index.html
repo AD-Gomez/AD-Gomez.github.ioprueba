@@ -15,7 +15,6 @@
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
@@ -327,6 +326,7 @@
 
                 <div class="row justify-content-between mt-3 mb-2">
                   <div id="origin_txt"></div>
+                  <div id="distance"></div>
                   <div id="destination_txt"></div>
                 </div>
               </div>
@@ -400,11 +400,14 @@
       chatbox.setAttribute("page_id", "116222094837969");
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-request@4.0.0/dist/bundled/request.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@4.0.0/dist/bundled/geocoding.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-routing@4.0.0/dist/bundled/routing.umd.js"></script>
 
     <!-- Your SDK code -->
     <script>
-      const apiKey =
-        "sk.eyJ1IjoibmFpcmVseXNoeiIsImEiOiJjbGw2eDNlbHMwam0zM2RvMGFpeXgxOHBwIn0.aypcPDmWMhyRZatQGJgPBw";
+      const apiKeyArcGis =
+        "AAPKa978db58a3464f549fb37eb6b914a084O7kjnFI5jp0sBhJJVSYl_q3co3Kj2QYI9y3-tQpES3eczqH9OUXKOuzIZy6w04pA";
       window.fbAsyncInit = function () {
         FB.init({
           xfbml: true,
@@ -431,14 +434,9 @@
           maxZoom: 19,
           attribution: "© OpenStreetMap",
         }).addTo(map);
-        L.tileLayer(
-          "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=" +
-            apiKey,
-          {
-            attribution:
-              '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> contributors',
-          }
-        ).addTo(map);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap",
+        }).addTo(map);
 
         const data = localStorage.getItem("lead");
         if (!data) return (location.href = "www.google.com");
@@ -511,15 +509,25 @@
             : dataLead.destination_postal_code
         );
 
-        fetch(
-          `https://api.mapbox.com/directions/v5/mapbox/driving/${coorOrigin[0]},${coorOrigin[1]};${coorDestination[0]},${coorDestination[1]}?geometries=geojson&access_token=${apiKey}`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            var routeCoordinates = data.routes[0].geometry.coordinates;
-            const allCoors = routeCoordinates.map((e) => e.reverse());
+        const authentication = arcgisRest.ApiKeyManager.fromKey(apiKeyArcGis);
 
-            const polyline = L.polyline(allCoors, {
+        arcgisRest
+          .solveRoute({
+            stops: [coorOrigin, coorDestination],
+            authentication,
+          })
+          .then((response) => {
+            const route = response.routes.features[0].geometry.paths[0].map(
+              (e) => e.reverse()
+            );
+            // const allCoors = routeCoordinates.map((e) => e.reverse());
+
+            const distanceElem = document.getElementById("distance");
+            distanceElem.textContent =
+              response.routes.features[0].attributes.Total_Miles.toFixed(2) +
+              ` Millas (mi)`;
+
+            const polyline = L.polyline(route, {
               color: "#00a1ef",
               weight: 3,
             }).addTo(map);
@@ -529,20 +537,17 @@
 
       function search(address) {
         return new Promise((resolve, reject) => {
-          // Realiza una búsqueda de dirección utilizando la API de geocodificación de Mapbox
-          fetch(
-            "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
-              encodeURIComponent(address + " , USA") +
-              ".json?access_token=" +
-              apiKey
-          )
-            .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-              // Obtiene las coordenadas del primer resultado
-              var coordenadas = data.features[0].center;
-
-              // Crea un marcador en las coordenadas
+          const authentication = arcgisRest.ApiKeyManager.fromKey(apiKeyArcGis);
+          arcgisRest
+            .geocode({
+              address: address,
+              postal: "",
+              countryCode: "USA",
+              authentication,
+            })
+            .then((response) => {
+              const candidate = response.candidates[0];
+              var coordenadas = [candidate.location.x, candidate.location.y];
               L.marker([coordenadas[1], coordenadas[0]])
                 .addTo(map)
                 .bindPopup(address)

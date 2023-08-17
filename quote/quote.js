@@ -17,7 +17,6 @@ window.fbAsyncInit = function () {
   js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
   fjs.parentNode.insertBefore(js, fjs);
 })(document, "script", "facebook-jssdk");
-console.log("console");
 const formResult = {
   typeAddess: "",
   origin: "",
@@ -39,7 +38,12 @@ function maskPhone() {
 }
 
 (function () {
-  window.onload = function () {
+  window.onload = async function () {
+    const lead = await localStorage.getItem("lead");
+    if (lead) {
+      await localStorage.removeItem("lead");
+    }
+
     initForm();
 
     maskPhone();
@@ -51,9 +55,7 @@ function maskPhone() {
       form.addEventListener(
         "submit",
         function (event) {
-          console.log("submit", event);
           if (form.checkValidity() === false) {
-            console.log("error");
             event.preventDefault();
             event.stopPropagation();
           } else {
@@ -221,16 +223,15 @@ function validVehicles() {
   return true;
 }
 
-function mp_show_wait_animation_check_form(event) {
+async function mp_show_wait_animation_check_form(event) {
   event.preventDefault();
 
   const form = document.getElementById("main_form");
-  console.log(form);
+
   if (!form.checkValidity()) {
     alert("Please, enter a valid information");
     return;
   }
-  console.log("PASAA");
   const formResult = {
     origin_city: "",
     destination_city: "",
@@ -298,34 +299,98 @@ function mp_show_wait_animation_check_form(event) {
   formResult.email = document.getElementById("email").value;
   formResult.phone = document.getElementById("phone").value;
 
-  sendLead({ ...formResult, transport_type });
+  const submitBTN = document.getElementById("submit_button");
+  submitBTN.value = "Sending request...";
+  submitBTN.disabled = true;
+
+  const emailSend = await sendEmail({ ...formResult, transport_type });
+  const leadSend = await sendLead({ ...formResult, transport_type });
+  submitBTN.value = "Submit Quote Request";
+  submitBTN.disabled = false;
+
+  if (emailSend || leadSend) {
+    location.href = "../quote2/index.html";
+  } else {
+    alert("Error sending the request");
+  }
+}
+
+function sendEmail(data) {
+  return new Promise((resolve, reject) => {
+    let send = {
+      ...data,
+      origin:
+        data.origin_city !== "" ? data.origin_city : data.origin_postal_code,
+      destination:
+        data.destination_city !== ""
+          ? data.destination_city
+          : data.destination_postal_code,
+      transport_type: data.transport_type === "0" ? "Open" : "Enclosed",
+    };
+    data.Vehicles.map((vehicle, index) => {
+      let vehicleData = {};
+
+      vehicleData[`vehicle_model_year_${index + 1}`] =
+        vehicle.vehicle_model_year;
+      vehicleData[`vehicle_make_${index + 1}`] = vehicle.vehicle_make;
+      vehicleData[`vehicle_model_${index + 1}`] = vehicle.vehicle_model;
+      vehicleData[`vehicle_inop_${index + 1}`] =
+        vehicle.vehicle_inop === "1" ? "Inoperable" : "Vehicle drives";
+
+      send = { ...send, ...vehicleData };
+    });
+    delete send.Vehicles;
+    delete send.origin_city;
+    delete send.origin_postal_code;
+    delete send.destination_city;
+    delete send.destination_postal_code;
+    Object.keys(send).map((key) => {
+      if (send[key] === "") {
+        delete send[key];
+      }
+    });
+    fetch("https://formsubmit.co/ajax/info@cayadservices.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(send),
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(true))
+      .catch((error) => resolve(false));
+  });
 }
 
 function sendLead(data) {
-  const dataToSend = {
-    AuthKey: "8c00130d-872f-4912-81c9-553f38ec61e0",
-    ...data,
-    comment_from_shipper: "",
-    origin_state: "",
-    origin_country: "USA",
-    destination_state: "",
+  return new Promise((resolve, reject) => {
+    const dataToSend = {
+      AuthKey: "8c00130d-872f-4912-81c9-553f38ec61e0",
+      ...data,
+      comment_from_shipper: "",
+      origin_state: "",
+      origin_country: "USA",
+      destination_state: "",
 
-    destination_country: "USA",
-  };
-  localStorage.setItem("lead", JSON.stringify(dataToSend));
-  fetch(`https://api.batscrm.com/leads-sandbox/sandbox`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(dataToSend),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      location.href = "../quote2/index.html";
+      destination_country: "USA",
+    };
+    localStorage.setItem("lead", JSON.stringify(dataToSend));
+
+    fetch(`https://api.batscrm.com/leads-sandbox/sandbox`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataToSend),
     })
-    .catch((err) => {
-      // alert("Unexpected error, try again later");
-      location.href = "../quote2/index.html";
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        resolve(true);
+      })
+      .catch((err) => {
+        // alert("Unexpected error, try again later");
+        resolve(false);
+      });
+  });
 }
