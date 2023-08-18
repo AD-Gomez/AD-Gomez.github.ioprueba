@@ -39,7 +39,6 @@ function maskPhone() {
 
 (function () {
   window.onload = async function () {
-    console.log("load");
     const lead = await localStorage.getItem("lead");
     if (lead) {
       await localStorage.removeItem("lead");
@@ -63,7 +62,6 @@ function maskPhone() {
             mp_show_wait_animation_check_form(event);
           }
           form.classList.add("was-validated");
-          console.log("was validate");
         },
         false
       );
@@ -302,7 +300,6 @@ async function mp_show_wait_animation_check_form(event) {
   }
 
   formResult.ship_date = document.getElementById("dateShipment").value;
-  console.log(formResult.ship_date);
   const format = new Date(
     formResult.ship_date.replaceAll("-", "/")
   ).toLocaleDateString("en-US", {
@@ -315,19 +312,19 @@ async function mp_show_wait_animation_check_form(event) {
   formResult.email = document.getElementById("email").value;
   formResult.phone = document.getElementById("phone").value;
 
-  // const submitBTN = document.getElementById("submit_button");
-  // submitBTN.value = "Sending request...";
-  // submitBTN.disabled = true;
-  // const emailSend = await sendEmail({ ...formResult, transport_type });
+  const submitBTN = document.getElementById("submit_button");
+  submitBTN.value = "Sending request...";
+  submitBTN.disabled = true;
+  const emailSend = await sendEmail({ ...formResult, transport_type });
   const leadSend = await sendLead({ ...formResult, transport_type });
-  // submitBTN.value = "Submit Quote Request";
-  // submitBTN.disabled = false;
+  submitBTN.value = "Submit Quote Request";
+  submitBTN.disabled = false;
 
-  // if (emailSend || leadSend) {
-  //   location.href = "../quote2/index.html";
-  // } else {
-  //   alert("Error sending the request");
-  // }
+  if (emailSend || leadSend) {
+    location.href = "../quote2/index.html";
+  } else {
+    alert("Error sending the request");
+  }
 }
 
 function sendEmail(data) {
@@ -381,7 +378,7 @@ function sendEmail(data) {
 function sendLead(data) {
   return new Promise((resolve, reject) => {
     const dataToSend = {
-      AuthKey: "849d9659-34b5-49c5-befd-1cd238e7f9fc",
+      AuthKey: "f895aa95-10ea-41ae-984f-c123bf7e0ff0",
       ...data,
       comment_from_shipper: "",
       origin_state: "",
@@ -394,9 +391,7 @@ function sendLead(data) {
 
     fetch(`https://api.batscrm.com/leads`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+
       body: JSON.stringify(dataToSend),
     })
       .then((response) => response.json())
@@ -421,13 +416,11 @@ function changeImage(type, event) {
       imageA.src = "../img/truck.svg";
       break;
     case "operable":
-      console.log(event.target.name);
       const index = event.target.name.split("vehicle_runs_")[1];
       const imageB = document.getElementById(`inop_${index}`);
       imageB.src = "../img/op.png";
       break;
     case "inoperable":
-      console.log(event.target.name);
       const indexA = event.target.name.split("vehicle_runs_")[1];
       const imageC = document.getElementById(`inop_${indexA}`);
       imageC.src = "../img/inop.png";
