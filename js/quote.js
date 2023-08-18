@@ -381,7 +381,7 @@ function sendEmail(data) {
 function sendLead(data) {
   return new Promise((resolve, reject) => {
     const dataToSend = {
-      AuthKey: "8c00130d-872f-4912-81c9-553f38ec61e0",
+      AuthKey: "849d9659-34b5-49c5-befd-1cd238e7f9fc",
       ...data,
       comment_from_shipper: "",
       origin_state: "",
@@ -392,7 +392,7 @@ function sendLead(data) {
     };
     localStorage.setItem("lead", JSON.stringify(dataToSend));
 
-    fetch(`https://api.batscrm.com/leads-sandbox/sandbox`, {
+    fetch(`https://api.batscrm.com/leads`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
