@@ -315,19 +315,19 @@ async function mp_show_wait_animation_check_form(event) {
   formResult.email = document.getElementById("email").value;
   formResult.phone = document.getElementById("phone").value;
 
-  const submitBTN = document.getElementById("submit_button");
-  submitBTN.value = "Sending request...";
-  submitBTN.disabled = true;
-  const emailSend = await sendEmail({ ...formResult, transport_type });
+  // const submitBTN = document.getElementById("submit_button");
+  // submitBTN.value = "Sending request...";
+  // submitBTN.disabled = true;
+  // const emailSend = await sendEmail({ ...formResult, transport_type });
   const leadSend = await sendLead({ ...formResult, transport_type });
-  submitBTN.value = "Submit Quote Request";
-  submitBTN.disabled = false;
+  // submitBTN.value = "Submit Quote Request";
+  // submitBTN.disabled = false;
 
-  if (emailSend || leadSend) {
-    location.href = "../quote2/index.html";
-  } else {
-    alert("Error sending the request");
-  }
+  // if (emailSend || leadSend) {
+  //   location.href = "../quote2/index.html";
+  // } else {
+  //   alert("Error sending the request");
+  // }
 }
 
 function sendEmail(data) {
