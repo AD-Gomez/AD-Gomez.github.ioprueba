@@ -39,6 +39,8 @@ function maskPhone() {
 
 (function () {
   window.onload = async function () {
+    cleanForm();
+
     const lead = await localStorage.getItem("lead");
     if (lead) {
       await localStorage.removeItem("lead");
@@ -68,6 +70,42 @@ function maskPhone() {
     });
   };
 })();
+
+function cleanForm() {
+  const inputs = document.querySelectorAll('input[type="text"]');
+
+  inputs.forEach((input) => {
+    input.value = "";
+  });
+
+  const inputsTel = document.querySelectorAll('input[type="tel"]');
+
+  inputsTel.forEach((input) => {
+    input.value = null;
+  });
+
+  const inputsNumber = document.querySelectorAll('input[type="number"]');
+
+  inputsNumber.forEach((input) => {
+    input.value = null;
+  });
+  const inputsEmail = document.querySelectorAll('input[type="email"]');
+
+  inputsEmail.forEach((input) => {
+    input.value = null;
+  });
+
+  const vehicleList = document.getElementById("vehicleList");
+  const childrenCount = vehicleList.childElementCount;
+  let i = 1;
+  while (i < childrenCount) {
+    const vehicle = document.getElementById(vehicleList.children[i].id);
+
+    vehicleList.removeChild(vehicle);
+
+    index++;
+  }
+}
 
 function initForm() {
   //date
