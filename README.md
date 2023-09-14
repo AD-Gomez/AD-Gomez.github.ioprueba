@@ -1,10 +1,10 @@
-![Cayad Services](./img/logo-cayad.png)
+![Cayad Services](./img/logo-cayad.webp)
 
 # **🧑‍💻 CAYAD | SERVICES LLC 👩‍💻**
 
 ## **📌 INTRODUCCIÓN**
 
-¡Hola 😄! Bienvenid@ al desarrollo del primer proyecto colaborativo CAYAD una plataforma de servicios de brokerage! el cual iniciara con el servicio de transporte y logistica en todo el territorio nacional USA incluidos Alaska y Hawai. 
+¡Hola 😄! Bienvenid@ al desarrollo del primer proyecto colaborativo CAYAD una plataforma de servicios de brokerage! el cual iniciara con el servicio de transporte y logistica en todo el territorio nacional USA incluidos Alaska y Hawai.
 
 Hello! Welcome to the development of the first collaborative project CAYAD, a brokerage services platform! which will begin with the transport and logistics service throughout the national territory of the USA including Alaska and Hawaii.
 
@@ -42,15 +42,15 @@ Our ultimate goal is to create a system where everyone using our service is 100%
 
 ### Herramientas de Desarrollo:
 
--  *HTML , CSS , JAVASCRIPT* 
+- _HTML , CSS , JAVASCRIPT_
 
 ### Herramientas de Trabajo:
 
--  *CRM BATS , CENTRAL-DISPATCH , RING-CENTRAL , META-ADS* 
+- _CRM BATS , CENTRAL-DISPATCH , RING-CENTRAL , META-ADS_
 
 ## **😋 ¿CÓMO APOYAR EN ESTE PROYECTO?**
 
-Puedes libremente hacerle fork a este proyecto y sugerirme cualquier modificacion, eliminacion o complemento para su mejora. 
+Puedes libremente hacerle fork a este proyecto y sugerirme cualquier modificacion, eliminacion o complemento para su mejora.
 
 You are free to fork this project and suggest any modifications, deletions or additions for its improvement.
 
@@ -58,7 +58,7 @@ You are free to fork this project and suggest any modifications, deletions or ad
 
 ## **✅ Colaboladores**
 
-Alneidismar Guaiquirima <3 
+Alneidismar Guaiquirima <3
 
 Alejandro Gil (Alex G)
 
