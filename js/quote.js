@@ -42,8 +42,14 @@ function maskPhone() {
     cleanForm();
 
     const lead = await localStorage.getItem("lead");
+    const email = await localStorage.getItem("emailCayad");
+
     if (lead) {
       await localStorage.removeItem("lead");
+    }
+
+    if (email) {
+      await localStorage.removeItem("emailCayad");
     }
 
     initForm();

@@ -628,14 +628,30 @@
         const jsonEmail = JSON.parse(infoEmail);
         const infoLead = await localStorage.getItem("lead");
         const jsonLead = JSON.parse(infoLead);
-        const promises = [sendEmail(jsonEmail), sendLead(jsonLead)];
-        const resultLead = await Promise.all(promises);
+        try {
+          console.log("enviando lead...");
+          const result = await sendLead(jsonLead);
+          btn.value = "Create Quote";
+          btn.disabled = false;
+          message.classList.remove("d-flex");
+          link.classList.remove("d-none");
+          message.classList.add("d-none");
+        } catch (err) {
+          console.log("Falló lead...");
+
+          sendBackup();
+        }
+      }
+
+      async function sendBackup() {
+        console.log("enviando email...");
+
+        const emailResponse = await sendLead(jsonLead);
         btn.value = "Create Quote";
         btn.disabled = false;
         message.classList.remove("d-flex");
         link.classList.remove("d-none");
         message.classList.add("d-none");
-        return resultLead;
       }
     </script>
   </body>
