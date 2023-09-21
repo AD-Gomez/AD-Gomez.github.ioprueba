@@ -353,59 +353,109 @@ async function mp_show_wait_animation_check_form(event) {
   const submitBTN = document.getElementById("submit_button");
   submitBTN.value = "Sending request...";
   submitBTN.disabled = true;
-  const emailSend = await sendEmail({ ...formResult, transport_type });
-  const leadSend = await sendLead({ ...formResult, transport_type });
-  submitBTN.value = "Submit Quote Request";
-  submitBTN.disabled = false;
+  try {
+    // const result = await Promise.all([
 
-  if (emailSend || leadSend) {
+    // ]);
+
+    saveLead({ ...formResult, transport_type });
+    saveEmail({ ...formResult, transport_type });
+    // console.log("RESULT", result);
+    // const leadSend = await ;
+    // const emailSend = await sendEmail({ ...formResult, transport_type });
+    // submitBTN.value = "Submit Quote Request";
+    // submitBTN.disabled = false;
+
+    // if (result[0] || result[1]) {
+    //   console.log(result);
     location.href = "../quote2/index.html";
-  } else {
-    alert("Error sending the request");
+    // } else {
+    //   alert("Error sending the request");
+    // }
+  } catch (err) {
+    console.log(err);
   }
+}
+
+function saveEmail(data) {
+  let send = {
+    ...data,
+    origin:
+      data.origin_city !== "" ? data.origin_city : data.origin_postal_code,
+    destination:
+      data.destination_city !== ""
+        ? data.destination_city
+        : data.destination_postal_code,
+    transport_type: data.transport_type === "0" ? "Open" : "Enclosed",
+  };
+  data.Vehicles.map((vehicle, index) => {
+    let vehicleData = {};
+
+    vehicleData[`vehicle_model_year_${index + 1}`] = vehicle.vehicle_model_year;
+    vehicleData[`vehicle_make_${index + 1}`] = vehicle.vehicle_make;
+    vehicleData[`vehicle_model_${index + 1}`] = vehicle.vehicle_model;
+    vehicleData[`vehicle_inop_${index + 1}`] =
+      vehicle.vehicle_inop === "1" ? "Inoperable" : "Operable";
+
+    send = { ...send, ...vehicleData };
+  });
+  delete send.Vehicles;
+  delete send.origin_city;
+  delete send.origin_postal_code;
+  delete send.destination_city;
+  delete send.destination_postal_code;
+  Object.keys(send).map((key) => {
+    if (send[key] === "") {
+      delete send[key];
+    }
+  });
+
+  localStorage.setItem("emailCayad", JSON.stringify(send));
 }
 
 function sendEmail(data) {
   return new Promise((resolve, reject) => {
-    let send = {
-      ...data,
-      origin:
-        data.origin_city !== "" ? data.origin_city : data.origin_postal_code,
-      destination:
-        data.destination_city !== ""
-          ? data.destination_city
-          : data.destination_postal_code,
-      transport_type: data.transport_type === "0" ? "Open" : "Enclosed",
-    };
-    data.Vehicles.map((vehicle, index) => {
-      let vehicleData = {};
+    // let send = {
+    //   ...data,
+    //   origin:
+    //     data.origin_city !== "" ? data.origin_city : data.origin_postal_code,
+    //   destination:
+    //     data.destination_city !== ""
+    //       ? data.destination_city
+    //       : data.destination_postal_code,
+    //   transport_type: data.transport_type === "0" ? "Open" : "Enclosed",
+    // };
+    // data.Vehicles.map((vehicle, index) => {
+    //   let vehicleData = {};
 
-      vehicleData[`vehicle_model_year_${index + 1}`] =
-        vehicle.vehicle_model_year;
-      vehicleData[`vehicle_make_${index + 1}`] = vehicle.vehicle_make;
-      vehicleData[`vehicle_model_${index + 1}`] = vehicle.vehicle_model;
-      vehicleData[`vehicle_inop_${index + 1}`] =
-        vehicle.vehicle_inop === "1" ? "Inoperable" : "Operable";
+    //   vehicleData[`vehicle_model_year_${index + 1}`] =
+    //     vehicle.vehicle_model_year;
+    //   vehicleData[`vehicle_make_${index + 1}`] = vehicle.vehicle_make;
+    //   vehicleData[`vehicle_model_${index + 1}`] = vehicle.vehicle_model;
+    //   vehicleData[`vehicle_inop_${index + 1}`] =
+    //     vehicle.vehicle_inop === "1" ? "Inoperable" : "Operable";
 
-      send = { ...send, ...vehicleData };
-    });
-    delete send.Vehicles;
-    delete send.origin_city;
-    delete send.origin_postal_code;
-    delete send.destination_city;
-    delete send.destination_postal_code;
-    Object.keys(send).map((key) => {
-      if (send[key] === "") {
-        delete send[key];
-      }
-    });
+    //   send = { ...send, ...vehicleData };
+    // });
+    // delete send.Vehicles;
+    // delete send.origin_city;
+    // delete send.origin_postal_code;
+    // delete send.destination_city;
+    // delete send.destination_postal_code;
+    // Object.keys(send).map((key) => {
+    //   if (send[key] === "") {
+    //     delete send[key];
+    //   }
+    // });
+    console.log("ENVIANDO EMAIL");
+
     fetch("https://formsubmit.co/ajax/info@cayadservices.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(send),
+      body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((data) => resolve(true))
@@ -413,24 +463,38 @@ function sendEmail(data) {
   });
 }
 
+function saveLead(data) {
+  const dataToSend = {
+    AuthKey: "f895aa95-10ea-41ae-984f-c123bf7e0ff0",
+    ...data,
+    comment_from_shipper: "",
+    origin_state: "",
+    origin_country: "USA",
+    destination_state: "",
+
+    destination_country: "USA",
+  };
+  localStorage.setItem("lead", JSON.stringify(dataToSend));
+}
+
 function sendLead(data) {
   return new Promise((resolve, reject) => {
-    const dataToSend = {
-      AuthKey: "f895aa95-10ea-41ae-984f-c123bf7e0ff0",
-      ...data,
-      comment_from_shipper: "",
-      origin_state: "",
-      origin_country: "USA",
-      destination_state: "",
+    // const dataToSend = {
+    //   AuthKey: "f895aa95-10ea-41ae-984f-c123bf7e0ff0",
+    //   ...data,
+    //   comment_from_shipper: "",
+    //   origin_state: "",
+    //   origin_country: "USA",
+    //   destination_state: "",
 
-      destination_country: "USA",
-    };
-    localStorage.setItem("lead", JSON.stringify(dataToSend));
-
+    //   destination_country: "USA",
+    // };
+    // localStorage.setItem("lead", JSON.stringify(dataToSend));
+    console.log("ENVIANDO LEAD");
     fetch(`https://api.batscrm.com/leads`, {
       method: "POST",
 
-      body: JSON.stringify(dataToSend),
+      body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((data) => {

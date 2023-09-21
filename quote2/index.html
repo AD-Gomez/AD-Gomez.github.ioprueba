@@ -400,16 +400,29 @@
         </div>
       </template>
       <div
+        id="messageLoading"
+        class="d-none w-full bg-info text-white rounded py-2 justify-content-center"
+      >
+        We are creating your orden, wait a few minutes
+      </div>
+      <div
         class="row justify-content-center"
         style="margin-top: 30px; margin-bottom: 15px"
       >
-        <button type="button" class="btn btn-primary" onclick="goback()">
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="createQuote"
+          onclick="goback()"
+        >
           Create a new quote
         </button>
       </div>
       <div class="row justify-content-center">
         <span style="color: gray"
-          ><a href="/index.html" target="_blank">Cayad Auto Transport</a>
+          ><a href="/index.html" id="linkhome" target="_blank"
+            >Cayad Auto Transport</a
+          >
         </span>
       </div>
 
@@ -423,6 +436,7 @@
     <div id="fb-customer-chat" class="fb-customerchat"></div>
     <script type="module" src="map.js"></script>
 
+    <script src="../js/quote.js"></script>
     <script>
       var chatbox = document.getElementById("fb-customer-chat");
       chatbox.setAttribute("page_id", "116222094837969");
@@ -431,7 +445,7 @@
     <script src="https://unpkg.com/@esri/arcgis-rest-request@4.0.0/dist/bundled/request.umd.js"></script>
     <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@4.0.0/dist/bundled/geocoding.umd.js"></script>
     <script src="https://unpkg.com/@esri/arcgis-rest-routing@4.0.0/dist/bundled/routing.umd.js"></script>
-
+    <script></script>
     <!-- Your SDK code -->
     <script>
       const apiKeyArcGis =
@@ -457,6 +471,7 @@
     <script>
       let map = null;
       window.onload = function () {
+        sendInformation();
         map = L.map("map").setView([51.505, -0.09], 13);
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           maxZoom: 19,
@@ -598,6 +613,29 @@
               resolve([coordenadas[0], coordenadas[1]]);
             });
         });
+      }
+
+      async function sendInformation() {
+        const message = document.getElementById("messageLoading");
+        const link = document.getElementById("linkhome");
+        link.classList.add("d-none");
+        message.classList.remove("d-none");
+        message.classList.add("d-flex");
+        const btn = document.getElementById("createQuote");
+        btn.value = "Sending request...";
+        btn.disabled = true;
+        const infoEmail = await localStorage.getItem("emailCayad");
+        const jsonEmail = JSON.parse(infoEmail);
+        const infoLead = await localStorage.getItem("lead");
+        const jsonLead = JSON.parse(infoLead);
+        const promises = [sendEmail(jsonEmail), sendLead(jsonLead)];
+        const resultLead = await Promise.all(promises);
+        btn.value = "Create Quote";
+        btn.disabled = false;
+        message.classList.remove("d-flex");
+        link.classList.remove("d-none");
+        message.classList.add("d-none");
+        return resultLead;
       }
     </script>
   </body>
