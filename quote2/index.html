@@ -621,40 +621,9 @@
         const sendedLead = await localStorage.getItem("sendedLead");
         const sendedEmail = await localStorage.getItem("sendedEmail");
 
-        // const promises = [];
-        // if (!sendedLead) {
-        //   const infoLead = await localStorage.getItem("lead");
-        //   const jsonLead = JSON.parse(infoLead);
-        //   promises.push(sendLead(jsonLead));
-        // }
-        // if (!sendedEmail) {
-        //   const infoEmail = await localStorage.getItem("emailCayad");
-        //   const jsonEmail = JSON.parse(infoEmail);
-        //   promises.push(sendEmail(jsonEmail));
-        // }
-
-        // if (promises.length > 0) {
-        //   const message = document.getElementById("messageLoading");
-        //   const link = document.getElementById("linkhome");
-        //   link.classList.add("d-none");
-        //   message.classList.remove("d-none");
-        //   message.classList.add("d-flex");
-        //   const btn = document.getElementById("createQuote");
-        //   btn.value = "Sending request...";
-        //   btn.disabled = true;
-
-        //   const resultLead = await Promise.all(promises);
-        //   btn.value = "Create Quote";
-        //   btn.disabled = false;
-        //   message.classList.remove("d-flex");
-        //   link.classList.remove("d-none");
-        //   message.classList.add("d-none");
-        //   return resultLead;
-        // }
         if (!sendedLead) {
           disabledButtons();
 
-          console.log("ENTRA en el lead");
           const infoLead = await localStorage.getItem("lead");
           const jsonLead = JSON.parse(infoLead);
 
