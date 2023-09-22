@@ -42,8 +42,21 @@ function maskPhone() {
     cleanForm();
 
     const lead = await localStorage.getItem("lead");
+    const emailCayad = await localStorage.getItem("emailCayad");
+    const sendedLead = await localStorage.getItem("sendedLead");
+    const sendedEmail = await localStorage.getItem("sendedEmail");
     if (lead) {
       await localStorage.removeItem("lead");
+    }
+
+    if (emailCayad) {
+      await localStorage.removeItem("emailCayad");
+    }
+    if (sendedLead) {
+      await localStorage.removeItem("sendedLead");
+    }
+    if (sendedEmail) {
+      await localStorage.removeItem("sendedEmail");
     }
 
     initForm();
