@@ -3207,7 +3207,7 @@ button.swiper-pagination-bullet {
   width: 24px;
   height: 24px;
   margin-left: 5px;
-  background-image: url(../images/logo_small_m.png);
+  background-image: url(../images/logo_small_m.webp);
   background-size: cover;
   border-radius: 100%;
   display: inline-block;
@@ -6964,7 +6964,7 @@ button.button-green-on-white [class^="icon-"] {
 
 @media (min-width: 770px) {
   .container-wrapper.is-livechat {
-    background-image: url(../images/chat-ppl.png);
+    background-image: url(../images/chat-ppl.webp);
   }
 }
 
@@ -7636,7 +7636,7 @@ button.button-green-on-white [class^="icon-"] {
 
 .steps-process-hawaii-horizontal {
   justify-content: space-between;
-  background-image: url(../images/dashed_line_single.png);
+  background-image: url(../images/dashed_line_single.webp);
   background-repeat: no-repeat;
   background-size: 80%;
   background-position: 6.5em 2.7em;
@@ -7761,7 +7761,7 @@ button.button-green-on-white [class^="icon-"] {
   display: block;
   width: 12px;
   height: 11px;
-  background-image: url(../images/motorcycle-enthusiasts/demand.png);
+  background-image: url(../images/motorcycle-enthusiasts/demand.webp);
   background-repeat: no-repeat;
   background-size: contain;
   position: relative;
@@ -8156,31 +8156,31 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-home {
   background-position: bottom left;
-  background-image: url(../images/covers/header-image-device.jpg);
+  background-image: url(../images/covers/header-image-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-home {
     background-position: bottom left;
-    background-image: url(../images/covers/header-image.jpg);
+    background-image: url(../images/covers/header-image.webp);
   }
 }
 
 .container-cover.in-page-home-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-home-hero-1 {
     background-position: bottom left;
-    background-image: url(../images/hero/Montway_homepage_header.png);
+    background-image: url(../images/hero/Montway_homepage_header.webp);
   }
 }
 
 .container-cover.in-business-solutions {
   background-position: top right;
-  background-image: url(../images/covers/mbs_desktop.jpg);
+  background-image: url(../images/covers/mbs_desktop.webp);
 }
 
 .container-cover.in-business-solutions .cover-overlay {
@@ -8203,92 +8203,92 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-relocating-people {
   background-position: top right;
-  background-image: url(../images/covers/people-with-boxes-device.jpg);
+  background-image: url(../images/covers/people-with-boxes-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-relocating-people {
-    background-image: url(../images/covers/user-type-relocating-families.jpg);
+    background-image: url(../images/covers/user-type-relocating-families.webp);
   }
 }
 
 .container-cover.in-page-relocating-people-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-relocating-people-hero-1 {
     background-position: top right;
-    background-image: url(../images/hero/relocating_people_header.png);
+    background-image: url(../images/hero/relocating_people_header.webp);
   }
 }
 
 .container-cover.in-page-online-car-buyers {
   background-position: top left;
-  background-image: url(../images/covers/online-car-buyers-device.jpg);
+  background-image: url(../images/covers/online-car-buyers-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-online-car-buyers {
-    background-image: url(../images/covers/online-car-buyers.jpg);
+    background-image: url(../images/covers/online-car-buyers.webp);
   }
 }
 
 .container-cover.in-page-college-students {
   background-position: top right;
-  background-image: url(../images/covers/college-students-device.jpg);
+  background-image: url(../images/covers/college-students-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-college-students {
-    background-image: url(../images/covers/college-students.jpg);
+    background-image: url(../images/covers/college-students.webp);
   }
 }
 
 .container-cover.in-page-college-students-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-college-students-hero-1 {
     background-position: top right;
-    background-image: url(../images/hero/college_students_header.png);
+    background-image: url(../images/hero/college_students_header.webp);
   }
 }
 
 .container-cover.in-page-snowbirds {
   background-position: top right;
-  background-image: url(../images/covers/snowbirds-device.jpg);
+  background-image: url(../images/covers/snowbirds-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-snowbirds {
-    background-image: url(../images/covers/snowbirds.jpg);
+    background-image: url(../images/covers/snowbirds.webp);
   }
 }
 
 .container-cover.in-page-snowbirds-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-snowbirds-hero-1 {
     background-position: top right;
-    background-image: url(../images/hero/snowbirds_header.png);
+    background-image: url(../images/hero/snowbirds_header.webp);
   }
 }
 
 .container-cover.in-page-snowbirds-fl {
   background-position: bottom right;
-  background-image: url(../images/covers/sb_fl-device.jpg);
+  background-image: url(../images/covers/sb_fl-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-snowbirds-fl {
-    background-image: url(../images/covers/sb_fl.jpg);
+    background-image: url(../images/covers/sb_fl.webp);
   }
 }
 
@@ -8312,12 +8312,12 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-snowbirds-az {
   background-position: top right;
-  background-image: url(../images/covers/sb_az-device.jpg);
+  background-image: url(../images/covers/sb_az-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-snowbirds-az {
-    background-image: url(../images/covers/sb_az.jpg);
+    background-image: url(../images/covers/sb_az.webp);
   }
 }
 
@@ -8341,12 +8341,12 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-snowbirds-ca {
   background-position: center right;
-  background-image: url(../images/covers/sb_ca-device.jpg);
+  background-image: url(../images/covers/sb_ca-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-snowbirds-ca {
-    background-image: url(../images/covers/sb_ca.jpg);
+    background-image: url(../images/covers/sb_ca.webp);
   }
 }
 
@@ -8370,22 +8370,22 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-classic-car-lovers {
   background-position: top left;
-  background-image: url(../images/covers/classic-car-lovers-device.jpg);
+  background-image: url(../images/covers/classic-car-lovers-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-classic-car-lovers {
-    background-image: url(../images/covers/classic-car-lovers.jpg);
+    background-image: url(../images/covers/classic-car-lovers.webp);
   }
 }
 
 .container-cover.in-page-classic-car-lovers.in-page-classic-car-lovers-version-2 {
-  background-image: url(../images/covers/classic-car-lovers-device-new.jpg);
+  background-image: url(../images/covers/classic-car-lovers-device-new.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-classic-car-lovers.in-page-classic-car-lovers-version-2 {
-    background-image: url(../images/covers/classic-car-lovers-new.jpg);
+    background-image: url(../images/covers/classic-car-lovers-new.webp);
   }
 }
 
@@ -8411,12 +8411,12 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-classic-car-lovers-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-classic-car-lovers-hero-1 {
-    background-image: url(../images/hero/classic_Cars_header.png);
+    background-image: url(../images/hero/classic_Cars_header.webp);
   }
 }
 
@@ -8440,57 +8440,57 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-motorcycle-shipping {
   background-position: top left;
-  background-image: url(../images/covers/motorcycle-landing-ppc-device.jpg);
+  background-image: url(../images/covers/motorcycle-landing-ppc-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-motorcycle-shipping {
-    background-image: url(../images/covers/motorcycle-landing-ppc.jpg);
+    background-image: url(../images/covers/motorcycle-landing-ppc.webp);
   }
 }
 
 .container-cover.in-page-motorcycle-shipping-2 {
   background-position: top;
-  background-image: url(../images/covers/motorcycle-v2-device.png);
+  background-image: url(../images/covers/motorcycle-v2-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-motorcycle-shipping-2 {
-    background-image: url(../images/covers/motorcycle-v2.png);
+    background-image: url(../images/covers/motorcycle-v2.webp);
   }
 }
 
 .container-cover.in-page-car-resellers {
   background-position: top right;
-  background-image: url(../images/covers/car-resellers-device.jpg);
+  background-image: url(../images/covers/car-resellers-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-car-resellers {
-    background-image: url(../images/covers/car-resellers.jpg);
+    background-image: url(../images/covers/car-resellers.webp);
   }
 }
 
 .container-cover.in-page-car-resellers-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-car-resellers-hero-1 {
     background-position: top right;
-    background-image: url(../images/hero/car_resellers_auto_transport.png);
+    background-image: url(../images/hero/car_resellers_auto_transport.webp);
   }
 }
 
 .container-cover.in-page-military {
   background-position: bottom right;
-  background-image: url(../images/covers/open-device.jpg);
+  background-image: url(../images/covers/open-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-military {
-    background-image: url(../images/covers/military-car-shipping.jpg);
+    background-image: url(../images/covers/military-car-shipping.webp);
   }
 }
 
@@ -8504,13 +8504,13 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-military-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-military-hero-1 {
     background-position: bottom right;
-    background-image: url(../images/hero/military_header.png);
+    background-image: url(../images/hero/military_header.webp);
   }
 }
 
@@ -8524,131 +8524,131 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-international-shipping {
   background-position: top right;
-  background-image: url(../images/covers/international-shipping-device.jpg);
+  background-image: url(../images/covers/international-shipping-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-international-shipping {
-    background-image: url(../images/covers/international-shipping.jpg);
+    background-image: url(../images/covers/international-shipping.webp);
   }
 }
 
 .container-cover.in-page-door-to-door {
   background-position: bottom center;
-  background-image: url(../images/covers/door-to-door-device.jpg);
+  background-image: url(../images/covers/door-to-door-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-door-to-door {
     background-position: top center;
-    background-image: url(../images/covers/door-to-door.jpg);
+    background-image: url(../images/covers/door-to-door.webp);
   }
 }
 
 .container-cover.in-page-door-to-door-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-door-to-door-hero-1 {
     background-position: top center;
-    background-image: url(../images/hero/door_to_door_header.png);
+    background-image: url(../images/hero/door_to_door_header.webp);
   }
 }
 
 .container-cover.in-page-open {
   background-position: center center;
-  background-image: url(../images/covers/open-device.jpg);
+  background-image: url(../images/covers/open-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-open {
-    background-image: url(../images/covers/open.jpg);
+    background-image: url(../images/covers/open.webp);
   }
 }
 
 .container-cover.in-page-open-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-open-hero-1 {
     background-position: center center;
-    background-image: url(../images/hero/open_auto_transport_header.png);
+    background-image: url(../images/hero/open_auto_transport_header.webp);
   }
 }
 
 .container-cover.in-page-enclosed {
   background-position: center left;
-  background-image: url(../images/covers/enclosed-device.jpg);
+  background-image: url(../images/covers/enclosed-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-enclosed {
-    background-image: url(../images/covers/enclosed.jpg);
+    background-image: url(../images/covers/enclosed.webp);
   }
 }
 
 .container-cover.in-page-expedited {
   background-position: top center;
-  background-image: url(../images/covers/expedited-device.jpg);
+  background-image: url(../images/covers/expedited-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-expedited {
-    background-image: url(../images/covers/expedited.jpg);
+    background-image: url(../images/covers/expedited.webp);
   }
 }
 
 .container-cover.in-page-reviews {
   background-position: top right;
   background-color: #f5f7fa;
-  background-image: url(../images/covers/reviews-header.png);
+  background-image: url(../images/covers/reviews-header.webp);
 }
 
 .container-cover.in-page-history {
   background-position: center left;
-  background-image: url(../images/covers/truck-with-cars-device.jpg);
+  background-image: url(../images/covers/truck-with-cars-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-history {
-    background-image: url(../images/covers/truck-with-cars.jpg);
+    background-image: url(../images/covers/truck-with-cars.webp);
   }
 }
 
 .container-cover.in-page-careers {
   background-position: center right;
-  background-image: url(../images/covers/people-in-office-device-new.jpg);
+  background-image: url(../images/covers/people-in-office-device-new.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-careers {
-    background-image: url(../images/covers/people-in-office-new.jpg);
+    background-image: url(../images/covers/people-in-office-new.webp);
   }
 }
 
 .container-cover.in-page-enterprise {
   background-position: top right;
-  background-image: url(../images/covers/man-with-tablet-device.jpg);
+  background-image: url(../images/covers/man-with-tablet-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-enterprise {
-    background-image: url(../images/covers/man-with-tablet.jpg);
+    background-image: url(../images/covers/man-with-tablet.webp);
   }
 }
 
 .container-cover.in-page-volvo-program {
   background-position: center top right;
-  background-image: url(../images/covers/volvo-cover-bg.png);
+  background-image: url(../images/covers/volvo-cover-bg.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-volvo-program {
-    background-image: url(../images/covers/volvo-cover-bg.png);
+    background-image: url(../images/covers/volvo-cover-bg.webp);
   }
 }
 
@@ -8667,7 +8667,7 @@ button.button-green-on-white [class^="icon-"] {
 
 @media (min-width: 770px) {
   .container-cover.in-page-help-center {
-    background-image: url(../images/covers/help-center-home-new.png);
+    background-image: url(../images/covers/help-center-home-new.webp);
   }
 }
 
@@ -8684,12 +8684,12 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-contact {
   background-position: center right;
-  background-image: url(../images/covers/women-with-phone-device.jpg);
+  background-image: url(../images/covers/women-with-phone-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-contact {
-    background-image: url(../images/covers/women-with-phone.jpg);
+    background-image: url(../images/covers/women-with-phone.webp);
   }
 }
 
@@ -8804,24 +8804,24 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-terms {
   background-position: top left;
-  background-image: url(../images/covers/buildings-device.jpg);
+  background-image: url(../images/covers/buildings-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-terms {
-    background-image: url(../images/covers/buildings.jpg);
+    background-image: url(../images/covers/buildings.webp);
   }
 }
 
 .container-cover.in-page-cost-to-ship {
   background-position: top left;
-  background-image: url(../images/covers/how-much-does-it-cost-device.jpg);
+  background-image: url(../images/covers/how-much-does-it-cost-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-cost-to-ship {
     background-position: top center;
-    background-image: url(../images/covers/how-much-doest-it-cost.jpg);
+    background-image: url(../images/covers/how-much-doest-it-cost.webp);
   }
 }
 
@@ -8835,37 +8835,37 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-cost-to-ship-a {
   background-position: bottom right;
-  background-image: url(../images/covers/car-shipping-1m.jpg);
+  background-image: url(../images/covers/car-shipping-1m.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-cost-to-ship-a {
     background-position: top center;
-    background-image: url(../images/covers/car-shipping-1d.jpg);
+    background-image: url(../images/covers/car-shipping-1d.webp);
   }
 }
 
 .container-cover.in-page-cost-to-ship-b {
   background-position: bottom right;
-  background-image: url(../images/covers/car-shipping-2m.jpg);
+  background-image: url(../images/covers/car-shipping-2m.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-cost-to-ship-b {
     background-position: top center;
-    background-image: url(../images/covers/car-shipping-2d.jpg);
+    background-image: url(../images/covers/car-shipping-2d.webp);
   }
 }
 
 .container-cover.in-page-cross-country {
   background-position: top left;
-  background-image: url(../images/covers/ship-car-across-country-device.jpg);
+  background-image: url(../images/covers/ship-car-across-country-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-cross-country {
     background-position: top center;
-    background-image: url(../images/covers/ship-car-across-country.jpg);
+    background-image: url(../images/covers/ship-car-across-country.webp);
   }
 }
 
@@ -8879,322 +8879,322 @@ button.button-green-on-white [class^="icon-"] {
 
 .container-cover.in-page-hawaii {
   background-position: bottom right;
-  background-image: url(../images/covers/hi_hero_device1.png);
+  background-image: url(../images/covers/hi_hero_device1.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-hawaii {
     background-position: top center;
-    background-image: url(../images/covers/hawaii-hero-image.png);
+    background-image: url(../images/covers/hawaii-hero-image.webp);
   }
 }
 
 .container-cover.in-page-hawaii-hero-1 {
   background-position: bottom center;
-  background-image: url(../images/hero/montway_gradient_mobile.jpg);
+  background-image: url(../images/hero/montway_gradient_mobile.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-hawaii-hero-1 {
     background-position: top center;
-    background-image: url(../images/hero/hawaii_header.png);
+    background-image: url(../images/hero/hawaii_header.webp);
   }
 }
 
 .container-cover.in-page-sitemap {
   background-position: center center;
-  background-image: url(../images/covers/road-device.jpg);
+  background-image: url(../images/covers/road-device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-sitemap {
-    background-image: url(../images/covers/road.jpg);
+    background-image: url(../images/covers/road.webp);
   }
 }
 
 .container-cover.in-page-home-delivery {
   background-position: center center;
-  background-image: url(../images/covers/home_delivery_device.png);
+  background-image: url(../images/covers/home_delivery_device.webp);
 }
 
 @media (min-width: 770px) {
   .container-cover.in-page-home-delivery {
-    background-image: url(../images/covers/home_delivery.png);
+    background-image: url(../images/covers/home_delivery.webp);
   }
 }
 
 .container-cover.in-page-florida-state {
   background-position: center center;
-  background-image: url(../images/states/florida/florida.jpg);
+  background-image: url(../images/states/florida/florida.webp);
 }
 
 .container-cover.in-page-alaska-state {
   background-position: center center;
-  background-image: url(../images/states/alaska/alaska.jpg);
+  background-image: url(../images/states/alaska/alaska.webp);
 }
 
 .container-cover.in-page-arizona-state {
   background-position: center center;
-  background-image: url(../images/states/arizona/arizona.jpg);
+  background-image: url(../images/states/arizona/arizona.webp);
 }
 
 .container-cover.in-page-california-state {
   background-position: center center;
-  background-image: url(../images/states/california/california.jpg);
+  background-image: url(../images/states/california/california.webp);
 }
 
 .container-cover.in-page-indiana-state {
   background-position: center center;
-  background-image: url(../images/states/indiana/indiana.jpg);
+  background-image: url(../images/states/indiana/indiana.webp);
 }
 
 .container-cover.in-page-michigan-state {
   background-position: center center;
-  background-image: url(../images/states/michigan/michigan.jpg);
+  background-image: url(../images/states/michigan/michigan.webp);
 }
 
 .container-cover.in-page-new-york-state {
   background-position: center center;
-  background-image: url(../images/states/new-york/new-york.jpg);
+  background-image: url(../images/states/new-york/new-york.webp);
 }
 
 .container-cover.in-page-ohio-state {
   background-position: center center;
-  background-image: url(../images/states/ohio/ohio.jpg);
+  background-image: url(../images/states/ohio/ohio.webp);
 }
 
 .container-cover.in-page-texas-state {
   background-position: center center;
-  background-image: url(../images/states/texas/texas.jpg);
+  background-image: url(../images/states/texas/texas.webp);
 }
 
 .container-cover.in-page-georgia-state {
   background-position: center center;
-  background-image: url(../images/states/georgia/georgia.jpg);
+  background-image: url(../images/states/georgia/georgia.webp);
 }
 
 .container-cover.in-page-alabama-state {
   background-position: center center;
-  background-image: url(../images/states/alabama/alabama.jpg);
+  background-image: url(../images/states/alabama/alabama.webp);
 }
 
 .container-cover.in-page-pennsylvania-state {
   background-position: center center;
-  background-image: url(../images/states/pennsylvania/pennsylvania.jpg);
+  background-image: url(../images/states/pennsylvania/pennsylvania.webp);
 }
 
 .container-cover.in-page-new-jersey-state {
   background-position: center center;
-  background-image: url(../images/states/new-jersey/new-jersey.jpg);
+  background-image: url(../images/states/new-jersey/new-jersey.webp);
 }
 
 .container-cover.in-page-maine-state {
   background-position: center center;
-  background-image: url(../images/states/maine/maine.jpg);
+  background-image: url(../images/states/maine/maine.webp);
 }
 
 .container-cover.in-page-massachusetts-state {
   background-position: center center;
-  background-image: url(../images/states/massachusetts/massachusetts.jpg);
+  background-image: url(../images/states/massachusetts/massachusetts.webp);
 }
 
 .container-cover.in-page-connecticut-state {
   background-position: center center;
-  background-image: url(../images/states/connecticut/connecticut.jpg);
+  background-image: url(../images/states/connecticut/connecticut.webp);
 }
 
 .container-cover.in-page-colorado-state {
   background-position: center center;
-  background-image: url(../images/states/colorado/colorado.jpg);
+  background-image: url(../images/states/colorado/colorado.webp);
 }
 
 .container-cover.in-page-new-mexico-state {
   background-position: center center;
-  background-image: url(../images/states/new-mexico/new_mexico.jpg);
+  background-image: url(../images/states/new-mexico/new_mexico.webp);
 }
 
 .container-cover.in-page-tennessee-state {
   background-position: center center;
-  background-image: url(../images/states/tennessee/tennessee.jpg);
+  background-image: url(../images/states/tennessee/tennessee.webp);
 }
 
 .container-cover.in-page-washington-state {
   background-position: center center;
-  background-image: url(../images/states/washington/washington.jpg);
+  background-image: url(../images/states/washington/washington.webp);
 }
 
 .container-cover.in-page-oregon-state {
   background-position: center center;
-  background-image: url(../images/states/oregon/oregon.jpg);
+  background-image: url(../images/states/oregon/oregon.webp);
 }
 
 .container-cover.in-page-illinois-state {
   background-position: center center;
-  background-image: url(../images/states/illinois/illinois.jpg);
+  background-image: url(../images/states/illinois/illinois.webp);
 }
 
 .container-cover.in-page-minnesota-state {
   background-position: center center;
-  background-image: url(../images/states/minnesota/minnesota.jpg);
+  background-image: url(../images/states/minnesota/minnesota.webp);
 }
 
 .container-cover.in-page-missouri-state {
   background-position: center center;
-  background-image: url(../images/states/missouri/missouri.jpg);
+  background-image: url(../images/states/missouri/missouri.webp);
 }
 
 .container-cover.in-page-iowa-state {
   background-position: center center;
-  background-image: url(../images/states/iowa/iowa.jpg);
+  background-image: url(../images/states/iowa/iowa.webp);
 }
 
 .container-cover.in-page-wisconsin-state {
   background-position: center center;
-  background-image: url(../images/states/wisconsin/wisconsin.jpg);
+  background-image: url(../images/states/wisconsin/wisconsin.webp);
 }
 
 .container-cover.in-page-nebraska-state {
   background-position: center center;
-  background-image: url(../images/states/nebraska/nebraska.jpg);
+  background-image: url(../images/states/nebraska/nebraska.webp);
 }
 
 .container-cover.in-page-vermont-state {
   background-position: center center;
-  background-image: url(../images/states/vermont/vermont.jpg);
+  background-image: url(../images/states/vermont/vermont.webp);
 }
 
 .container-cover.in-page-south-carolina-state {
   background-position: center center;
-  background-image: url(../images/states/south-carolina/south-carolina.jpg);
+  background-image: url(../images/states/south-carolina/south-carolina.webp);
 }
 
 .container-cover.in-page-maryland-state {
   background-position: center center;
-  background-image: url(../images/states/maryland/maryland.jpg);
+  background-image: url(../images/states/maryland/maryland.webp);
 }
 
 .container-cover.in-page-montana-state {
   background-position: center center;
-  background-image: url(../images/states/montana/montana.jpg);
+  background-image: url(../images/states/montana/montana.webp);
 }
 
 .container-cover.in-page-kentucky-state {
   background-position: center center;
-  background-image: url(../images/states/kentucky/kentucky.jpg);
+  background-image: url(../images/states/kentucky/kentucky.webp);
 }
 
 .container-cover.in-page-utah-state {
   background-position: center center;
-  background-image: url(../images/states/utah/utah.jpg);
+  background-image: url(../images/states/utah/utah.webp);
 }
 
 .container-cover.in-page-new-hampshire-state {
   background-position: center center;
-  background-image: url(../images/states/new-hampshire/new-hampshire.jpg);
+  background-image: url(../images/states/new-hampshire/new-hampshire.webp);
 }
 
 .container-cover.in-page-north-carolina-state {
   background-position: center center;
-  background-image: url(../images/states/north-carolina/north-carolina.jpg);
+  background-image: url(../images/states/north-carolina/north-carolina.webp);
 }
 
 .container-cover.in-page-west-virginia-state {
   background-position: center center;
-  background-image: url(../images/states/west-virginia/west-virginia.jpg);
+  background-image: url(../images/states/west-virginia/west-virginia.webp);
 }
 
 .container-cover.in-page-louisiana-state {
   background-position: center center;
-  background-image: url(../images/states/louisiana/louisiana.jpg);
+  background-image: url(../images/states/louisiana/louisiana.webp);
 }
 
 .container-cover.in-page-arkansas-state {
   background-position: center center;
-  background-image: url(../images/states/arkansas/arkansas.jpg);
+  background-image: url(../images/states/arkansas/arkansas.webp);
 }
 
 .container-cover.in-page-delaware-state {
   background-position: center center;
-  background-image: url(../images/states/delaware/delaware.jpg);
+  background-image: url(../images/states/delaware/delaware.webp);
 }
 
 .container-cover.in-page-idaho-state {
   background-position: center center;
-  background-image: url(../images/states/idaho/idaho.jpg);
+  background-image: url(../images/states/idaho/idaho.webp);
 }
 
 .container-cover.in-page-kansas-state {
   background-position: center center;
-  background-image: url(../images/states/kansas/kansas.jpg);
+  background-image: url(../images/states/kansas/kansas.webp);
 }
 
 .container-cover.in-page-mississippi-state {
   background-position: center center;
-  background-image: url(../images/states/mississippi/mississippi.jpg);
+  background-image: url(../images/states/mississippi/mississippi.webp);
 }
 
 .container-cover.in-page-nevada-state {
   background-position: center center;
-  background-image: url(../images/states/nevada/nevada.jpg);
+  background-image: url(../images/states/nevada/nevada.webp);
 }
 
 .container-cover.in-page-north-dakota-state {
   background-position: center center;
-  background-image: url(../images/states/north-dakota/north-dakota.jpg);
+  background-image: url(../images/states/north-dakota/north-dakota.webp);
 }
 
 .container-cover.in-page-oklahoma-state {
   background-position: center center;
-  background-image: url(../images/states/oklahoma/oklahoma.jpg);
+  background-image: url(../images/states/oklahoma/oklahoma.webp);
 }
 
 .container-cover.in-page-rhode-island-state {
   background-position: center center;
-  background-image: url(../images/states/rhode-island/rhode-island.jpg);
+  background-image: url(../images/states/rhode-island/rhode-island.webp);
 }
 
 .container-cover.in-page-south-dakota-state {
   background-position: center center;
-  background-image: url(../images/states/south-dakota/south-dakota.jpg);
+  background-image: url(../images/states/south-dakota/south-dakota.webp);
 }
 
 .container-cover.in-page-virginia-state {
   background-position: center center;
-  background-image: url(../images/states/virginia/virginia.jpg);
+  background-image: url(../images/states/virginia/virginia.webp);
 }
 
 .container-cover.in-page-wyoming-state {
   background-position: center center;
-  background-image: url(../images/states/wyoming/wyoming.jpg);
+  background-image: url(../images/states/wyoming/wyoming.webp);
 }
 
 .container-cover.in-page-auto-dealers {
   background-position: center center;
-  background-image: url(../images/auto-dealers/dealership_header.jpg);
+  background-image: url(../images/auto-dealers/dealership_header.webp);
 }
 
 .container-cover.in-page-logistics {
   background-position: center center;
-  background-image: url(../images/logistics/logistic_header.jpg);
+  background-image: url(../images/logistics/logistic_header.webp);
 }
 
 .container-cover.in-page-relocation-services {
   background-position: center center;
-  background-image: url(../images/relocation-services/relocation_services_header.jpg);
+  background-image: url(../images/relocation-services/relocation_services_header.webp);
 }
 
 .container-cover.in-page-rental-car {
   background-position: center center;
-  background-image: url(../images/rental-car/rental_car_header.jpg);
+  background-image: url(../images/rental-car/rental_car_header.webp);
 }
 
 .container-cover.in-page-auto-auctions {
   background-position: center center;
-  background-image: url(../images/auctions/auction_header.jpg);
+  background-image: url(../images/auctions/auction_header.webp);
 }
 
 .in-page-mission-vision {
-  background-image: url(../images/mission-vision/dashed-bg.png);
+  background-image: url(../images/mission-vision/dashed-bg.webp);
   background-repeat: no-repeat;
   background-position: center -83px;
 }
@@ -9303,7 +9303,7 @@ button.button-green-on-white [class^="icon-"] {
 
 @media (min-width: 770px) {
   .container-footer {
-    background-image: url(../img/footer.jpg);
+    background-image: url(../img/footer.webp);
     background-size: cover;
     background-position: center;
   }
@@ -9326,7 +9326,7 @@ button.button-green-on-white [class^="icon-"] {
 
 @media (min-width: 770px) {
   .container-cta.container-dark {
-    background-image: url(../images/cta-bg-dark.png);
+    background-image: url(../images/cta-bg-dark.webp);
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
@@ -9339,7 +9339,7 @@ button.button-green-on-white [class^="icon-"] {
 
 @media (min-width: 770px) {
   .container-cta.container-light {
-    background-image: url(../images/cta-bg-white.png);
+    background-image: url(../images/cta-bg-white.webp);
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
@@ -9352,7 +9352,7 @@ button.button-green-on-white [class^="icon-"] {
 
 @media (min-width: 770px) {
   .container-cta.container-white {
-    background-image: url(../images/cta-bg-white.png);
+    background-image: url(../images/cta-bg-white.webp);
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
@@ -9383,7 +9383,7 @@ button.button-green-on-white [class^="icon-"] {
     justify-content: center;
     align-items: flex-start;
     border-radius: 5px;
-    background-image: url(../img/footer.jpeg);
+    background-image: url(../img/footer.webp);
     background-size: 200%;
     padding-left: 32px;
   }
@@ -9901,7 +9901,7 @@ button.button-green-on-white [class^="icon-"] {
 
 @media (min-width: 770px) {
   .with-truck-bg {
-    background-image: url(../images/truck-illustration.png);
+    background-image: url(../images/truck-illustration.webp);
     background-size: auto 75%;
     background-position: 95% center;
     background-repeat: no-repeat;
@@ -9951,7 +9951,7 @@ button.button-green-on-white [class^="icon-"] {
   display: inline-block;
   width: 189px;
   height: 36px;
-  background-image: url(../images/image-logo-footer.svg);
+  background-image: url(../images/image-logo-footer.webp);
 }
 
 .container-icon-title-text {
@@ -10651,30 +10651,30 @@ button.button-green-on-white [class^="icon-"] {
   display: block;
   width: 12px;
   height: 11px;
-  background-image: url(../images/reviews/review-page-star.png);
+  background-image: url(../images/reviews/review-page-star.webp);
   background-repeat: no-repeat;
   background-size: contain;
   margin-right: 2px;
 }
 
 .stars-wrapper .review-page-star.page-star-4 {
-  background-image: url(../images/reviews/review-page-star-4.png);
+  background-image: url(../images/reviews/review-page-star-4.webp);
 }
 
 .stars-wrapper .review-page-star.page-star-5 {
-  background-image: url(../images/reviews/review-page-star-5.png);
+  background-image: url(../images/reviews/review-page-star-5.webp);
 }
 
 .stars-wrapper .review-page-star.page-star-6 {
-  background-image: url(../images/reviews/review-page-star-6.png);
+  background-image: url(../images/reviews/review-page-star-6.webp);
 }
 
 .stars-wrapper .review-page-star.page-star-7 {
-  background-image: url(../images/reviews/review-page-star-7.png);
+  background-image: url(../images/reviews/review-page-star-7.webp);
 }
 
 .stars-wrapper .review-page-star.page-star-8 {
-  background-image: url(../images/reviews/review-page-star-8.png);
+  background-image: url(../images/reviews/review-page-star-8.webp);
 }
 
 .stars-wrapper .review-page-star.page-star-medium {
@@ -12412,7 +12412,7 @@ button.button-green-on-white [class^="icon-"] {
 
 @media (min-width: 1170px) {
   .net-promoter-score {
-    background-image: url(../images/relocation-services/relocation_services_3.png);
+    background-image: url(../images/relocation-services/relocation_services_3.webp);
     background-position: center;
     min-height: 450px;
   }
