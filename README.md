@@ -44,9 +44,6 @@ Our ultimate goal is to create a system where everyone using our service is 100%
 
 - _HTML , CSS , JAVASCRIPT_
 
-### Herramientas de Trabajo:
-
-- _CRM BATS , CENTRAL-DISPATCH , RING-CENTRAL , META-ADS_
 
 ## **😋 ¿CÓMO APOYAR EN ESTE PROYECTO?**
 
@@ -60,6 +57,8 @@ You are free to fork this project and suggest any modifications, deletions or ad
 
 Alneidismar Guaiquirima <3
 
-Alejandro Gil (Alex G)
-
 Anyel Damian (AD-Gomez)
+
+Carlos Martinez
+
+Daniel Montes
