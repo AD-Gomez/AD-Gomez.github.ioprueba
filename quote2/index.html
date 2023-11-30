@@ -4,38 +4,60 @@
   <head>
     <title>Quote | Cayad Auto Transport</title>
     <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1530888377447464');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1530888377447464&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-  <!-- Twitter conversion tracking base code -->
-  <!-- <script>
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1530888377447464");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1530888377447464&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <!-- Twitter conversion tracking base code -->
+    <!-- <script>
     !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
     },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
     a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
     twq('config','oh1vh');
     </script> -->
     <!-- End Twitter conversion tracking base code -->
-  <!-- Reddit Pixel -->
-  <!-- <script>
+    <!-- Reddit Pixel -->
+    <!-- <script>
     !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_durrnb6oiv7d', {"optOut":false,"useDecimalCurrencyValues":true,"aaid":"<AAID-HERE>","email":"<EMAIL-HERE>","externalId":"<EXTERNAL-ID-HERE>","idfa":"<IDFA-HERE>"});rdt('track', 'PageVisit');
     </script> -->
     <!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
     <!-- End Reddit Pixel -->
-    <!-- start ws sc -->   
-    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <!-- start ws sc -->
+    <script
+      src="https://kit.fontawesome.com/eb496ab1a0.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- End ws sc -->
     <link
       rel="stylesheet"
@@ -50,7 +72,7 @@
     ></script>
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="../img/title-icon.webp" />
 
     <meta charset="utf-8" />
@@ -339,7 +361,10 @@
               style="text-align: left; background-color: white; color: black"
             >
               <div>
-                <img src="../img/credit_cards.webp" class="credit_cards" /><br />
+                <img
+                  src="../img/credit_cards.webp"
+                  class="credit_cards"
+                /><br />
               </div>
             </div>
             <br />
@@ -416,8 +441,8 @@
               <br /><br />
               <span style="text-align: justify; display: inline-block"
                 >Our transportation specialists are standing by to help. Call
-                (469)619-0747 to discuss your transport with a specialist 
-                and let us answer any questions you may have.
+                (469)619-0747 to discuss your transport with a specialist and
+                let us answer any questions you may have.
               </span>
               <br /><br />
             </div>
@@ -453,9 +478,7 @@
       </div>
       <div class="row justify-content-center">
         <span style="color: gray"
-          ><a href="/index.html" id="linkhome"
-            >Cayad Auto Transport</a
-          >
+          ><a href="/index.html" id="linkhome">Cayad Auto Transport</a>
         </span>
       </div>
 
@@ -651,45 +674,23 @@
       }
 
       async function sendInformation() {
-        const sendedLead = await localStorage.getItem("sendedLead");
-        const sendedEmail = await localStorage.getItem("sendedEmail");
+        let sendedLead = await localStorage.getItem("sendedLead");
+        sendedLead = sendedLead
+          ? sendedLead === "true"
+            ? true
+            : false
+          : false;
+        let sendedEmail = await localStorage.getItem("sendedEmail");
+        sendedEmail = sendedEmail
+          ? sendedEmail === "true"
+            ? true
+            : false
+          : false;
+        const infoLead = await localStorage.getItem("lead");
+        const jsonLead = infoLead ? JSON.parse(infoLead) : undefined;
 
-        // const promises = [];
-        // if (!sendedLead) {
-        //   const infoLead = await localStorage.getItem("lead");
-        //   const jsonLead = JSON.parse(infoLead);
-        //   promises.push(sendLead(jsonLead));
-        // }
-        // if (!sendedEmail) {
-        //   const infoEmail = await localStorage.getItem("emailCayad");
-        //   const jsonEmail = JSON.parse(infoEmail);
-        //   promises.push(sendEmail(jsonEmail));
-        // }
-
-        // if (promises.length > 0) {
-        //   const message = document.getElementById("messageLoading");
-        //   const link = document.getElementById("linkhome");
-        //   link.classList.add("d-none");
-        //   message.classList.remove("d-none");
-        //   message.classList.add("d-flex");
-        //   const btn = document.getElementById("createQuote");
-        //   btn.value = "Sending request...";
-        //   btn.disabled = true;
-
-        //   const resultLead = await Promise.all(promises);
-        //   btn.value = "Create Quote";
-        //   btn.disabled = false;
-        //   message.classList.remove("d-flex");
-        //   link.classList.remove("d-none");
-        //   message.classList.add("d-none");
-        //   return resultLead;
-        // }
-        if (!sendedLead) {
+        if (!sendedLead && infoLead.email !== "") {
           disabledButtons();
-
-          console.log("ENTRA en el lead");
-          const infoLead = await localStorage.getItem("lead");
-          const jsonLead = JSON.parse(infoLead);
 
           sendLead(jsonLead)
             .then(async () => {
@@ -709,11 +710,14 @@
         } else {
           finishLead = true;
         }
-        if (!sendedEmail) {
+
+        const infoEmail = await localStorage.getItem("emailCayad");
+
+        const jsonEmail = infoEmail ? JSON.parse(infoEmail) : undefined;
+
+        if (!sendedEmail && infoEmail.email !== "") {
           disabledButtons();
 
-          const infoEmail = await localStorage.getItem("emailCayad");
-          const jsonEmail = JSON.parse(infoEmail);
           sendEmail(jsonEmail)
             .then(async () => {
               await localStorage.setItem("sendedEmail", true);
@@ -761,6 +765,6 @@
     <!-- <a href="https://api.whatsapp.com/send?phone=+14696190747" class="btn-wsp" target="_blank">
       <i class="fa fa-whatsapp icono"></i>
       </a> -->
-        <!-- ws plugin del chat Code END-->
+    <!-- ws plugin del chat Code END-->
   </body>
 </html>
