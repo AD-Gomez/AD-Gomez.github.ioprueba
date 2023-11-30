@@ -689,8 +689,11 @@
         const infoLead = await localStorage.getItem("lead");
         const jsonLead = infoLead ? JSON.parse(infoLead) : undefined;
 
-        if (!sendedLead && infoLead.email !== "") {
+        if (!sendedLead) {
           disabledButtons();
+
+          const infoLead = await localStorage.getItem("lead");
+          const jsonLead = JSON.parse(infoLead);
 
           sendLead(jsonLead)
             .then(async () => {
