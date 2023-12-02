@@ -1,32 +1,3 @@
-var chatbox = document.getElementById("fb-customer-chat");
-chatbox.setAttribute("page_id", "116222094837969");
-chatbox.setAttribute("attribution", "biz_inbox");
-
-window.fbAsyncInit = function () {
-  FB.init({
-    xfbml: true,
-    version: "v17.0",
-  });
-};
-(function (d, s, id) {
-  var js,
-    fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
-  fjs.parentNode.insertBefore(js, fjs);
-})(document, "script", "facebook-jssdk");
-const formResult = {
-  typeAddess: "",
-  origin: "",
-  destination: "",
-  Vehicles: [],
-  shipmentDate: "",
-  shipmentName: "",
-  shipmentEmail: "",
-  shipmentPhone: "",
-};
 function maskPhone() {
   $("#phone").keyup(function () {
     $(this).val(
@@ -129,6 +100,7 @@ function initForm() {
   const dateShipment = document.getElementById("dateShipment");
   dateShipment.setAttribute("min", `${añoActual}-${mesActual}-${diaActual}`);
   dateShipment.setAttribute("value", `${añoActual}-${mesActual}-${diaActual}`);
+  console.log(fechaActual);
 
   //zip
   const zipOrigin = document.getElementById("zip_origin");
