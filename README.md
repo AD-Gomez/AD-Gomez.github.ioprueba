@@ -42,7 +42,7 @@ Our ultimate goal is to create a system where everyone using our service is 100%
 
 ### Herramientas de Desarrollo:
 
-- _HTML , CSS , JAVASCRIPT_
+- _HTML , CSS , JS
 
 
 ## **😋 ¿CÓMO APOYAR EN ESTE PROYECTO?**
