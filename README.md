@@ -49,7 +49,7 @@ Our ultimate goal is to create a system where everyone using our service is 100%
 
 Puedes libremente hacerle fork a este proyecto y sugerirme cualquier modificacion, eliminacion o complemento para su mejora.
 
-You are free to fork this project and suggest any modifications, deletions or additions for its improvement.
+You are free to fork this project and suggest any modifications, deletions or additions for its improvement
 
 </br>
 
