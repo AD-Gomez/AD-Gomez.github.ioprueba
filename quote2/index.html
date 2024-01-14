@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Quote | Cayad Auto Transport</title>
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1530888377447464");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1530888377447464&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <!-- Twitter conversion tracking base code -->
+    <!-- <script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    twq('config','oh1vh');
+    </script> -->
+    <!-- End Twitter conversion tracking base code -->
+    <!-- Reddit Pixel -->
+    <!-- <script>
+    !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_durrnb6oiv7d', {"optOut":false,"useDecimalCurrencyValues":true,"aaid":"<AAID-HERE>","email":"<EMAIL-HERE>","externalId":"<EXTERNAL-ID-HERE>","idfa":"<IDFA-HERE>"});rdt('track', 'PageVisit');
+    </script> -->
+    <!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
+    <!-- End Reddit Pixel -->
+    <!-- start ws sc -->
+    <script
+      src="https://kit.fontawesome.com/eb496ab1a0.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- End ws sc -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="../img/title-icon.webp" />
+
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="/data/include/bsdp/css/bootstrap-datepicker.css"
+    />
+
+    <style>
+      input {
+        border: none;
+        background-color: transparent;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus,
+      button:focus {
+        outline: none;
+      }
+
+      .fa-user-circle-o {
+        color: gray;
+      }
+
+      .input-group {
+        border: 1px gray solid;
+        padding: 10px;
+      }
+    </style>
+
+    <style>
+      .tooltip-main {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        font-weight: 700;
+        background: #f3f3f3;
+        border: 1px solid #737373;
+        color: #737373;
+        margin: 4px 121px 0 5px;
+        float: right;
+        text-align: left !important;
+      }
+
+      .tooltip-qm {
+        float: left;
+        margin: -2px 0px 3px 4px;
+        font-size: 12px;
+      }
+
+      .tooltip-inner {
+        max-width: 236px !important;
+        height: 56px;
+        font-size: 12px;
+        padding: 10px 15px 10px 20px;
+        background: #ffffff;
+        color: rgb(0, 0, 0, 0.7);
+        border: 1px solid #cccccc;
+        text-align: left;
+      }
+
+      .tooltip.show {
+        opacity: 1;
+      }
+
+      .bs-tooltip-auto[x-placement^="bottom"] .arrow::before,
+      .bs-tooltip-bottom .arrow::before {
+        border-bottom-color: #f00;
+        /* Red */
+      }
+      .credit_cards {
+        height: 35px;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body
+    class="d-flex justify-content-center align-items-center"
+    style="background-color: #cccccc"
+  >
+    <div
+      class="w3-container w3-white"
+      style="max-width: 750px; border: 1px solid white; border-radius: 10px"
+    >
+      <div class="w3-row w3-third w3-white" style="padding-top: 15px">
+        <img src="../img/logo-cayad.webp" style="max-height: 50px" />
+      </div>
+
+      <div class="w3-row w3-twothird w3-white" style="padding-top: 15px">
+        <b style="font-size: 18px">Your Quote</b>
+        <!-- (c) 2005, 2023. Authorize.Net is a registered trademark of CyberSource Corporation -->
+        <div class="AuthorizeNetSeal" style="float: right">
+          <script type="text/javascript" language="javascript">
+            var ANS_customer_id = "40b07bd0-492e-41ef-af3d-203518035d55";
+          </script>
+          <script
+            type="text/javascript"
+            language="javascript"
+            src="//verify.authorize.net:443/anetseal/seal.js"
+          ></script>
+        </div>
+
+        <br /><span style="color: grey"
+          >Thank You! We will contact you shortly…</span
+        >
+      </div>
+
+      <div class="w3-row">&nbsp;</div>
+
+      <script src="/data/include/mask/jquery.inputmask.bundle.js"></script>
+      <form method="post" id="main_form" autocomplete="off">
+        <input type="hidden" name="page" value="2" />
+
+        <div class="w3-row" style="border: 0px solid #cccccc">
+          <div
+            class="w3-half w3-container"
+            style="
+              text-align: left;
+              background-color: white;
+              color: black;
+              padding: 0px;
+            "
+          >
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border-top: 1px solid #cccccc;
+                border-left: 1px solid #cccccc;
+                border-right: 1px solid #cccccc;
+              "
+            >
+              <div style="padding: 7px; font-size: 15px; display: inline-block">
+                Customer Name: <span id="customerName"></span>
+              </div>
+            </div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border: 1px solid #cccccc;
+              "
+            >
+              <table width="100%" cellpadding="5px">
+                <tbody id="leadInfo">
+                  <tr>
+                    <td style="background-color: #ecf5fe">Pickup From</td>
+                    <td id="origin"></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #ecf5fe">Deliver To</td>
+                    <td id="destination"></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: #ecf5fe">Vehicle(s)</td>
+                    <td id="vehicle-list"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border-top: 1px solid #cccccc;
+                border-left: 1px solid #cccccc;
+                border-right: 1px solid #cccccc;
+              "
+            >
+              &nbsp;
+            </div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border-top: 1px solid #cccccc;
+                border-left: 1px solid #cccccc;
+                border-right: 1px solid #cccccc;
+              "
+            >
+              &nbsp;
+            </div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border: 1px solid #cccccc;
+              "
+            >
+              <table width="100%" cellpadding="5px">
+                <tbody>
+                  <tr>
+                    <td rowspan="2"></td>
+                    <td style="font-size: 12px">
+                      <img
+                        src="../img/green_checkbox.webp"
+                        style="width: 10px"
+                      />&nbsp;&nbsp;Dedicated Advisors
+                    </td>
+                    <td style="font-size: 12px">
+                      <img
+                        src="../img/green_checkbox.webp"
+                        style="width: 10px"
+                      />&nbsp;&nbsp;No Hidden Fees
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="font-size: 12px">
+                      <img
+                        src="../img/green_checkbox.webp"
+                        style="width: 10px"
+                      />&nbsp;&nbsp;Ensured Carrier
+                    </td>
+                    <td style="font-size: 12px">
+                      <img
+                        src="../img/green_checkbox.webp"
+                        style="width: 10px"
+                      />&nbsp;&nbsp;Customer Portal
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table width="100%" cellpadding="5px">
+                <tbody>
+                  <tr>
+                    <td style="color: gray">
+                      <br /><img
+                        src="../img/truck-flatbed.svg"
+                        alt=""
+                        width="16"
+                        height="16"
+                        title=""
+                        id="transportTypeIcon"
+                      />&nbsp;&nbsp;
+                      <div id="transportType"></div>
+                    </td>
+                    <td style="color: gray">
+                      <br /><img
+                        src="../img/truck.svg"
+                        alt=""
+                        width="16"
+                        height="16"
+                        title=""
+                        id="inop"
+                      />&nbsp;&nbsp;
+                      <div id="drives"></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              class="w3-full w3-container"
+              style="text-align: left; background-color: white; color: black"
+            >
+              <div>
+                <img
+                  src="../img/credit_cards.webp"
+                  class="credit_cards"
+                /><br />
+              </div>
+            </div>
+            <br />
+            <span style="font-size: 0.9rem"
+              >Fee of 4% will be charged over CC / Paypal / Venmo
+              <br />
+              No fee will be charged over Zelle and Cash App</span
+            >
+          </div>
+
+          <div
+            class="w3-half w3-container"
+            style="text-align: left; background-color: white; color: black"
+          >
+            <div
+              class="w3-full w3-container mt-4 mt-sm-0"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border: 1px solid #cccccc;
+              "
+            >
+              <div class="container">
+                <div class="row justify-content-between">
+                  <div><img src="../img/point_a.webp" /></div>
+                  <div class="font-weight-bold" style="color: #34a5e5">
+                    Origin &nbsp;-&nbsp; Destination
+                  </div>
+                  <div><img width="8px" src="../img/point_b.webp" /></div>
+                </div>
+                <div class="row mt-2">
+                  <div
+                    style="width: 100%; height: 1px; background-color: #e8e8e8"
+                  ></div>
+                </div>
+
+                <div class="row justify-content-between mt-3 mb-2">
+                  <div id="origin_txt"></div>
+                  <div id="distance"></div>
+                  <div id="destination_txt"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="w3-row">&nbsp;</div>
+
+            <div
+              class="w3-full"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                border: 1px solid #cccccc;
+                padding-top: 6px;
+                padding-bottom: 6px;
+              "
+            >
+              <div id="map" style="width: 100%; height: 250px"></div>
+            </div>
+
+            <div class="w3-row">&nbsp;</div>
+
+            <div
+              class="w3-full w3-container"
+              style="
+                text-align: left;
+                background-color: white;
+                color: black;
+                display: inline-block;
+              "
+            >
+              <b>Have questions about your transport?</b>
+              <br /><br />
+              <span style="text-align: justify; display: inline-block"
+                >Our transportation specialists are standing by to help. Call
+                (469) 619-0747 to discuss your transport with a specialist and
+                let us answer any questions you may have.
+              </span>
+              <br /><br />
+            </div>
+          </div>
+        </div>
+      </form>
+      <template id="add-vehicle">
+        <div>
+          <div id="vehicleInfo"></div>
+          <div
+            style="width: 100%; height: 1px; background-color: #e8e8e8"
+          ></div>
+        </div>
+      </template>
+      <div
+        id="messageLoading"
+        class="d-none w-full bg-info text-white rounded py-2 justify-content-center"
+      >
+        We are creating your orden, wait a few minutes
+      </div>
+      <div
+        class="row justify-content-center"
+        style="margin-top: 30px; margin-bottom: 15px"
+      >
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="createQuote"
+          onclick="goback()"
+        >
+          Create a new quote
+        </button>
+      </div>
+      <div class="row justify-content-center">
+        <span style="color: gray"
+          ><a href="/index.html" id="linkhome">Cayad Auto Transport</a>
+        </span>
+      </div>
+
+      <div class="w3-row">&nbsp;</div>
+    </div>
+
+    <!-- Messenger plugin del chat Code START-->
+    <div id="fb-root"></div>
+
+    <!-- Your plugin del chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat"></div>
+    <script type="module" src="map.js"></script>
+
+    <script src="../js/quote.js"></script>
+    <script>
+      var chatbox = document.getElementById("fb-customer-chat");
+      chatbox.setAttribute("page_id", "116222094837969");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-request@4.0.0/dist/bundled/request.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-geocoding@4.0.0/dist/bundled/geocoding.umd.js"></script>
+    <script src="https://unpkg.com/@esri/arcgis-rest-routing@4.0.0/dist/bundled/routing.umd.js"></script>
+    <script></script>
+    <!-- Your SDK code -->
+    <script>
+      const apiKeyArcGis =
+        "AAPKa978db58a3464f549fb37eb6b914a084O7kjnFI5jp0sBhJJVSYl_q3co3Kj2QYI9y3-tQpES3eczqH9OUXKOuzIZy6w04pA";
+      window.fbAsyncInit = function () {
+        FB.init({
+          xfbml: true,
+          version: "v17.0",
+        });
+      };
+
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+    <!-- Messenger plugin del chat Code END-->
+    <script>
+      let map = null;
+      let finishLead = false;
+      let finishEmail = false;
+      window.onload = function () {
+        sendInformation();
+        map = L.map("map").setView([51.505, -0.09], 13);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "© OpenStreetMap",
+        }).addTo(map);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap",
+        }).addTo(map);
+
+        const data = localStorage.getItem("lead");
+        // if (!data) return (location.href = "www.google.com");
+        // location.href = "../quote2/index.html";
+        const dataLead = JSON.parse(data);
+        loadMap(dataLead);
+
+        // fill info
+        const customerElem = document.getElementById("customerName");
+        customerElem.textContent = dataLead.first_name;
+        // origin and deliver
+        const originElem = document.getElementById("origin");
+        const destinationElem = document.getElementById("destination");
+        const originTextElem = document.getElementById("origin_txt");
+        const destinationTextElem = document.getElementById("destination_txt");
+
+        originTextElem.textContent =
+          dataLead.origin_city !== ""
+            ? dataLead.origin_city
+            : dataLead.origin_postal_code;
+        destinationTextElem.textContent =
+          dataLead.destination_city !== ""
+            ? dataLead.destination_city
+            : dataLead.destination_postal_code;
+
+        originElem.textContent =
+          dataLead.origin_city !== ""
+            ? dataLead.origin_city
+            : dataLead.origin_postal_code;
+        destinationElem.textContent =
+          dataLead.destination_city !== ""
+            ? dataLead.destination_city
+            : dataLead.destination_postal_code;
+        transportTypeElem = document.getElementById("transportType");
+        transportTypeElem.textContent =
+          dataLead.transport_type == "1"
+            ? "Open Car Carrier"
+            : "Enclosed Card carrier";
+        const transportTypeIcon = document.getElementById("transportTypeIcon");
+        transportTypeIcon.src =
+          dataLead.transport_type == "1"
+            ? "../img/truck-flatbed.svg"
+            : "../img/truck.svg";
+        //vehicle
+        const template = document.querySelector("#add-vehicle");
+        const my_template_clone = template.content.cloneNode(true);
+        const newVehicle = my_template_clone.getElementById("vehicleInfo");
+        dataLead.Vehicles.map((v) => {
+          const my_template_clone = template.content.cloneNode(true);
+          const newVehicle = my_template_clone.getElementById("vehicleInfo");
+          newVehicle.textContent = `${v.vehicle_make} ${v.vehicle_model} ${
+            v.vehicle_model_year
+          } Inop: ${v.vehicle_inop === "1" ? "Yes" : "No"}`;
+          const table = document.getElementById("vehicle-list");
+          table.appendChild(my_template_clone);
+        });
+
+        const runs = document.getElementById("drives");
+        const image = document.getElementById("inop");
+
+        if (dataLead.Vehicles.some((e) => e.vehicle_inop === "1")) {
+          runs.textContent = "Not All vehicles runs";
+          image.src = "../img/inop.png";
+        } else {
+          runs.textContent = "All vehicles runs";
+          image.src = "../img/op.png";
+        }
+      };
+      async function goback() {
+        location.href = "../quote/index.html";
+      }
+      async function loadMap(dataLead) {
+        const coorOrigin = await search(
+          dataLead.origin_city !== ""
+            ? dataLead.origin_city
+            : dataLead.origin_postal_code
+        );
+
+        const coorDestination = await search(
+          dataLead.destination_city !== ""
+            ? dataLead.destination_city
+            : dataLead.destination_postal_code
+        );
+
+        const authentication = arcgisRest.ApiKeyManager.fromKey(apiKeyArcGis);
+
+        arcgisRest
+          .solveRoute({
+            stops: [coorOrigin, coorDestination],
+            authentication,
+          })
+          .then((response) => {
+            const route = response.routes.features[0].geometry.paths[0].map(
+              (e) => e.reverse()
+            );
+            // const allCoors = routeCoordinates.map((e) => e.reverse());
+
+            const distanceElem = document.getElementById("distance");
+            distanceElem.textContent =
+              response.routes.features[0].attributes.Total_Miles.toFixed(2) +
+              ` Millas (mi)`;
+
+            const polyline = L.polyline(route, {
+              color: "#00a1ef",
+              weight: 3,
+            }).addTo(map);
+            map.fitBounds(polyline.getBounds());
+          });
+      }
+
+      function search(address) {
+        return new Promise((resolve, reject) => {
+          const authentication = arcgisRest.ApiKeyManager.fromKey(apiKeyArcGis);
+          arcgisRest
+            .geocode({
+              address: address,
+              postal: "",
+              countryCode: "USA",
+              authentication,
+            })
+            .then((response) => {
+              const candidate = response.candidates[0];
+              var coordenadas = [candidate.location.x, candidate.location.y];
+              L.marker([coordenadas[1], coordenadas[0]])
+                .addTo(map)
+                .bindPopup(address)
+                .openPopup();
+
+              // Centra el mapa en las coordenadas del marcador
+              map.setView([coordenadas[1], coordenadas[0]], 14);
+              resolve([coordenadas[0], coordenadas[1]]);
+            });
+        });
+      }
+
+      async function sendInformation() {
+        let sendedLead = await localStorage.getItem("sendedLead");
+        sendedLead = sendedLead
+          ? sendedLead === "true"
+            ? true
+            : false
+          : false;
+        let sendedEmail = await localStorage.getItem("sendedEmail");
+        sendedEmail = sendedEmail
+          ? sendedEmail === "true"
+            ? true
+            : false
+          : false;
+        const infoLead = await localStorage.getItem("lead");
+        const jsonLead = infoLead ? JSON.parse(infoLead) : undefined;
+
+        if (!sendedLead) {
+          disabledButtons();
+
+          const infoLead = await localStorage.getItem("lead");
+          const jsonLead = JSON.parse(infoLead);
+
+          sendLead(jsonLead)
+            .then(async () => {
+              await localStorage.setItem("sendedLead", true);
+              finishLead = true;
+              if (finishEmail) {
+                enabledButtons();
+              }
+            })
+            .catch(async (err) => {
+              await localStorage.setItem("sendedLead", false);
+              finishLead = true;
+              if (finishEmail) {
+                enabledButtons();
+              }
+            });
+        } else {
+          finishLead = true;
+        }
+
+        const infoEmail = await localStorage.getItem("emailCayad");
+
+        const jsonEmail = infoEmail ? JSON.parse(infoEmail) : undefined;
+
+        if (!sendedEmail && infoEmail.email !== "") {
+          disabledButtons();
+
+          sendEmail(jsonEmail)
+            .then(async () => {
+              await localStorage.setItem("sendedEmail", true);
+              finishEmail = true;
+              if (finishLead) {
+                enabledButtons();
+              }
+            })
+            .catch(async (err) => {
+              await localStorage.setItem("sendedEmail", false);
+              finishEmail = true;
+              if (finishLead) {
+                enabledButtons();
+              }
+            });
+        } else {
+          finishEmail = true;
+        }
+      }
+
+      async function disabledButtons() {
+        const message = document.getElementById("messageLoading");
+        const link = document.getElementById("linkhome");
+        const btn = document.getElementById("createQuote");
+        link.classList.add("d-none");
+        message.classList.remove("d-none");
+        message.classList.add("d-flex");
+        btn.value = "Sending request...";
+        btn.disabled = true;
+      }
+
+      async function enabledButtons() {
+        const message = document.getElementById("messageLoading");
+        const link = document.getElementById("linkhome");
+        const btn = document.getElementById("createQuote");
+
+        btn.value = "Create Quote";
+        btn.disabled = false;
+        message.classList.remove("d-flex");
+        message.classList.add("d-none");
+        link.classList.remove("d-none");
+      }
+    </script>
+    <!-- ws plugin del chat Code start-->
+    <!-- <a href="https://api.whatsapp.com/send?phone=+14696190747" class="btn-wsp" target="_blank">
+      <i class="fa fa-whatsapp icono"></i>
+      </a> -->
+    <!-- ws plugin del chat Code END-->
+    <script>(function(a,m,o,c,r,m){a[m]={id:"900901",hash:"cd3e2089dd146f05de1bf9c0f96d930738305c2b7a5327b78900d8189eb95c9e",locale:"en",inline:false,setMeta:function(p){this.params=(this.params||[]).concat([p])}};a[o]=a[o]||function(){(a[o].q=a[o].q||[]).push(arguments)};var d=a.document,s=d.createElement('script');s.async=true;s.id=m+'_script';s.src='https://gso.kommo.com/js/button.js';d.head&&d.head.appendChild(s)}(window,0,'crmPlugin',0,0,'crm_plugin'));</script>
+  </body>
+</html>
