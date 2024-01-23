@@ -4,7 +4,7 @@
 
 ## **📌 INTRODUCCIÓN**
 
-¡Hola 😄! Bienvenid@ al desarrollo del primer proyecto colaborativo CAYAD una plataforma de servicios de brokerage! el cual iniciara con el servicio de transporte y logistica en todo el territorio nacional USA incluidos Alaska y Hawai.
+¡Hola 😄! Bienvenid@ al desarrollo del primer proyecto colaborativo CAYAD una plataforma de servicios de brokerage! el cual iniciara con el servicio de transporte y logistica en todo el territorio nacional USA incluidos Alaska y Hawai y exportaciones a MX
 
 Hello! Welcome to the development of the first collaborative project CAYAD, a brokerage services platform! which will begin with the transport and logistics service throughout the national territory of the USA including Alaska and Hawaii.
 
