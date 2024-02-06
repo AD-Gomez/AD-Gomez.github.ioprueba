@@ -1,3 +1,21 @@
+// Obtener el botón "Free Quote"
+const quoteButton = document.getElementById('escala-button-control-ovhgvgqg');
+
+// Obtener la posición del formulario
+const formPosition = document.getElementById('form').offsetTop;
+
+// Función para desplazar la ventana del navegador a la posición del formulario
+function scrollToForm() {
+    window.scrollTo({
+        top: formPosition,
+        behavior: 'smooth' // Desplazamiento suave
+    });
+}
+
+// Agregar un evento de clic al botón "Free Quote" que llama a la función scrollToForm
+quoteButton.addEventListener('click', scrollToForm);
+
+
 function initForm() {
   const fechaActual = new Date();
   const añoActual = fechaActual.getFullYear();
