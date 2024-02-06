@@ -51,7 +51,6 @@ function maskPhone() {
       form.addEventListener(
         "submit",
         function (event) {
-          console.log("sss")
           if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -124,10 +123,6 @@ async function mp_show_wait_animation_check_form(event) {
 
   vehicles.forEach(item => {
     let [vehicle_model_year, vehicle_make, vehicle_model] = item.split(" ")
-    console.log("Este es el item", item)
-    console.log("Este el el year", vehicle_model_year)
-    console.log("Este es el make", vehicle_make)
-    console.log("Este es el model", vehicle_model)
     vehiclesFormatead.push({
       vehicle_model_year,
       vehicle_make,
@@ -214,7 +209,6 @@ function sendEmail(data) {
 }
 
 function saveLead(data) {
-  console.log(data)
   const dataToSend = {
     AuthKey: "849d9659-34b5-49c5-befd-1cd238e7f9fc",
     ...data,
@@ -225,6 +219,7 @@ function saveLead(data) {
 
     destination_country: "USA",
   };
+  sendLead(dataToSend)
   localStorage.setItem("lead", JSON.stringify(dataToSend));
 }
 

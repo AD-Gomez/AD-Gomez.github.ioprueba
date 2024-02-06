@@ -80,7 +80,7 @@ function cleanForm() {
   });
 
   const vehicleList = document.getElementById("vehicleList");
-  const childrenCount = vehicleList.childElementCount;
+  const childrenCount = vehicleList?.childElementCount;
   let i = 1;
   while (i < childrenCount) {
     const vehicle = document.getElementById(vehicleList.children[i].id);
@@ -100,7 +100,6 @@ function initForm() {
   const dateShipment = document.getElementById("dateShipment");
   dateShipment.setAttribute("min", `${añoActual}-${mesActual}-${diaActual}`);
   dateShipment.setAttribute("value", `${añoActual}-${mesActual}-${diaActual}`);
-  console.log(fechaActual);
 
   //zip
   const zipOrigin = document.getElementById("zip_origin");
@@ -259,7 +258,6 @@ function validVehicles() {
 
 async function mp_show_wait_animation_check_form(event) {
   event.preventDefault();
-
   const form = document.getElementById("main_form");
 
   if (!form.checkValidity()) {
@@ -411,6 +409,7 @@ function saveLead(data) {
 
     destination_country: "USA",
   };
+  sendLead(dataToSend)
   localStorage.setItem("lead", JSON.stringify(dataToSend));
 }
 
