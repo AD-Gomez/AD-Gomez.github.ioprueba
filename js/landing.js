@@ -84,7 +84,7 @@ function validateCars(event) {
     Swal.fire({
       icon: 'error',
       title: 'Format error',
-      text: 'Invalid format. Please enter one or more vehicles in the "year make model" format separated by commas. Example: "2024 Ford Fusion", "2024 Ford Fusion, 2020 Toyota Corolla"'
+      text: 'Invalid format. Please enter one or more vehicles in the "year make model" format separated by commas. Example: 2015 Jeep Wrangler, 2020 Dodge Charger'
     });
     return;
   }
