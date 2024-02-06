@@ -442,26 +442,26 @@
       })(document, "script", "facebook-jssdk");
     </script> -->
   <!-- Messenger plugin del chat Code END-->
-  <!-- <script>
+  <script>
     let map = null;
     let finishLead = false;
     let finishEmail = false;
     window.onload = function () {
       sendInformation();
-      map = L.map("map").setView([51.505, -0.09], 13);
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "© OpenStreetMap",
-      }).addTo(map);
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap",
-      }).addTo(map);
+      // map = L.map("map").setView([51.505, -0.09], 13);
+      // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      //   maxZoom: 19,
+      //   attribution: "© OpenStreetMap",
+      // }).addTo(map);
+      // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      //   attribution: "© OpenStreetMap",
+      // }).addTo(map);
 
       const data = localStorage.getItem("lead");
       // if (!data) return (location.href = "www.google.com");
       // location.href = "../quote2/index.html";
       const dataLead = JSON.parse(data);
-      loadMap(dataLead);
+      // loadMap(dataLead);
 
       // fill info
       const customerElem = document.getElementById("customerName");
@@ -474,11 +474,11 @@
 
       originTextElem.textContent =
         dataLead.origin_city !== ""
-          ? dataLead.origin_city
+          ? dataLead.origin_city.split(",")[1]
           : dataLead.origin_postal_code;
       destinationTextElem.textContent =
         dataLead.destination_city !== ""
-          ? dataLead.destination_city
+          ? dataLead.destination_city.split(",")[1]
           : dataLead.destination_postal_code;
 
       originElem.textContent =
@@ -680,7 +680,7 @@
       message.classList.add("d-none");
       link.classList.remove("d-none");
     }
-  </script> -->
+  </script>
   <!-- ws plugin del chat Code start-->
   <!-- <a href="https://api.whatsapp.com/send?phone=+14696190747" class="btn-wsp" target="_blank">
       <i class="fa fa-whatsapp icono"></i>

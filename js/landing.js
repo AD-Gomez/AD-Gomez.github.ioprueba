@@ -188,7 +188,7 @@ function saveEmail(data) {
       delete send[key];
     }
   });
-
+  sendEmail(send)
   localStorage.setItem("emailCayad", JSON.stringify(send));
 }
 
