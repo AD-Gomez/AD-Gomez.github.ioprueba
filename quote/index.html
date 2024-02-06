@@ -205,7 +205,7 @@
                     width="16" height="16" title="" /></span>
               </div>
               <input oninput="onlyNumbers(event)" maxlength="5" minlength="5" autocomplete="new-password"
-                id="zip_origin" name="zip_origin" type="tel" data-toggle="tooltip" data-placement="top"
+                id="zip_origin" name="zip_origin" type="tel" pattern="\d{5,}" data-toggle="tooltip" data-placement="top"
                 class="form-control" placeholder="Zip Code" aria-label="Zip Code" aria-describedby="basic-addon1" />
               <input style="display: none" id="city_origin" name="city_origin" type="tel" data-toggle="tooltip"
                 data-placement="top" class="form-control" placeholder="City" aria-label="City"
@@ -223,7 +223,7 @@
                     width="16" height="16" title="" /></span>
               </div>
               <input oninput="onlyNumbers(event)" maxlength="5" minlength="5" type="tel" autocomplete="new-password"
-                id="zip_destination" name="zip_destination" class="form-control" data-toggle="tooltip"
+                id="zip_destination" pattern="\d{5,}" name="zip_destination" class="form-control" data-toggle="tooltip"
                 data-placement="top" placeholder="Zip Code" aria-label="Zip Code" aria-describedby="basic-addon1" />
               <input style="display: none" autocomplete="new-password" id="city_destination" name="city_destination"
                 type="tel" data-toggle="tooltip" data-placement="top" class="form-control" placeholder="City"

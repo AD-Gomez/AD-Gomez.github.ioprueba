@@ -443,7 +443,6 @@
     let finishLead = false;
     let finishEmail = false;
     window.onload = function () {
-      sendInformation();
       // map = L.map("map").setView([51.505, -0.09], 13);
       // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       //   maxZoom: 19,
@@ -454,7 +453,14 @@
       // }).addTo(map);
 
       const data = localStorage.getItem("lead");
-      // if (!data) return (location.href = "www.google.com");
+      console.log(data)
+      if (!data) {
+        console.log("Entro en el enabled")
+        enabledButtons()
+        return null
+      }
+      sendInformation();
+      console.log('ssss')
       // location.href = "../quote2/index.html";
       const dataLead = JSON.parse(data);
       // loadMap(dataLead);
@@ -489,7 +495,7 @@
       transportTypeElem.textContent =
         dataLead.transport_type == "1"
           ? "Open Car Carrier"
-          : "Enclosed Card carrier";
+          : "Enclosed Car carrier";
       const transportTypeIcon = document.getElementById("transportTypeIcon");
       transportTypeIcon.src =
         dataLead.transport_type == "1"
@@ -587,6 +593,9 @@
     }
 
     async function sendInformation() {
+      if (finishEmail) {
+        enabledButtons();
+      }
       let sendedLead = await localStorage.getItem("sendedLead");
       sendedLead = sendedLead
         ? sendedLead === "true"
@@ -607,7 +616,7 @@
 
         const infoLead = await localStorage.getItem("lead");
         const jsonLead = JSON.parse(infoLead);
-
+        if (!jsonLead) return null
         sendLead(jsonLead)
           .then(async () => {
             await localStorage.setItem("sendedLead", true);
