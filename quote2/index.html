@@ -138,7 +138,15 @@
       height: 35px;
       width: 300px;
     }
+
+    #map {
+      width: 100%;
+      height: 208px;
+    }
   </style>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VUs3BClENXZNUGnZzsgXvxcw3fVnSQY&libraries=places">
+  </script>
 </head>
 
 <body class="d-flex justify-content-center align-items-center" style="background-color: #cccccc">
@@ -325,7 +333,7 @@
                 padding-top: 6px;
                 padding-bottom: 6px;
               ">
-            <div class="mapouter">
+            <!-- <div class="mapouter">
               <div class="gmap_canvas"><iframe width="323" height="250" id="gmap_canvas"
                   src="https://maps.google.com/maps?q=636+5th+Ave%2C+New+York&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
@@ -347,7 +355,8 @@
                   }
                 </style>
               </div>
-            </div>
+            </div> -->
+            <div id="map"></div>
           </div>
 
           <div class="w3-row">&nbsp;</div>
@@ -396,7 +405,6 @@
   <script type="module" src="map.js"></script>
   <!-- Quote script -->
   <script src="../js/quote.js"></script>
-
   <!-- Messenger plugin del chat Code START-->
   <!-- <div id="fb-root"></div> -->
 
@@ -434,7 +442,7 @@
       })(document, "script", "facebook-jssdk");
     </script> -->
   <!-- Messenger plugin del chat Code END-->
-  <script>
+  <!-- <script>
     let map = null;
     let finishLead = false;
     let finishEmail = false;
@@ -672,13 +680,49 @@
       message.classList.add("d-none");
       link.classList.remove("d-none");
     }
-  </script>
+  </script> -->
   <!-- ws plugin del chat Code start-->
   <!-- <a href="https://api.whatsapp.com/send?phone=+14696190747" class="btn-wsp" target="_blank">
       <i class="fa fa-whatsapp icono"></i>
       </a> -->
   <!-- ws plugin del chat Code END-->
   <script>(function (a, m, o, c, r, m) { a[m] = { id: "900901", hash: "cd3e2089dd146f05de1bf9c0f96d930738305c2b7a5327b78900d8189eb95c9e", locale: "en", inline: false, setMeta: function (p) { this.params = (this.params || []).concat([p]) } }; a[o] = a[o] || function () { (a[o].q = a[o].q || []).push(arguments) }; var d = a.document, s = d.createElement('script'); s.async = true; s.id = m + '_script'; s.src = 'https://gso.kommo.com/js/button.js'; d.head && d.head.appendChild(s) }(window, 0, 'crmPlugin', 0, 0, 'crm_plugin'));</script>
+  <script>
+    const dataLead = localStorage.getItem("lead");
+
+    const jsonLead = dataLead ? JSON.parse(dataLead) : undefined;
+
+    if (jsonLead) {
+      let origin = jsonLead.origin_city || jsonLead.origin_postal_code;
+      let destination = jsonLead.destination_city || jsonLead.destination_postal_code
+
+      console.log(origin, destination)
+      if (origin && destination) {
+        let directionsService = new google.maps.DirectionsService();
+        let directionsRenderer = new google.maps.DirectionsRenderer();
+        let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: { lat: 41.85, lng: -87.65 } // Coordenadas de Chicago como centro inicial
+        });
+        directionsRenderer.setMap(map);
+
+        let request = {
+          origin: origin,
+          destination: destination,
+          travelMode: 'DRIVING'
+        };
+        console.log(request)
+        directionsService.route(request, function (result, status) {
+          if (status == 'OK') {
+            console.log(result)
+            directionsRenderer.setDirections(result);
+          } else {
+            console.error('Error al trazar la ruta:', status);
+          }
+        });
+      }
+    }
+  </script>
 </body>
 
 </html>
