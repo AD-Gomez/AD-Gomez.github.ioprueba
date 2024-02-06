@@ -1,21 +1,3 @@
-// Obtener el botón "Free Quote"
-const quoteButton = document.getElementById('escala-button-control-ovhgvgqg');
-
-// Obtener la posición del formulario
-const formPosition = document.getElementById('form').offsetTop;
-
-// Función para desplazar la ventana del navegador a la posición del formulario
-function scrollToForm() {
-    window.scrollTo({
-        top: formPosition,
-        behavior: 'smooth' // Desplazamiento suave
-    });
-}
-
-// Agregar un evento de clic al botón "Free Quote" que llama a la función scrollToForm
-quoteButton.addEventListener('click', scrollToForm);
-
-
 function initForm() {
   const fechaActual = new Date();
   const añoActual = fechaActual.getFullYear();
@@ -95,7 +77,7 @@ function onlyNumbers(event) {
 function validateCars(event) {  
   const input = event.target;
   const carInput = input.value.trim();
-  const regex = /^(\d{4}\s[a-zA-Z]+\s[a-zA-Z]+)(,\s\d{4}\s[a-zA-Z]+\s[a-zA-Z]+)*$/; // Expresión regular para validar el formato
+  const regex = /^(\d{4}\s[a-zA-Z]+\s[a-zA-Z0-9-]+)(,\s\d{4}\s[a-zA-Z]+\s[a-zA-Z0-9-]+)*$/; // Expresión regular para validar el formato
 
   if (!regex.test(carInput)) {
     input.value = '';
