@@ -11674,7 +11674,8 @@
                                         <label for="destination" style="margin:0px;">Destination <span
                                                 style="color: red;">*</span></label>
                                         <input type="text" id="destination" class=" form-control"
-                                            placeholder="Alameda, California, EE. UU." required>
+                                            placeholder="Alameda, California, EE. UU." required
+                                            onblur="validateCity(event)">
                                     </div>
                                 </div>
                                 <!-- popover to display ingo about how fill vehicle data in input -->
@@ -11684,7 +11685,7 @@
                                     <div class="input-group" style="border: 0px solid white">
                                         <input required type="text" id="vehicles" name="vehicles" class="form-control"
                                             aria-label="vehicles" placeholder="2020 Ford Fusion, 2020 Toyota Corolla"
-                                            onblur="validateCars(event)" aria-describedby="basic-addon1" required />
+                                            aria-describedby="basic-addon1" required />
                                         <span class="input-group-text rounded-end" style="
                                           border-top-left-radius: 0px;
                                           border-bottom-left-radius: 0px;

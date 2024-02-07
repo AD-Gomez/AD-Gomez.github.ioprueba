@@ -494,8 +494,8 @@
       transportTypeElem = document.getElementById("transportType");
       transportTypeElem.textContent =
         dataLead.transport_type == "1"
-          ? "Open Car Carrier"
-          : "Enclosed Car carrier";
+          ? "Open transport"
+          : "Enclosed transport";
       const transportTypeIcon = document.getElementById("transportTypeIcon");
       transportTypeIcon.src =
         dataLead.transport_type == "1"
@@ -518,10 +518,10 @@
       const image = document.getElementById("inop");
 
       if (dataLead.Vehicles.some((e) => e.vehicle_inop === "1")) {
-        runs.textContent = "Not All vehicles runs";
+        runs.textContent = "Inoperable";
         image.src = "../img/inop.png";
       } else {
-        runs.textContent = "All vehicles runs";
+        runs.textContent = "Operable";
         image.src = "../img/op.png";
       }
     };
