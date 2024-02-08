@@ -390,7 +390,7 @@ function saveEmail(data) {
       delete send[key];
     }
   });
-  sendEmail(send)
+  // sendEmail(send)
   localStorage.setItem("emailCayad", JSON.stringify(send));
 }
 
@@ -421,7 +421,7 @@ function saveLead(data) {
 
     destination_country: "USA",
   };
-  sendLead(dataToSend)
+  // sendLead(dataToSend)
   localStorage.setItem("lead", JSON.stringify(dataToSend));
 }
 
