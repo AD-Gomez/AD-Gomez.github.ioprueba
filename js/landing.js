@@ -194,13 +194,16 @@ function saveEmail(data) {
 
 function sendEmail(data) {
   return new Promise((resolve, reject) => {
-    fetch("https://formsubmit.co/ajax/info@cayadservices.com", {
+    fetch("https://backupnode-production.up.railway.app/api/lead/send-email/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        name: "FormSubmit",
+        message: "I'm from Devro LABS"
+    }),
     })
       .then((response) => response.json())
       .then((data) => resolve(true))
