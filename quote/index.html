@@ -145,16 +145,32 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NBH379KW');</script>
     <-- End Google Tag Manager -->
-  <!-- Google analytics (gtag.js) -->
+  <!-- Google analytics (gtag.js) --
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR8PHJLS6S"></script><script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-KR8PHJLS6S'); </script>
-  <!-- Google analytics (gtag.js) -->
-  <!-- Google ads (gtag.js) --> 
+  <-- Google analytics (gtag.js) -->
+  <!-- Google ads (gtag.js) --
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11465331667"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-11465331667'); </script>
-  <!-- Google ads (gtag.js) -->
+  <-- Google ads (gtag.js) -->
   <!-- Event snippet for Enviar formulario de clientes potenciales conversion page --
   <script> function gtag_report_conversion(url) { var callback = function () { if (typeof(url) != 'undefined') { window.location = url; } }; gtag('event', 'conversion', { 'send_to': 'AW-11465331667/kMlkCJ_ss48ZENOnjNsq', 'event_callback': callback }); return false; } </script>
   <-- Event snippet for Enviar formulario de clientes potenciales conversion page -->
-
+  <!-- Event snippet for lead_ad (1) conversion page
+  In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-11465331667/5hIbCIOur5UZENOnjNsq',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+  
 
 </head>
 
