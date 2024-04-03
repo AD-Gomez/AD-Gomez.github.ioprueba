@@ -28,6 +28,21 @@ function maskPhone() {
   });
 }
 
+function filterYearList(input, lista) {
+  console.log(input, lista)
+  var filtro = input.value.toUpperCase();
+  var li = lista.getElementsByTagName('li');
+
+  for (i = 0; i < li.length; i++) {
+    var txtValue = li[i].textContent || li[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filtro) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
 function changeValueToInput(id, value){
   let inputToChangeValue = document.getElementById(id);
   inputToChangeValue.value = value
@@ -56,43 +71,234 @@ function addYearsToList() {
   }
 }
 
-function filterYearList() {
-  var input = document.getElementById('vehicleYear');
-  var filtro = input.value.toUpperCase();
-  var lista = document.getElementById("vehicleYearList");
-  var li = lista.getElementsByTagName('li');
-
-  for (i = 0; i < li.length; i++) {
-    var txtValue = li[i].textContent || li[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filtro) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
+function addMarksToList() {
+  const marks = [
+    {
+        name: "Ford",
+        value: "ford"
+    },
+    {
+        name: "Chevrolet",
+        value: "chevrolet"
+    },
+    {
+        name: "Dodge",
+        value: "dodge"
+    },
+    {
+        name: "Jeep",
+        value: "jeep"
+    },
+    {
+        name: "Tesla",
+        value: "tesla"
+    },
+    {
+        name: "Cadillac",
+        value: "cadillac"
+    },
+    {
+        name: "Buick",
+        value: "buick"
+    },
+    {
+        name: "GMC",
+        value: "gmc"
+    },
+    {
+        name: "Chrysler",
+        value: "chrysler"
+    },
+    {
+        name: "Lincoln",
+        value: "lincoln"
+    },
+    {
+        name: "Ram",
+        value: "ram"
+    },
+    {
+        name: "BMW",
+        value: "bmw"
+    },
+    {
+        name: "Mercedes-Benz",
+        value: "mercedes-benz"
+    },
+    {
+        name: "Audi",
+        value: "audi"
+    },
+    {
+        name: "Volkswagen",
+        value: "volkswagen"
+    },
+    {
+        name: "Porsche",
+        value: "porsche"
+    },
+    {
+        name: "Volvo",
+        value: "volvo"
+    },
+    {
+        name: "Land Rover",
+        value: "land rover"
+    },
+    {
+        name: "Jaguar",
+        value: "jaguar"
+    },
+    {
+        name: "Mini",
+        value: "mini"
+    },
+    {
+        name: "Alfa Romeo",
+        value: "alfa romeo"
+    },
+    {
+        name: "Ferrari",
+        value: "ferrari"
+    },
+    {
+        name: "Lamborghini",
+        value: "lamborghini"
+    },
+    {
+        name: "Bentley",
+        value: "bentley"
+    },
+    {
+        name: "Rolls-Royce",
+        value: "rolls-royce"
+    },
+    {
+        name: "Toyota",
+        value: "toyota"
+    },
+    {
+        name: "Honda",
+        value: "honda"
+    },
+    {
+        name: "Nissan",
+        value: "nissan"
+    },
+    {
+        name: "Subaru",
+        value: "subaru"
+    },
+    {
+        name: "Mazda",
+        value: "mazda"
+    },
+    {
+        name: "Mitsubishi",
+        value: "mitsubishi"
+    },
+    {
+        name: "Lexus",
+        value: "lexus"
+    },
+    {
+        name: "Infiniti",
+        value: "infiniti"
+    },
+    {
+        name: "Acura",
+        value: "acura"
+    },
+    {
+        name: "Hyundai",
+        value: "hyundai"
+    },
+    {
+        name: "Kia",
+        value: "kia"
+    },
+    {
+        name: "Genesis",
+        value: "genesis"
     }
+  ]
+  let  makeModelList = document.getElementById('vehicleMarkList')
+  
+  for(let i = 0; i < marks.length; i++) {
+    let newElement = document.createElement("li");
+    newElement.innerText = marks[i].name;
+    newElement.onclick = function() {
+      changeValueToInput('vehicleMark', marks[i].name);
+    };
+    makeModelList.append(newElement)
   }
+}
+
+function addModelsToList(models) {
+  let  vehicleModelList = document.getElementById('vehicleModelList')
+  
+  while (vehicleModelList.firstChild) {
+    vehicleModelList.removeChild(vehicleModelList.firstChild);
+  }
+
+  for(let i = 0; i < models.length; i++) {
+    let newElement = document.createElement("li");
+    newElement.innerText = models[i].Model_Name;
+    newElement.onclick = function() {
+      changeValueToInput('vehicleModel', models[i].Model_Name);
+    };
+    vehicleModelList.append(newElement)
+  }
+}
+
+function controlListAndInput (input, div){
+  div.style.display = 'none';
+
+  // Muestra el div cuando el input gana foco
+  input.addEventListener('focus', function() {
+    div.style.display = 'block';
+  });
+
+  // Oculta el div cuando el input pierde foco
+  input.addEventListener('blur', function() {
+    if( input.id === 'vehicleMark' && input.value !== '' ){
+      let inputYear = document.getElementById('vehicleYear')
+      let valueYear = inputYear.value
+      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/${input.value}/modelyear/${valueYear}?format=json`)
+      .then(response => response.json())
+      .then(data => {
+        let models = data.Results.flat()
+        addModelsToList(models)
+      })
+      .catch(error => console.error('There has been a problem with your fetch operation:', error));
+    }
+    setTimeout(function() {
+      div.style.display = 'none';
+    }, 400);
+  });
 }
 
 (function () {
   window.onload = async function () {
 
+    // Handle Input And List of Vehicle Year
     addYearsToList();
-
-    var input = document.getElementById('vehicleYear');
-    var div = document.getElementById('vehicleYearList');
-    div.style.display = 'none';
-
-    // Muestra el div cuando el input gana foco
-    input.addEventListener('focus', function() {
-      div.style.display = 'block';
-    });
-    input.addEventListener('input', filterYearList);
+    var inputVehicleYearList = document.getElementById('vehicleYear');
+    var divVehicleYearList = document.getElementById('vehicleYearList');
+    inputVehicleYearList.addEventListener('input', () => filterYearList(inputVehicleYearList, divVehicleYearList));
+    controlListAndInput(inputVehicleYearList, divVehicleYearList);
   
-    // Oculta el div cuando el input pierde foco
-    input.addEventListener('blur', function() {
-      setTimeout(function() {
-        div.style.display = 'none';
-      }, 400);
-    });
+    // Handle Input And List of Vehicle Mark
+    addMarksToList(); 
+    var inputVehicleMarkList = document.getElementById('vehicleMark');
+    var divVehicleMarkList = document.getElementById('vehicleMarkList');
+    inputVehicleMarkList.addEventListener('input', () => filterYearList(inputVehicleMarkList, divVehicleMarkList));
+    controlListAndInput(inputVehicleMarkList, divVehicleMarkList);
+
+    var inputVehicleModelList = document.getElementById('vehicleModel');
+    var divVehicleModelList = document.getElementById('vehicleModelList');
+    inputVehicleModelList.addEventListener('input', () => filterYearList(inputVehicleModelList, divVehicleModelList));
+    controlListAndInput(inputVehicleModelList, divVehicleModelList);
 
     autocompleteGoogleMap()
 
