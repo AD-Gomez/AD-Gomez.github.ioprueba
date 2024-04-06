@@ -7,6 +7,13 @@
   font-display: swap;
 }
 
+.table td {
+  border: 1px solid #000;
+  padding: 10px !important;
+  min-width: 20vw;
+  vertical-align: inherit;
+}
+
 :root {
   --swiper-theme-color: #007aff;
 }
