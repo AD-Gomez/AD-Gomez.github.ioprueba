@@ -432,7 +432,7 @@
         <div id="one" class="bg visible"></div>
         <div id="two" class="bg"></div>
         <div id="three" class="bg"></div>
-        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center flex-column justify-content-around flex-md-row"
             style="background: rgba(6, 3, 21, .5);">
             <div class="container">
                 <div class="row justify-content-start">
@@ -457,67 +457,76 @@
             </div>
             <div class="form--quote--container">
                 <h3>Cayad Auto Transport</h3>
-                <form id="main_form" class="needs-validation">
+                <form id="main_form" class="needs-validation was-validated">
                     <section id="paso1" class="form--quote--content">
                         <div class="form--group form--group--section">
                             <label for="origin">Transport Vehicle FROM <span>*</span></label>
-                            <input id="origin" placeholder="Miami, Florida, EE. UU." name="origin" type="text">
+                            <input id="origin" class="form-control" placeholder="Miami, Florida, EE. UU." name="origin"
+                                type="text" onblur="validateCity(event)" aria-describedby="
+                                validationOrigin" required>
+                            <div id="validationOrigin" class="invalid-feedback">
+                                Please provide a valid city or zip code.
+                            </div>
                         </div>
                         <div class="form--group form--group--section">
                             <label for="destination">Transport Vehicle FROM
                                 <span>*</span></label>
-                            <input id="destination" placeholder="Alameda, California, EE. UU." name="destination"
-                                type="text">
+                            <input id="destination" class="form-control" placeholder="Alameda, California, EE. UU."
+                                name="destination" type="text" onblur="validateCity(event)" aria-describedby="
+                                validationDestination" required>
+                            <div id="validationDestination" class="invalid-feedback">
+                                Please provide a valid city or zip code.
+                            </div>
                         </div>
                         <div class="form--group--inline">
                             <p>Select <b>Transport Type</b></p>
                             <div>
-                                <input type="checkbox">
-                                <label for="">Open</label>
+                                <input id="vehicleOpen" name="vehicleOpen" type="checkbox" checked>
+                                <label for="vehicleOpen">Open</label>
                             </div>
                             <div>
-                                <input type="checkbox">
-                                <label for="">Enclosed</label>
+                                <input id="vehicleEnclosed" name="vehicleEnclosed" type="checkbox">
+                                <label for="vehicleEnclosed">Enclosed</label>
                             </div>
                         </div>
-                        <button onclick="mostrarPaso(2)">
+                        <button type="button" onclick="checkValidityStep1(2)">
                             Add Vehicle Details <i class="fa-solid fa-chevron-right"></i></button>
                     </section>
                     <section id="paso2" style="display:none" class="form--quote--content">
-                        <div class="form--group form--group--section">
-                            <label for="vehicleYear">Vehicle Year</label>
-                            <input id="vehicleYear" name="vehicleYear" type="text">
-                            <ul id="vehicleYearList" class="form--list--content">
-                            </ul>
-                        </div>
-                        <div class="form--group form--group--section">
-                            <label for="vehicleMark">Vehicle Make</label>
-                            <input id="vehicleMark" name="vehicleMark" type="text">
-                            <ul id="vehicleMarkList" class="form--list--content">
-                            </ul>
-                        </div>
-                        <div class="form--group form--group--section">
-                            <label for="vehicleModel">Vehicle Model</label>
-                            <input id="vehicleModel" name="vehicleModel" type="text">
-                            <ul id="vehicleModelList" class="form--list--content">
-                            </ul>
-                        </div>
-                        <div class="form--group form--group--section">
-                            <label for="">Vehicle Type</label>
-                            <input type="text">
-                        </div>
-                        <div>
-                            <p for="">Is The Vehicle Operable?</>
-                            <div>
-                                <input type="checkbox">
-                                <label for="">Yes</label>
+                        <div id="form--quote--content--vehicles">
+                            <div class="form--group form--group--section">
+                                <label for="vehicleYear">Vehicle Year</label>
+                                <input id="vehicleYear" placeholder="Select" name="vehicleYear" type="text">
+                                <ul id="vehicleYearList" class="form--list--content">
+                                </ul>
                             </div>
-                            <div>
-                                <input type="checkbox">
-                                <label for="">No</label>
+                            <div class="form--group form--group--section">
+                                <label for="vehicleMark">Vehicle Make</label>
+                                <input id="vehicleMark" disabled placeholder="Select" name="vehicleMark" type="text">
+                                <ul id="vehicleMarkList" class="form--list--content">
+                                </ul>
+                            </div>
+                            <div class="form--group form--group--section">
+                                <label for="vehicleModel">Vehicle Model</label>
+                                <input id="vehicleModel" disabled placeholder="Select" name="vehicleModel" type="text">
+                                <ul id="vehicleModelList" class="form--list--content">
+                                </ul>
+                            </div>
+                            <div class="form--group--inline dashed">
+                                <p>Is The <b>Vehicle Operable?</b></>
+                                <div>
+                                    <input id="vehicleIsOperable" name="vehicleIsOperable" type="checkbox">
+                                    <label for="">Yes</label>
+                                </div>
+                                <div>
+                                    <input id="vehicleIsNotOperable" name="vehicleIsNotOperable" type="checkbox">
+                                    <label for="vehicleIsNotOperable">No</label>
+                                </div>
                             </div>
                         </div>
-                        <button onclick="mostrarPaso(3)">Contact Details <i
+                        <button class="button--alt" type="button" onclick="addVehicleForm()">Add Another
+                            Vehicle</button>
+                        <button type="button" onclick="mostrarPaso(3)">Contact Details <i
                                 class="fa-solid fa-chevron-right"></i></button>
                         <footer>
                             <div class="form--group" onclick="mostrarPaso(1)">
@@ -536,18 +545,23 @@
                     </section>
                     <section id="paso3" style="display:none" class="form--quote--content">
                         <div class="form--group form--group--section">
-                            <label for="">Full Name</label>
-                            <input type="text" placeholder="Enter your full name">
+                            <label for="name">Full Name</label>
+                            <input id="name" class="form-control" name="name" type="text"
+                                placeholder="Enter your full name" required maxlength="32" minlength="3">
                         </div>
                         <div class="form--group form--group--section">
-                            <label for="">Phone Number</label>
-                            <input type="text" placeholder="Enter your phone number">
+                            <label for="phone">Phone Number</label>
+                            <input aria-label="Phone" aria-describedby="basic-addon1" maxlength="14" minlength="14"
+                                required oninput="onlyNumbers(event)" class="form-control" id="phone" name="phone"
+                                placeholder="Enter your phone number">
                         </div>
                         <div class="form--group form--group--section">
-                            <label for="">Email Address</label>
-                            <input type="text" placeholder="Enter your email address">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter your email address" aria-label="Email"
+                                aria-describedby="basic-addon1" maxlength="32" required>
                         </div>
-                        <button>Submit <i class="fa-regular fa-paper-plane"></i></button>
+                        <button id="submit_button">Submit <i class="fa-regular fa-paper-plane"></i></button>
                         <footer>
                             <div class="form--group" onclick="mostrarPaso(1)">
                                 <button class="section--done"><i class="fa-solid fa-check"></i></button>
@@ -572,7 +586,7 @@
 
     <!-- Testimonial Start -->
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
+        <div class="container py-5 client--opinions">
             <div class="text-center">
                 <!-- <h6 class="text-secondary text-uppercase">Testimonial</h6> -->
                 <h1 class="mb-0">Our Customers Say</h1>

@@ -9,6 +9,25 @@
     overflow-x: none;
 }
 
+.form--quote--container::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Personaliza el track de la barra */
+.form--quote--container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Personaliza el thumb de la barra */
+.form--quote--container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Cambia el color del thumb al pasar el mouse */
+.form--quote--container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .form--quote--container h3 {
     font-size: 18px;
     text-align: center;
@@ -27,6 +46,7 @@
 .form--quote--container .form--quote--content input:focus,
 .form--quote--container .form--quote--content input:focus-visible {
     border: none;
+    border-bottom: 1px solid;
     outline: none;
 }
 
@@ -46,6 +66,12 @@
 .form--quote--container .form--quote--content .form--group--inline {
     display: flex;
     gap: 15px;
+    padding-block: .5rem;
+}
+
+.form--quote--container .form--quote--content .dashed {
+    border-bottom: 1px dashed;
+    padding-block: 1rem;
 }
 
 .form--quote--container .form--quote--content .form--group--inline label {
@@ -63,6 +89,22 @@
     height: 40px;
     margin-top: 20px;
     color: white;
+}
+
+.form--quote--container .form--quote--content .button--alt {
+    background-color: #fff;
+    width: auto;
+    padding-inline: 1rem;
+    border: 1px solid #01a1ef;
+    color: #01a1ef;
+}
+
+.form--quote--container .form--quote--content .button--alt--remove {
+    background-color: red;
+    width: auto;
+    padding-inline: 1rem;
+    margin-top: 0px;
+    padding: 0px 0px 0px 1rem 0px;
 }
 
 .form--quote--container .form--quote--content .form--list--content {
@@ -102,4 +144,28 @@
 
 .form--quote--container .form--quote--content footer small {
     font-size: 12px;
+}
+
+#vehicleMark,
+#vehicleModel {
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .form--quote--container {
+        width: 90%;
+        min-width: 0px;
+        margin-top: 100px;
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .form--quote--container {
+        width: 100%;
+    }
+
+    .client--opinions {
+        padding-top: 20rem !important;
+    }
 }

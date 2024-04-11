@@ -1,3 +1,100 @@
+// Data to know if user select the correct option
+var selectValueVehicleYearFromList = false
+var selectValueVehicleMarkFromList = false
+var selectValueVehicleModelFromList = false
+
+// Data to count vehicles in the form
+var countCars = 1
+
+function removeVehicleForm(elementId, childId){
+  console.log(elementId, childId)
+  let container = document.getElementById(elementId)
+  let child = document.getElementById(childId)
+  container.removeChild(child)
+  countCars--;
+}
+
+function addVehicleForm() {
+  countCars++;
+  const content = document.getElementById('form--quote--content--vehicles');
+  let formHtml = `
+    <div class="form--group form--group--section mt-4">
+        <label for="vehicleYear${countCars}">Vehicle Year</label>
+        <input id="vehicleYear${countCars}" placeholder="Select" name="vehicleYear${countCars}" type="text">
+        <ul id="vehicleYearList${countCars}" class="form--list--content">
+        </ul>
+    </div>
+    <div class="form--group form--group--section">
+        <label for="vehicleMark${countCars}">Vehicle Make</label>
+        <input id="vehicleMark${countCars}" disabled placeholder="Select" name="vehicleMark${countCars}" type="text">
+        <ul id="vehicleMarkList${countCars}" class="form--list--content">
+        </ul>
+    </div>
+    <div class="form--group form--group--section">
+        <label for="vehicleModel${countCars}">Vehicle Model</label>
+        <input id="vehicleModel${countCars}" disabled placeholder="Select" name="vehicleModel${countCars}" type="text">
+        <ul id="vehicleModelList${countCars}" class="form--list--content">
+        </ul>
+    </div>
+    <div class="form--group--inline">
+        <p>Is The <b>Vehicle Operable?</b></>
+        <div>
+            <input id="vehicleIsOperable" name="vehicleIsOperable" type="checkbox">
+            <label for="">Yes</label>
+        </div>
+        <div>
+            <input id="vehicleIsNotOperable" name="vehicleIsNotOperable" type="checkbox">
+            <label for="vehicleIsNotOperable">No</label>
+        </div>
+    </div>
+    <div class="d-flex end dashed">
+        <button onclick="removeVehicleForm('form--quote--content--vehicles', 'vehicle${countCars}')" class='button--alt--remove'>
+          Remove car
+        </button>
+    </div>      
+  `
+  const div = document.createElement('div');
+  div.setAttribute("id",`vehicle${countCars}` )
+  div.innerHTML = formHtml;
+  content.appendChild(div);
+  
+  // Handle Input And List of Vehicle Year
+  addYearsToList(countCars);
+  var inputVehicleYearList = document.getElementById(`vehicleYear${countCars}`);
+  var divVehicleYearList = document.getElementById(`vehicleYearList${countCars}`);
+  inputVehicleYearList.addEventListener('input', () =>  {
+    filterYearList(inputVehicleYearList, divVehicleYearList)
+    selectValueVehicleYearFromList = false
+  });
+  controlListAndInput(inputVehicleYearList, divVehicleYearList, countCars);
+
+  // Handle Input And List of Vehicle Mark
+  addMarksToList(countCars); 
+  var inputVehicleMarkList = document.getElementById(`vehicleMark${countCars}`);
+  var divVehicleMarkList = document.getElementById(`vehicleMarkList${countCars}`);
+  inputVehicleMarkList.addEventListener('input', () => {
+    filterYearList(inputVehicleMarkList, divVehicleMarkList)
+    selectValueVehicleMarkFromList = false
+  });
+  controlListAndInput(inputVehicleMarkList, divVehicleMarkList, countCars);
+
+  var inputVehicleModelList = document.getElementById(`vehicleModel${countCars}`);
+  var divVehicleModelList = document.getElementById(`vehicleModelList${countCars}`);
+  inputVehicleModelList.addEventListener('input', () => {
+    filterYearList(inputVehicleModelList, divVehicleModelList)
+    selectValueVehicleModelFromList = false
+  });
+  controlListAndInput(inputVehicleModelList, divVehicleModelList, countCars);
+}
+
+function checkValidityStep1(){
+  let inputOrigin = document.getElementById("origin")
+  if(inputOrigin.value.length === 0){
+    return null
+  }
+  mostrarPaso(2)
+}
+
 function mostrarPaso(paso) {
   // Ocultar todos los pasos
   document.getElementById('paso1').style.display = 'none';
@@ -29,7 +126,6 @@ function maskPhone() {
 }
 
 function filterYearList(input, lista) {
-  console.log(input, lista)
   var filtro = input.value.toUpperCase();
   var li = lista.getElementsByTagName('li');
 
@@ -44,34 +140,43 @@ function filterYearList(input, lista) {
 }
 
 function changeValueToInput(id, value){
+  if(id==='vehicleYear'){
+    selectValueVehicleYearFromList = true
+  }
+  if(id==='vehicleMark'){
+    selectValueVehicleMarkFromList = true
+  }
+  if(id==='vehicleModel'){
+    selectValueVehicleModelFromList = true
+  }
   let inputToChangeValue = document.getElementById(id);
   inputToChangeValue.value = value
 }
 
-function addElementToList(texto) {
-  let yearList = document.getElementById("vehicleYearList");
+function addElementToList(texto, numberInput) {
+  let yearList = document.getElementById(`vehicleYearList${numberInput}`);
   var newElement = document.createElement("li");
   newElement.innerText = texto;
   
   // Cambio importante aquí: Pasamos el año como parámetro a miFuncion usando una función anónima
   newElement.onclick = function() {
-    changeValueToInput('vehicleYear', texto);
+    changeValueToInput(`vehicleYear${numberInput}`, texto);
   };
   
   yearList.appendChild(newElement);
 }
 
-function addYearsToList() {
+function addYearsToList(numberInput) {
   const currentYear = new Date().getFullYear();
   const yearsToRest = 50;
   
   for(let i = 0; i <= yearsToRest; i++) {
     const year = currentYear - i;
-    addElementToList(year.toString());
+    addElementToList(year.toString(), numberInput);
   }
 }
 
-function addMarksToList() {
+function addMarksToList(numberCar) {
   const marks = [
     {
         name: "Ford",
@@ -222,20 +327,20 @@ function addMarksToList() {
         value: "genesis"
     }
   ]
-  let  makeModelList = document.getElementById('vehicleMarkList')
+  let  makeModelList = document.getElementById(`vehicleMarkList${numberCar}`)
   
   for(let i = 0; i < marks.length; i++) {
     let newElement = document.createElement("li");
     newElement.innerText = marks[i].name;
     newElement.onclick = function() {
-      changeValueToInput('vehicleMark', marks[i].name);
+      changeValueToInput(`vehicleMark${numberCar}`, marks[i].name);
     };
     makeModelList.append(newElement)
   }
 }
 
-function addModelsToList(models) {
-  let  vehicleModelList = document.getElementById('vehicleModelList')
+function addModelsToList(models, numberCar) {
+  let  vehicleModelList = document.getElementById(`vehicleModelList${numberCar}`)
   
   while (vehicleModelList.firstChild) {
     vehicleModelList.removeChild(vehicleModelList.firstChild);
@@ -245,13 +350,13 @@ function addModelsToList(models) {
     let newElement = document.createElement("li");
     newElement.innerText = models[i].Model_Name;
     newElement.onclick = function() {
-      changeValueToInput('vehicleModel', models[i].Model_Name);
+      changeValueToInput(`vehicleModel${numberCar}`, models[i].Model_Name);
     };
     vehicleModelList.append(newElement)
   }
 }
 
-function controlListAndInput (input, div){
+function controlListAndInput (input, div, numberCar){
   div.style.display = 'none';
 
   // Muestra el div cuando el input gana foco
@@ -261,19 +366,54 @@ function controlListAndInput (input, div){
 
   // Oculta el div cuando el input pierde foco
   input.addEventListener('blur', function() {
-    if( input.id === 'vehicleMark' && input.value !== '' ){
-      let inputYear = document.getElementById('vehicleYear')
-      let valueYear = inputYear.value
-      fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/${input.value}/modelyear/${valueYear}?format=json`)
-      .then(response => response.json())
-      .then(data => {
-        let models = data.Results.flat()
-        addModelsToList(models)
-      })
-      .catch(error => console.error('There has been a problem with your fetch operation:', error));
-    }
+    setTimeout(() => {
+      if( input.id === `vehicleMark${numberCar}` && input.value !== '' ){
+        let inputYear = document.getElementById(`vehicleYear${numberCar}`)
+        let valueYear = inputYear.value
+        fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/${input.value}/modelyear/${valueYear}?format=json`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          let models = data.Results.flat()
+          addModelsToList(models, numberCar)
+        })
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
+      }
+    },500)
+    
     setTimeout(function() {
       div.style.display = 'none';
+      if(
+          (input.id === `vehicleYear${numberCar}` &&  selectValueVehicleYearFromList === false) 
+          || 
+          (input.id === `vehicleMark${numberCar}` &&  selectValueVehicleMarkFromList === false)
+          ||
+          (input.id === `vehicleModel${numberCar}` &&  selectValueVehicleModelFromList === false)
+      ){
+        input.value = ''
+        switch(input.id){
+          case `vehicleYear${numberCar}`:
+            followInput = document.getElementById(`vehicleMark${numberCar}`)
+            followInput.setAttribute("disabled", "")
+            followInput.style.cursor = 'not-allowed';
+          case `vehicleMark${numberCar}`:
+            followInput = document.getElementById(`vehicleModel${numberCar}`)
+            followInput.setAttribute("disabled", "")
+            followInput.style.cursor = 'not-allowed';
+        }
+      } else {
+        let followInput = null
+        switch(input.id){
+          case `vehicleYear${numberCar}`:
+            followInput = document.getElementById(`vehicleMark${numberCar}`)
+            followInput.removeAttribute("disabled")
+            followInput.style.cursor = 'text';
+          case `vehicleMark${numberCar}`:
+            followInput = document.getElementById(`vehicleModel${numberCar}`)
+            followInput.removeAttribute("disabled")
+            followInput.style.cursor = 'text';
+        }
+      }
     }, 400);
   });
 }
@@ -282,23 +422,32 @@ function controlListAndInput (input, div){
   window.onload = async function () {
 
     // Handle Input And List of Vehicle Year
-    addYearsToList();
+    addYearsToList("");
     var inputVehicleYearList = document.getElementById('vehicleYear');
     var divVehicleYearList = document.getElementById('vehicleYearList');
-    inputVehicleYearList.addEventListener('input', () => filterYearList(inputVehicleYearList, divVehicleYearList));
-    controlListAndInput(inputVehicleYearList, divVehicleYearList);
+    inputVehicleYearList.addEventListener('input', () =>  {
+      filterYearList(inputVehicleYearList, divVehicleYearList)
+      selectValueVehicleYearFromList = false
+    });
+    controlListAndInput(inputVehicleYearList, divVehicleYearList, "");
   
     // Handle Input And List of Vehicle Mark
-    addMarksToList(); 
+    addMarksToList(""); 
     var inputVehicleMarkList = document.getElementById('vehicleMark');
     var divVehicleMarkList = document.getElementById('vehicleMarkList');
-    inputVehicleMarkList.addEventListener('input', () => filterYearList(inputVehicleMarkList, divVehicleMarkList));
-    controlListAndInput(inputVehicleMarkList, divVehicleMarkList);
+    inputVehicleMarkList.addEventListener('input', () => {
+      filterYearList(inputVehicleMarkList, divVehicleMarkList)
+      selectValueVehicleMarkFromList = false
+    });
+    controlListAndInput(inputVehicleMarkList, divVehicleMarkList, "");
 
     var inputVehicleModelList = document.getElementById('vehicleModel');
     var divVehicleModelList = document.getElementById('vehicleModelList');
-    inputVehicleModelList.addEventListener('input', () => filterYearList(inputVehicleModelList, divVehicleModelList));
-    controlListAndInput(inputVehicleModelList, divVehicleModelList);
+    inputVehicleModelList.addEventListener('input', () => {
+      filterYearList(inputVehicleModelList, divVehicleModelList)
+      selectValueVehicleModelFromList = false
+    });
+    controlListAndInput(inputVehicleModelList, divVehicleModelList, "");
 
     autocompleteGoogleMap()
 
@@ -395,32 +544,31 @@ async function mp_show_wait_animation_check_form(event) {
   formResult.destination_city = document.getElementById("destination").value;
 
   // Logic to save vehicles:
-  let vehiclesInput = document.getElementById("vehicles");
-  let vehicles = vehiclesInput.value.split(", ")
-
   var vehiclesFormatead = []
 
-  vehicles.forEach(item => {
-    let [vehicle_model_year, vehicle_make, vehicle_model] = item.split(" ")
+  for(let vehiclesToRead = 1; vehiclesToRead <= countCars;  vehiclesToRead++){
+    let vehicle_model_year = vehiclesToRead === 1 ? document.getElementById(`vehicleYear`) : document.getElementById(`vehicleYear${vehiclesToRead}`);
+    let vehicle_make = vehiclesToRead === 1 ? document.getElementById(`vehicleMark`) : document.getElementById(`vehicleMark${vehiclesToRead}`);
+    let vehicle_model = vehiclesToRead === 1 ? document.getElementById(`vehicleModel`) : document.getElementById(`vehicleModel${vehiclesToRead}`);
     vehiclesFormatead.push({
-      vehicle_model_year,
-      vehicle_make,
-      vehicle_model
+      vehicle_model_year: vehicle_model_year.value,
+      vehicle_make: vehicle_make.value,
+      vehicle_model: vehicle_model.value
     })
-  })
+  }
 
   formResult.Vehicles = vehiclesFormatead;
 
   
-  formResult.ship_date = document.getElementById("date").value;
-  const format = new Date(
-    formResult.ship_date.replaceAll("-", "/")
-  ).toLocaleDateString("en-US", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
-  formResult.ship_date = format;
+  // formResult.ship_date = document.getElementById("date").value;
+  // const format = new Date(
+  //   formResult.ship_date.replaceAll("-", "/")
+  // ).toLocaleDateString("en-US", {
+  //   day: "2-digit",
+  //   month: "2-digit",
+  //   year: "numeric",
+  // });
+  // formResult.ship_date = format;
   formResult.email = document.getElementById("email").value;
   formResult.phone = document.getElementById("phone").value;
 
@@ -530,7 +678,7 @@ function autocompleteGoogleMap(){
   // Data to know if user selected a google option
   // Data to handle options in autocomplete
   const options = {
-    types: ['(cities)'],
+    types: ['(regions)'],
     componentRestrictions: { country: 'US' },
   };
 
