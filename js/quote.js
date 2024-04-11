@@ -131,6 +131,26 @@ function onlyNumbers(event) {
 }
 
 
+function onlyNumbersPhone(event) {
+  const input = event.target;
+  const inputValue = input.value;
+
+  // Eliminar todos los caracteres que no sean dígitos
+  const numericValue = inputValue.replace(/[^\d]/g, "");
+
+  // // Validar la longitud maxima de 10 dígitos
+  if (numericValue.length > 10) {
+    input.classList.add("is-invalid"); // Agregar clase de Bootstrap para indicar error
+    input.nextElementSibling.textContent = "The maximum number is 10"; // Mostrar mensaje de error
+  } else {
+    input.classList.remove("is-invalid"); // Eliminar clase de error si la entrada es válida
+    input.nextElementSibling.textContent = ""; // Borrar mensaje de error si la entrada es válida
+  }
+
+  // Asignar el valor numérico corregido al campo de entrada
+  input.value = numericValue;
+}
+
 function validYear(event) {
   const date = new Date();
 
