@@ -1,13 +1,12 @@
 // Data to know if user select the correct option
-var selectValueVehicleYearFromList = false
-var selectValueVehicleMarkFromList = false
-var selectValueVehicleModelFromList = false
+var selectValueVehicleYearFromList = [false]
+var selectValueVehicleMarkFromList = [false]
+var selectValueVehicleModelFromList = [false]
 
 // Data to count vehicles in the form
 var countCars = 1
 
 function removeVehicleForm(elementId, childId){
-  console.log(elementId, childId)
   let container = document.getElementById(elementId)
   let child = document.getElementById(childId)
   container.removeChild(child)
@@ -37,15 +36,16 @@ function addVehicleForm() {
         </ul>
     </div>
     <div class="form--group--inline">
-        <p>Is The <b>Vehicle Operable?</b></>
-        <div>
-            <input id="vehicleIsOperable" name="vehicleIsOperable" type="checkbox">
-            <label for="">Yes</label>
-        </div>
-        <div>
-            <input id="vehicleIsNotOperable" name="vehicleIsNotOperable" type="checkbox">
-            <label for="vehicleIsNotOperable">No</label>
-        </div>
+      <p>Is The <b>Vehicle Operable?</b></>
+      <div>
+          <input id="vehicleIsOperable${countCars}" name="vehicleOperable${countCars}" value="1" checked
+              type="radio">
+          <label for="vehicleIsOperable">Yes</label>
+      </div>
+      <div>
+          <input id="vehicleIsNotOperable${countCars}" name="vehicleOperable${countCars}" value="0" type="radio">
+          <label for="vehicleIsNotOperable">No</label>
+      </div>
     </div>
     <div class="d-flex end dashed">
         <button onclick="removeVehicleForm('form--quote--content--vehicles', 'vehicle${countCars}')" class='button--alt--remove'>
@@ -64,7 +64,7 @@ function addVehicleForm() {
   var divVehicleYearList = document.getElementById(`vehicleYearList${countCars}`);
   inputVehicleYearList.addEventListener('input', () =>  {
     filterYearList(inputVehicleYearList, divVehicleYearList)
-    selectValueVehicleYearFromList = false
+    selectValueVehicleYearFromList.push(false)
   });
   controlListAndInput(inputVehicleYearList, divVehicleYearList, countCars);
 
@@ -74,7 +74,7 @@ function addVehicleForm() {
   var divVehicleMarkList = document.getElementById(`vehicleMarkList${countCars}`);
   inputVehicleMarkList.addEventListener('input', () => {
     filterYearList(inputVehicleMarkList, divVehicleMarkList)
-    selectValueVehicleMarkFromList = false
+    selectValueVehicleMarkFromList.push(false)
   });
   controlListAndInput(inputVehicleMarkList, divVehicleMarkList, countCars);
 
@@ -82,7 +82,7 @@ function addVehicleForm() {
   var divVehicleModelList = document.getElementById(`vehicleModelList${countCars}`);
   inputVehicleModelList.addEventListener('input', () => {
     filterYearList(inputVehicleModelList, divVehicleModelList)
-    selectValueVehicleModelFromList = false
+    selectValueVehicleModelFromList.push(false)
   });
   controlListAndInput(inputVehicleModelList, divVehicleModelList, countCars);
 }
@@ -139,15 +139,15 @@ function filterYearList(input, lista) {
   }
 }
 
-function changeValueToInput(id, value){
+function changeValueToInput(id, value, numberInput){
   if(id==='vehicleYear'){
-    selectValueVehicleYearFromList = true
+    selectValueVehicleYearFromList[numberInput] = true
   }
   if(id==='vehicleMark'){
-    selectValueVehicleMarkFromList = true
+    selectValueVehicleMarkFromList[numberInput] = true
   }
   if(id==='vehicleModel'){
-    selectValueVehicleModelFromList = true
+    selectValueVehicleModelFromList[numberInput] = true
   }
   let inputToChangeValue = document.getElementById(id);
   inputToChangeValue.value = value
@@ -157,10 +157,11 @@ function addElementToList(texto, numberInput) {
   let yearList = document.getElementById(`vehicleYearList${numberInput}`);
   var newElement = document.createElement("li");
   newElement.innerText = texto;
+  newElement.style.cursor = 'pointer';
   
   // Cambio importante aquí: Pasamos el año como parámetro a miFuncion usando una función anónima
   newElement.onclick = function() {
-    changeValueToInput(`vehicleYear${numberInput}`, texto);
+    changeValueToInput(`vehicleYear${numberInput}`, texto, numberInput);
   };
   
   yearList.appendChild(newElement);
@@ -332,6 +333,7 @@ function addMarksToList(numberCar) {
   for(let i = 0; i < marks.length; i++) {
     let newElement = document.createElement("li");
     newElement.innerText = marks[i].name;
+    newElement.style.cursor = 'pointer';
     newElement.onclick = function() {
       changeValueToInput(`vehicleMark${numberCar}`, marks[i].name);
     };
@@ -349,6 +351,7 @@ function addModelsToList(models, numberCar) {
   for(let i = 0; i < models.length; i++) {
     let newElement = document.createElement("li");
     newElement.innerText = models[i].Model_Name;
+    newElement.style.cursor = 'pointer';
     newElement.onclick = function() {
       changeValueToInput(`vehicleModel${numberCar}`, models[i].Model_Name);
     };
@@ -384,11 +387,11 @@ function controlListAndInput (input, div, numberCar){
     setTimeout(function() {
       div.style.display = 'none';
       if(
-          (input.id === `vehicleYear${numberCar}` &&  selectValueVehicleYearFromList === false) 
+          (input.id === `vehicleYear${numberCar}` &&  selectValueVehicleYearFromList[numberCar] === false) 
           || 
-          (input.id === `vehicleMark${numberCar}` &&  selectValueVehicleMarkFromList === false)
+          (input.id === `vehicleMark${numberCar}` &&  selectValueVehicleMarkFromList[numberCar] === false)
           ||
-          (input.id === `vehicleModel${numberCar}` &&  selectValueVehicleModelFromList === false)
+          (input.id === `vehicleModel${numberCar}` &&  selectValueVehicleModelFromList[numberCar] === false)
       ){
         input.value = ''
         switch(input.id){
@@ -427,7 +430,7 @@ function controlListAndInput (input, div, numberCar){
     var divVehicleYearList = document.getElementById('vehicleYearList');
     inputVehicleYearList.addEventListener('input', () =>  {
       filterYearList(inputVehicleYearList, divVehicleYearList)
-      selectValueVehicleYearFromList = false
+      selectValueVehicleYearFromList[0] = false
     });
     controlListAndInput(inputVehicleYearList, divVehicleYearList, "");
   
@@ -437,7 +440,7 @@ function controlListAndInput (input, div, numberCar){
     var divVehicleMarkList = document.getElementById('vehicleMarkList');
     inputVehicleMarkList.addEventListener('input', () => {
       filterYearList(inputVehicleMarkList, divVehicleMarkList)
-      selectValueVehicleMarkFromList = false
+      selectValueVehicleMarkFromList[0] = false
     });
     controlListAndInput(inputVehicleMarkList, divVehicleMarkList, "");
 
@@ -445,7 +448,7 @@ function controlListAndInput (input, div, numberCar){
     var divVehicleModelList = document.getElementById('vehicleModelList');
     inputVehicleModelList.addEventListener('input', () => {
       filterYearList(inputVehicleModelList, divVehicleModelList)
-      selectValueVehicleModelFromList = false
+      selectValueVehicleModelFromList[0] = false
     });
     controlListAndInput(inputVehicleModelList, divVehicleModelList, "");
 
@@ -495,11 +498,17 @@ function controlListAndInput (input, div, numberCar){
 
 function onlyNumbers(event) {
   const input = event.target;
-  const inputValue = input.value;
+  let inputValue = input.value.replace(/[^\d]/g, "");
+  inputValue = inputValue.slice(0, 10);
+  input.value = inputValue;
 
-  const numericValue = inputValue.replace(/[^\d]/g, "");
-
-  input.value = numericValue;
+  if(inputValue.length < 10){
+    input.classList.add('is-invalid');
+    input.setCustomValidity("Please enter a 10-digit phone number.");
+  } else {
+    input.classList.remove('is-invalid');
+    input.setCustomValidity("");
+  }
 }
 
 function validateCars(event) {  
@@ -534,8 +543,8 @@ async function mp_show_wait_animation_check_form(event) {
     destination_postal_code: "",
     Vehicles: "",
     ship_date: "",
-    first_name: "From Landing",
-    transport_type: "1",
+    first_name: document.getElementById("name").value,
+    transport_type: "",
     email: "",
     phone: "",
   };
@@ -550,26 +559,19 @@ async function mp_show_wait_animation_check_form(event) {
     let vehicle_model_year = vehiclesToRead === 1 ? document.getElementById(`vehicleYear`) : document.getElementById(`vehicleYear${vehiclesToRead}`);
     let vehicle_make = vehiclesToRead === 1 ? document.getElementById(`vehicleMark`) : document.getElementById(`vehicleMark${vehiclesToRead}`);
     let vehicle_model = vehiclesToRead === 1 ? document.getElementById(`vehicleModel`) : document.getElementById(`vehicleModel${vehiclesToRead}`);
+    let vehicle_inop = vehiclesToRead === 1 ? document.getElementById(`vehicleIsOperable`) : document.getElementById(`vehicleIsOperable${vehiclesToRead}`);
     vehiclesFormatead.push({
       vehicle_model_year: vehicle_model_year.value,
       vehicle_make: vehicle_make.value,
-      vehicle_model: vehicle_model.value
+      vehicle_model: vehicle_model.value,
+      vehicle_inop: vehicle_inop.checked ? "0" : "1"
     })
   }
 
   formResult.Vehicles = vehiclesFormatead;
-
-  
-  // formResult.ship_date = document.getElementById("date").value;
-  // const format = new Date(
-  //   formResult.ship_date.replaceAll("-", "/")
-  // ).toLocaleDateString("en-US", {
-  //   day: "2-digit",
-  //   month: "2-digit",
-  //   year: "numeric",
-  // });
-  // formResult.ship_date = format;
   formResult.email = document.getElementById("email").value;
+  var transportTypeOpenInput = document.getElementById("transportTypeOpen");
+  formResult.transport_type = transportTypeOpenInput.checked ? "1" : "2"
   formResult.phone = document.getElementById("phone").value;
 
   const submitBTN = document.getElementById("submit_button");
@@ -602,7 +604,7 @@ function saveEmail(data) {
     vehicleData[`vehicle_model_year_${index + 1}`] = vehicle.vehicle_model_year;
     vehicleData[`vehicle_make_${index + 1}`] = vehicle.vehicle_make;
     vehicleData[`vehicle_model_${index + 1}`] = vehicle.vehicle_model;
-    vehicleData[`vehicle_inop_${index + 1}`] ="No Data"
+    vehicleData[`vehicle_inop_${index + 1}`] = vehicle.vehicle_inop === "1" ? "Inoperable" : "Operable";
     send = { ...send, ...vehicleData };
   });
   delete send.Vehicles;
@@ -646,7 +648,6 @@ function saveLead(data) {
     origin_state: "",
     origin_country: "USA",
     destination_state: "",
-
     destination_country: "USA",
   };
   // sendLead(dataToSend)

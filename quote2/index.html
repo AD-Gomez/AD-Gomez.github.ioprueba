@@ -134,11 +134,14 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VUs3BClENXZNUGnZzsgXvxcw3fVnSQY&libraries=places">
   </script>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NT3H9XXW');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NT3H9XXW');</script>
   <!-- End Google Tag Manager -->
   <!-- Google analytics (gtag.js) --
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR8PHJLS6S"></script><script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-KR8PHJLS6S'); </script>
@@ -148,15 +151,15 @@
   <-- Google ads (gtag.js) -->
   <!-- Event snippet for lead_ad (1) conversion page -->
   <script>
-  gtag('event', 'conversion', {'send_to': 'AW-11465331667/5hIbCIOur5UZENOnjNsq'});
+    gtag('event', 'conversion', { 'send_to': 'AW-11465331667/5hIbCIOur5UZENOnjNsq' });
   </script>
 
 </head>
 
 <body class="d-flex justify-content-center align-items-center" style="background-color: #cccccc">
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NT3H9XXW"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NT3H9XXW" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <div class="w3-container w3-white" style="max-width: 750px; border: 1px solid white; border-radius: 10px">
     <div class="w3-row w3-third w3-white" style="padding-top: 15px">
@@ -303,10 +306,11 @@
           <span style="font-size: 0.9rem">Fee of 4% will be charged over CC / Paypal / Venmo
             <br />
             No fee will be charged over Zelle and Cash App</span>
-            <br><br>
-            <span style="font-size: 0.9rem">Due now, We charge you once the carrier has been dispatched for your order. Only if you pay with paypal you'll be charged at the time of booking.
-              <br /><br>
-              Don’t worry, you won’t pay until your pickup is scheduled.</span>
+          <br><br>
+          <span style="font-size: 0.9rem">Due now, We charge you once the carrier has been dispatched for your order.
+            Only if you pay with paypal you'll be charged at the time of booking.
+            <br /><br>
+            Don’t worry, you won’t pay until your pickup is scheduled.</span>
         </div>
 
         <div class="w3-half w3-container" style="text-align: left; background-color: white; color: black">
@@ -382,7 +386,7 @@
               ">
             <b>Don't know the exact day?</b>
             <br /><br />
-            
+
             <span style="text-align: justify; display: inline-block">That's ok! You can change at any time.
               You will be still able to review your order.
               <br />
@@ -390,8 +394,8 @@
               <br />
               Book with one of our friendly specialists! <a href="tel:(469) 619-0747">
                 <h5 class="text-primary m-0">Call now (469) 619-0747</h5>
-            </a></span>
-            
+              </a></span>
+
           </div>
         </div>
       </div>
@@ -477,12 +481,10 @@
       const data = localStorage.getItem("lead");
       console.log(data)
       if (!data) {
-        console.log("Entro en el enabled")
         enabledButtons()
         return null
       }
       sendInformation();
-      console.log('ssss')
       // location.href = "../quote2/index.html";
       const dataLead = JSON.parse(data);
       // loadMap(dataLead);
@@ -724,7 +726,6 @@
       let origin = jsonLead.origin_city || jsonLead.origin_postal_code;
       let destination = jsonLead.destination_city || jsonLead.destination_postal_code
 
-      console.log(origin, destination)
       if (origin && destination) {
         let directionsService = new google.maps.DirectionsService();
         let directionsRenderer = new google.maps.DirectionsRenderer();

@@ -415,7 +415,6 @@
                 </div>
             </div>
             <div class="form--quote--container">
-                <h3>Cayad Auto Transport</h3>
                 <form id="main_form" class="needs-validation was-validated">
                     <section id="paso1" class="form--quote--content">
                         <div class="form--group form--group--section">
@@ -428,7 +427,7 @@
                             </div>
                         </div>
                         <div class="form--group form--group--section">
-                            <label for="destination">Transport Vehicle FROM
+                            <label for="destination">Transport Vehicle TO
                                 <span>*</span></label>
                             <input id="destination" class="form-control" placeholder="Alameda, California, EE. UU."
                                 name="destination" type="text" onblur="validateCity(event)" aria-describedby="
@@ -440,12 +439,12 @@
                         <div class="form--group--inline">
                             <p>Select <b>Transport Type</b></p>
                             <div>
-                                <input id="vehicleOpen" name="vehicleOpen" type="checkbox" checked>
-                                <label for="vehicleOpen">Open</label>
+                                <input id="transportTypeOpen" name="transportType" value="1" type="radio" checked>
+                                <label for="transportTypeOpen">Open</label>
                             </div>
                             <div>
-                                <input id="vehicleEnclosed" name="vehicleEnclosed" type="checkbox">
-                                <label for="vehicleEnclosed">Enclosed</label>
+                                <input id="transportTypeEnclosed" name="transportType" value="2" type="radio">
+                                <label for="transportTypeEnclosed">Enclosed</label>
                             </div>
                         </div>
                         <button type="button" onclick="checkValidityStep1(2)">
@@ -474,11 +473,11 @@
                             <div class="form--group--inline dashed">
                                 <p>Is The <b>Vehicle Operable?</b></>
                                 <div>
-                                    <input id="vehicleIsOperable" name="vehicleIsOperable" type="checkbox">
-                                    <label for="">Yes</label>
+                                    <input id="vehicleIsOperable" name="vehicleOperable" value="1" checked type="radio">
+                                    <label for="vehicleIsOperable">Yes</label>
                                 </div>
                                 <div>
-                                    <input id="vehicleIsNotOperable" name="vehicleIsNotOperable" type="checkbox">
+                                    <input id="vehicleIsNotOperable" name="vehicleOperable" value="0" type="radio">
                                     <label for="vehicleIsNotOperable">No</label>
                                 </div>
                             </div>
@@ -510,9 +509,9 @@
                         </div>
                         <div class="form--group form--group--section">
                             <label for="phone">Phone Number</label>
-                            <input aria-label="Phone" aria-describedby="basic-addon1" maxlength="14" minlength="14"
-                                required oninput="onlyNumbers(event)" class="form-control" id="phone" name="phone"
-                                placeholder="Enter your phone number">
+                            <input aria-label="Phone" aria-describedby="basic-addon1" maxlength="14" minlength="10"
+                                oninput="onlyNumbers(event)" type="text" class="form-control" id="phone" name="phone"
+                                placeholder="Enter your phone number" required>
                         </div>
                         <div class="form--group form--group--section">
                             <label for="email">Email Address</label>
@@ -536,7 +535,6 @@
                             </div>
                         </footer>
                     </section>
-                </form>
                 </form>
             </div>
         </div>
