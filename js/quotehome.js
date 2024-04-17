@@ -449,7 +449,7 @@ function controlListAndInput (input, div, numberCar){
 function cleanForm() {
   var formulario = document.getElementById('main_form');
     Array.from(formulario.elements).forEach(function(element) {
-        if (element.type === "text" || element.type === "email") {
+        if (element.type === "text" || element.type === "email" || element.type === "date") {
             element.value = ""; // Limpia el valor del elemento
         }
     });
