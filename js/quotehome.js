@@ -21,6 +21,14 @@ function validateName(event) {
   const input = event.target;
   let inputValue = input.value.replace(/[^a-zA-Z ]/g, "");
   input.value = inputValue;
+
+  if(inputValue.length < 3){
+    input.classList.add('is-invalid');
+    input.setCustomValidity("Min 3 characters.");
+  } else {
+    input.classList.remove('is-invalid');
+    input.setCustomValidity("");
+  }
 }
 
 function removeVehicleForm(elementId, childId){
@@ -438,8 +446,29 @@ function controlListAndInput (input, div, numberCar){
   });
 }
 
+function cleanForm() {
+  var formulario = document.getElementById('main_form');
+    Array.from(formulario.elements).forEach(function(element) {
+        if (element.type === "text" || element.type === "email") {
+            element.value = ""; // Limpia el valor del elemento
+        }
+    });
+}
+
 (function () {
   window.onload = async function () {
+
+    // Clean inputs
+    cleanForm()
+
+    // Init the date
+    const fechaActual = new Date();
+    const añoActual = fechaActual.getFullYear();
+    const mesActual = (fechaActual.getMonth() + 1).toString().padStart(2, "0");
+    const diaActual = fechaActual.getDate().toString().padStart(2, "0");
+    const dateShipment = document.getElementById("dateShipment");
+    dateShipment.setAttribute("min", `${añoActual}-${mesActual}-${diaActual}`);
+    dateShipment.setAttribute("value", `${añoActual}-${mesActual}-${diaActual}`);
 
     // Handle Input And List of Vehicle Year
     addYearsToList("");
@@ -565,6 +594,16 @@ async function mp_show_wait_animation_check_form(event) {
     email: "",
     phone: "",
   };
+
+  formResult.ship_date = document.getElementById("dateShipment").value;
+  const format = new Date(
+    formResult.ship_date.replaceAll("-", "/")
+  ).toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+  formResult.ship_date = format;
 
   formResult.origin_city = originCity;
   formResult.origin_state = originState;

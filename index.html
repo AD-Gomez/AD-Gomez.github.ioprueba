@@ -520,6 +520,21 @@
                                 placeholder="Enter your email address" aria-label="Email"
                                 aria-describedby="basic-addon1" maxlength="32" required>
                         </div>
+                        <div class="form--group form--group--section">
+                            <label for="email">Pick up date</label>
+                            <input required type="date" name="date" id="dateShipment" placeholder="mm/dd/yyyy"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Select the first available pickup day for your vehicle"
+                                style="padding-left: 10px" class="form-control datepicker" placeholder="Ship Date"
+                                aria-label="Ship Date" aria-describedby="basic-addon1" />
+                        </div>
+                        <div class="form--group--inline dashed">
+                            <small id="termsAndConditions">By providing your phone number/email and clicking through,
+                                you agree to our Terms,
+                                Privacy Policy, and authorize us to make or initiate sales calls, text msgs, and
+                                prerecorded voicemails to that number using an automated system. Your agreement is not a
+                                condition of purchasing products, goods or services. You may opt out at any time.</sm>
+                        </div>
                         <button id="submit_button">Submit <i class="fa-regular fa-paper-plane"></i></button>
                         <footer>
                             <div class="form--group" onclick="mostrarPaso(1)">
