@@ -391,9 +391,9 @@
         <div id="one" class="bg visible"></div>
         <div id="two" class="bg"></div>
         <div id="three" class="bg"></div>
-        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center flex-column justify-content-around flex-md-row"
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center flex-column justify-content-around flex-lg-row"
             style="background: rgba(6, 3, 21, .5);">
-            <div class="container">
+            <div class="container p-2 m-2 p-lg-5 m-lg-5">
                 <div class="row justify-content-start">
                     <div class="col-10 col-lg-8">
                         <h1 class="changing-text">
@@ -488,15 +488,15 @@
                                 class="fa-solid fa-chevron-right"></i></button>
                         <footer>
                             <div class="form--group" onclick="mostrarPaso(1)">
-                                <button class="section--done"><i class="fa-solid fa-check"></i></button>
+                                <button type="button" class="section--done"><i class="fa-solid fa-check"></i></button>
                                 <small>Location</small>
                             </div>
                             <div class="form--group">
-                                <button>2</button>
+                                <button type="button">2</button>
                                 <small>Vehicle(s)</small>
                             </div>
                             <div class="form--group">
-                                <button>3</button>
+                                <button type="button">3</button>
                                 <small>Contact</small>
                             </div>
                         </footer>
@@ -505,7 +505,8 @@
                         <div class="form--group form--group--section">
                             <label for="name">Full Name</label>
                             <input id="name" class="form-control" name="name" type="text"
-                                placeholder="Enter your full name" required maxlength="32" minlength="3">
+                                placeholder="Enter your full name" oninput="validateName(event)" required maxlength="32"
+                                minlength="3">
                         </div>
                         <div class="form--group form--group--section">
                             <label for="phone">Phone Number</label>
@@ -522,15 +523,15 @@
                         <button id="submit_button">Submit <i class="fa-regular fa-paper-plane"></i></button>
                         <footer>
                             <div class="form--group" onclick="mostrarPaso(1)">
-                                <button class="section--done"><i class="fa-solid fa-check"></i></button>
+                                <button type="button" class="section--done"><i class="fa-solid fa-check"></i></button>
                                 <small>Location</small>
                             </div>
                             <div class="form--group" onclick="mostrarPaso(2)">
-                                <button class="section--done"><i class="fa-solid fa-check"></i></button>
+                                <button type="button" class="section--done"><i class="fa-solid fa-check"></i></button>
                                 <small>Vehicle(s)</small>
                             </div>
                             <div class="form--group">
-                                <button>3</button>
+                                <button type="button">3</button>
                                 <small>Contact</small>
                             </div>
                         </footer>

@@ -479,7 +479,6 @@
       // }).addTo(map);
 
       const data = localStorage.getItem("lead");
-      console.log(data)
       if (!data) {
         enabledButtons()
         return null
@@ -499,22 +498,22 @@
       const destinationTextElem = document.getElementById("destination_txt");
 
       originTextElem.textContent =
-        dataLead.origin_city !== ""
-          ? dataLead.origin_city.split(",")[1]
-          : dataLead.origin_postal_code;
+        dataLead.origin_postal_code !== ""
+          ? dataLead.origin_postal_code
+          : dataLead.origin_city;
       destinationTextElem.textContent =
-        dataLead.destination_city !== ""
-          ? dataLead.destination_city.split(",")[1]
-          : dataLead.destination_postal_code;
+        dataLead.destination_postal_code !== ""
+          ? dataLead.destination_postal_code
+          : dataLead.destination_city;
 
       originElem.textContent =
-        dataLead.origin_city !== ""
-          ? dataLead.origin_city
-          : dataLead.origin_postal_code;
+        dataLead.origin_postal_code !== ""
+          ? dataLead.origin_postal_code
+          : dataLead.origin_city;
       destinationElem.textContent =
-        dataLead.destination_city !== ""
-          ? dataLead.destination_city
-          : dataLead.destination_postal_code;
+        dataLead.destination_postal_code !== ""
+          ? dataLead.destination_postal_code
+          : dataLead.destination_city;
       transportTypeElem = document.getElementById("transportType");
       transportTypeElem.textContent =
         dataLead.transport_type == "1"
@@ -554,9 +553,9 @@
     }
     async function loadMap(dataLead) {
       const coorOrigin = await search(
-        dataLead.origin_city !== ""
-          ? dataLead.origin_city
-          : dataLead.origin_postal_code
+        dataLead.destination_postal_code !== ""
+          ? dataLead.destination_postal_code
+          : dataLead.destination_city
       );
 
       const coorDestination = await search(

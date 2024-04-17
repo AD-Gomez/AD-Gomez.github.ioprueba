@@ -3,8 +3,25 @@ var selectValueVehicleYearFromList = [false]
 var selectValueVehicleMarkFromList = [false]
 var selectValueVehicleModelFromList = [false]
 
+// Addresses data to send to bats
+var originCity = ''
+var originCountry = ''
+var originPostalCode = ''
+var originState = ''
+
+var destinationCity = ''
+var destinationCountry = ''
+var destinationPostalCode = ''
+var destinationState = ''
+
 // Data to count vehicles in the form
 var countCars = 1
+
+function validateName(event) {
+  const input = event.target;
+  let inputValue = input.value.replace(/[^a-zA-Z ]/g, "");
+  input.value = inputValue;
+}
 
 function removeVehicleForm(elementId, childId){
   let container = document.getElementById(elementId)
@@ -549,8 +566,15 @@ async function mp_show_wait_animation_check_form(event) {
     phone: "",
   };
 
-  formResult.origin_city = document.getElementById("origin").value;
-  formResult.destination_city = document.getElementById("destination").value;
+  formResult.origin_city = originCity;
+  formResult.origin_state = originState;
+  formResult.origin_postal_code = originPostalCode;
+  formResult.origin_country = originCountry;
+
+  formResult.destination_city = destinationCity;
+  formResult.destination_state = destinationState;
+  formResult.destination_postal_code = destinationPostalCode;
+  formResult.destination_country = destinationCountry;
 
   // Logic to save vehicles:
   var vehiclesFormatead = []
@@ -675,6 +699,10 @@ function sendLead(data) {
 var useGoogleAddressInCityOrigin = false
 var useGoogleAddressInCityDestination = false
 
+function extractFromAddress(components, type) {
+  return components.find(component => component.types.includes(type))?.short_name || '';
+}
+
 function autocompleteGoogleMap(){
   // Data to know if user selected a google option
   // Data to handle options in autocomplete
@@ -687,12 +715,24 @@ function autocompleteGoogleMap(){
   let autocompleteOrigin = new google.maps.places.Autocomplete(inputCityOrigin, options);
   autocompleteOrigin.addListener('place_changed', function () {
     useGoogleAddressInCityDestination = false
+    let place = autocompleteOrigin.getPlace();
+    let addressComponents = place.address_components;
+    originCity = extractFromAddress(addressComponents, 'locality');
+    originCountry = extractFromAddress(addressComponents, 'country');
+    originPostalCode = extractFromAddress(addressComponents, 'postal_code');
+    originState = extractFromAddress(addressComponents, 'administrative_area_level_1');
   });
 
   let inputCityDestination = document.getElementById('destination');
   let autocompleteDestination = new google.maps.places.Autocomplete(inputCityDestination, options);
   autocompleteDestination.addListener('place_changed', function () {
     useGoogleAddressInCityDestination = false
+    let place = autocompleteDestination.getPlace();
+    let addressComponents = place.address_components;
+    destinationCity = extractFromAddress(addressComponents, 'locality');
+    destinationCountry = extractFromAddress(addressComponents, 'country');
+    destinationPostalCode = extractFromAddress(addressComponents, 'postal_code');
+    destinationState = extractFromAddress(addressComponents, 'administrative_area_level_1');
   });
 }
 
