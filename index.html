@@ -1316,7 +1316,35 @@
     <script src="js/main.js"></script>
     <script src="js/runtime.js"></script>
 
-    <!-- Your plugin del chat code -->
+
+
+
+    <!--1-CÓDIGO PARA INCLUIR  MESSENGER FACEBOOK Y WHATSAPP -->
+
+
+    <!-- GetButton.io widget -->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                facebook: "2286731901386011", // Facebook page ID
+                whatsapp: "+51974168542", // WhatsApp number
+                call_to_action: "Envíanos un mensaje a JONATHAN CANALES", // Call to action
+                button_color: "#03e9bb", // Color of button
+                position: "right", // Position may be 'right' or 'left'
+                order: "whatsapp,facebook", // Order of buttons
+            };
+            var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!-- /GetButton.io widget -->
+
+
+
+
+    <!-- Your plugin del chat code --
     <div id="fb-customer-chat" class="fb-customerchat">
     </div>
 
@@ -1326,7 +1354,7 @@
         chatbox.setAttribute("attribution", "biz_inbox");
     </script>
 
-    <!-- Your SDK code -->
+    <-- Your SDK code --
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -1343,7 +1371,7 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-    <!-- Messenger plugin del chat Code END-->
+    <-- Messenger plugin del chat Code END-->
 
 </body>
 
