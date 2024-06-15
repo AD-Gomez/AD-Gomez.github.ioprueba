@@ -17,12 +17,12 @@ var destinationState = ''
 // Data to count vehicles in the form
 var countCars = 1
 
-function validateName(event) {
+function validateName (event) {
   const input = event.target;
   let inputValue = input.value.replace(/[^a-zA-Z ]/g, "");
   input.value = inputValue;
 
-  if(inputValue.length < 3){
+  if (inputValue.length < 3) {
     input.classList.add('is-invalid');
     input.setCustomValidity("Min 3 characters.");
   } else {
@@ -31,14 +31,14 @@ function validateName(event) {
   }
 }
 
-function removeVehicleForm(elementId, childId){
+function removeVehicleForm (elementId, childId) {
   let container = document.getElementById(elementId)
   let child = document.getElementById(childId)
   container.removeChild(child)
   countCars--;
 }
 
-function addVehicleForm() {
+function addVehicleForm () {
   countCars++;
   const content = document.getElementById('form--quote--content--vehicles');
   let formHtml = `
@@ -79,22 +79,22 @@ function addVehicleForm() {
     </div>      
   `
   const div = document.createElement('div');
-  div.setAttribute("id",`vehicle${countCars}` )
+  div.setAttribute("id", `vehicle${countCars}`)
   div.innerHTML = formHtml;
   content.appendChild(div);
-  
+
   // Handle Input And List of Vehicle Year
   addYearsToList(countCars);
   var inputVehicleYearList = document.getElementById(`vehicleYear${countCars}`);
   var divVehicleYearList = document.getElementById(`vehicleYearList${countCars}`);
-  inputVehicleYearList.addEventListener('input', () =>  {
+  inputVehicleYearList.addEventListener('input', () => {
     filterYearList(inputVehicleYearList, divVehicleYearList)
     selectValueVehicleYearFromList.push(false)
   });
   controlListAndInput(inputVehicleYearList, divVehicleYearList, countCars);
 
   // Handle Input And List of Vehicle Mark
-  addMarksToList(countCars); 
+  addMarksToList(countCars);
   var inputVehicleMarkList = document.getElementById(`vehicleMark${countCars}`);
   var divVehicleMarkList = document.getElementById(`vehicleMarkList${countCars}`);
   inputVehicleMarkList.addEventListener('input', () => {
@@ -112,25 +112,25 @@ function addVehicleForm() {
   controlListAndInput(inputVehicleModelList, divVehicleModelList, countCars);
 }
 
-function checkValidityStep1(){
+function checkValidityStep1 () {
   let inputOrigin = document.getElementById("origin")
-  if(inputOrigin.value.length === 0){
+  if (inputOrigin.value.length === 0) {
     return null
   }
   mostrarPaso(2)
 }
 
-function mostrarPaso(paso) {
+function mostrarPaso (paso) {
   // Ocultar todos los pasos
   document.getElementById('paso1').style.display = 'none';
   document.getElementById('paso2').style.display = 'none';
   document.getElementById('paso3').style.display = 'none';
-  
+
   // Mostrar el paso actual
   document.getElementById('paso' + paso).style.display = 'block';
 }
 
-function initForm() {
+function initForm () {
   const fechaActual = new Date();
   const añoActual = fechaActual.getFullYear();
   const mesActual = (fechaActual.getMonth() + 1).toString().padStart(2, "0");
@@ -140,7 +140,7 @@ function initForm() {
   dateShipment.setAttribute("value", `${añoActual}-${mesActual}-${diaActual}`);
 }
 
-function maskPhone() {
+function maskPhone () {
   $("#phone").keyup(function () {
     $(this).val(
       $(this)
@@ -150,7 +150,7 @@ function maskPhone() {
   });
 }
 
-function filterYearList(input, lista) {
+function filterYearList (input, lista) {
   var filtro = input.value.toUpperCase();
   var li = lista.getElementsByTagName('li');
 
@@ -164,262 +164,262 @@ function filterYearList(input, lista) {
   }
 }
 
-function changeValueToInput(id, value, numberInput){
-  if(id==='vehicleYear'){
+function changeValueToInput (id, value, numberInput) {
+  if (id === 'vehicleYear') {
     selectValueVehicleYearFromList[numberInput] = true
   }
-  if(id==='vehicleMark'){
+  if (id === 'vehicleMark') {
     selectValueVehicleMarkFromList[numberInput] = true
   }
-  if(id==='vehicleModel'){
+  if (id === 'vehicleModel') {
     selectValueVehicleModelFromList[numberInput] = true
   }
   let inputToChangeValue = document.getElementById(id);
   inputToChangeValue.value = value
 }
 
-function addElementToList(texto, numberInput) {
+function addElementToList (texto, numberInput) {
   let yearList = document.getElementById(`vehicleYearList${numberInput}`);
   var newElement = document.createElement("li");
   newElement.innerText = texto;
   newElement.style.cursor = 'pointer';
-  
+
   // Cambio importante aquí: Pasamos el año como parámetro a miFuncion usando una función anónima
-  newElement.onclick = function() {
+  newElement.onclick = function () {
     changeValueToInput(`vehicleYear${numberInput}`, texto, numberInput);
   };
-  
+
   yearList.appendChild(newElement);
 }
 
-function addYearsToList(numberInput) {
+function addYearsToList (numberInput) {
   const currentYear = new Date().getFullYear();
   const yearsToRest = 50;
-  
-  for(let i = 0; i <= yearsToRest; i++) {
+
+  for (let i = 0; i <= yearsToRest; i++) {
     const year = currentYear - i;
     addElementToList(year.toString(), numberInput);
   }
 }
 
-function addMarksToList(numberCar) {
+function addMarksToList (numberCar) {
   const marks = [
     {
-        name: "Ford",
-        value: "ford"
+      name: "Ford",
+      value: "ford"
     },
     {
-        name: "Chevrolet",
-        value: "chevrolet"
+      name: "Chevrolet",
+      value: "chevrolet"
     },
     {
-        name: "Dodge",
-        value: "dodge"
+      name: "Dodge",
+      value: "dodge"
     },
     {
-        name: "Jeep",
-        value: "jeep"
+      name: "Jeep",
+      value: "jeep"
     },
     {
-        name: "Tesla",
-        value: "tesla"
+      name: "Tesla",
+      value: "tesla"
     },
     {
-        name: "Cadillac",
-        value: "cadillac"
+      name: "Cadillac",
+      value: "cadillac"
     },
     {
-        name: "Buick",
-        value: "buick"
+      name: "Buick",
+      value: "buick"
     },
     {
-        name: "GMC",
-        value: "gmc"
+      name: "GMC",
+      value: "gmc"
     },
     {
-        name: "Chrysler",
-        value: "chrysler"
+      name: "Chrysler",
+      value: "chrysler"
     },
     {
-        name: "Lincoln",
-        value: "lincoln"
+      name: "Lincoln",
+      value: "lincoln"
     },
     {
-        name: "Ram",
-        value: "ram"
+      name: "Ram",
+      value: "ram"
     },
     {
-        name: "BMW",
-        value: "bmw"
+      name: "BMW",
+      value: "bmw"
     },
     {
-        name: "Mercedes-Benz",
-        value: "mercedes-benz"
+      name: "Mercedes-Benz",
+      value: "mercedes-benz"
     },
     {
-        name: "Audi",
-        value: "audi"
+      name: "Audi",
+      value: "audi"
     },
     {
-        name: "Volkswagen",
-        value: "volkswagen"
+      name: "Volkswagen",
+      value: "volkswagen"
     },
     {
-        name: "Porsche",
-        value: "porsche"
+      name: "Porsche",
+      value: "porsche"
     },
     {
-        name: "Volvo",
-        value: "volvo"
+      name: "Volvo",
+      value: "volvo"
     },
     {
-        name: "Land Rover",
-        value: "land rover"
+      name: "Land Rover",
+      value: "land rover"
     },
     {
-        name: "Jaguar",
-        value: "jaguar"
+      name: "Jaguar",
+      value: "jaguar"
     },
     {
-        name: "Mini",
-        value: "mini"
+      name: "Mini",
+      value: "mini"
     },
     {
-        name: "Alfa Romeo",
-        value: "alfa romeo"
+      name: "Alfa Romeo",
+      value: "alfa romeo"
     },
     {
-        name: "Ferrari",
-        value: "ferrari"
+      name: "Ferrari",
+      value: "ferrari"
     },
     {
-        name: "Lamborghini",
-        value: "lamborghini"
+      name: "Lamborghini",
+      value: "lamborghini"
     },
     {
-        name: "Bentley",
-        value: "bentley"
+      name: "Bentley",
+      value: "bentley"
     },
     {
-        name: "Rolls-Royce",
-        value: "rolls-royce"
+      name: "Rolls-Royce",
+      value: "rolls-royce"
     },
     {
-        name: "Toyota",
-        value: "toyota"
+      name: "Toyota",
+      value: "toyota"
     },
     {
-        name: "Honda",
-        value: "honda"
+      name: "Honda",
+      value: "honda"
     },
     {
-        name: "Nissan",
-        value: "nissan"
+      name: "Nissan",
+      value: "nissan"
     },
     {
-        name: "Subaru",
-        value: "subaru"
+      name: "Subaru",
+      value: "subaru"
     },
     {
-        name: "Mazda",
-        value: "mazda"
+      name: "Mazda",
+      value: "mazda"
     },
     {
-        name: "Mitsubishi",
-        value: "mitsubishi"
+      name: "Mitsubishi",
+      value: "mitsubishi"
     },
     {
-        name: "Lexus",
-        value: "lexus"
+      name: "Lexus",
+      value: "lexus"
     },
     {
-        name: "Infiniti",
-        value: "infiniti"
+      name: "Infiniti",
+      value: "infiniti"
     },
     {
-        name: "Acura",
-        value: "acura"
+      name: "Acura",
+      value: "acura"
     },
     {
-        name: "Hyundai",
-        value: "hyundai"
+      name: "Hyundai",
+      value: "hyundai"
     },
     {
-        name: "Kia",
-        value: "kia"
+      name: "Kia",
+      value: "kia"
     },
     {
-        name: "Genesis",
-        value: "genesis"
+      name: "Genesis",
+      value: "genesis"
     }
   ]
-  let  makeModelList = document.getElementById(`vehicleMarkList${numberCar}`)
-  
-  for(let i = 0; i < marks.length; i++) {
+  let makeModelList = document.getElementById(`vehicleMarkList${numberCar}`)
+
+  for (let i = 0; i < marks.length; i++) {
     let newElement = document.createElement("li");
     newElement.innerText = marks[i].name;
     newElement.style.cursor = 'pointer';
-    newElement.onclick = function() {
+    newElement.onclick = function () {
       changeValueToInput(`vehicleMark${numberCar}`, marks[i].name);
     };
     makeModelList.append(newElement)
   }
 }
 
-function addModelsToList(models, numberCar) {
-  let  vehicleModelList = document.getElementById(`vehicleModelList${numberCar}`)
-  
+function addModelsToList (models, numberCar) {
+  let vehicleModelList = document.getElementById(`vehicleModelList${numberCar}`)
+
   while (vehicleModelList.firstChild) {
     vehicleModelList.removeChild(vehicleModelList.firstChild);
   }
 
-  for(let i = 0; i < models.length; i++) {
+  for (let i = 0; i < models.length; i++) {
     let newElement = document.createElement("li");
     newElement.innerText = models[i].Model_Name;
     newElement.style.cursor = 'pointer';
-    newElement.onclick = function() {
+    newElement.onclick = function () {
       changeValueToInput(`vehicleModel${numberCar}`, models[i].Model_Name);
     };
     vehicleModelList.append(newElement)
   }
 }
 
-function controlListAndInput (input, div, numberCar){
+function controlListAndInput (input, div, numberCar) {
   div.style.display = 'none';
 
   // Muestra el div cuando el input gana foco
-  input.addEventListener('focus', function() {
+  input.addEventListener('focus', function () {
     div.style.display = 'block';
   });
 
   // Oculta el div cuando el input pierde foco
-  input.addEventListener('blur', function() {
+  input.addEventListener('blur', function () {
     setTimeout(() => {
-      if( input.id === `vehicleMark${numberCar}` && input.value !== '' ){
+      if (input.id === `vehicleMark${numberCar}` && input.value !== '') {
         let inputYear = document.getElementById(`vehicleYear${numberCar}`)
         let valueYear = inputYear.value
         fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeYear/make/${input.value}/modelyear/${valueYear}?format=json`)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-          let models = data.Results.flat()
-          addModelsToList(models, numberCar)
-        })
-        .catch(error => console.error('There has been a problem with your fetch operation:', error));
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            let models = data.Results.flat()
+            addModelsToList(models, numberCar)
+          })
+          .catch(error => console.error('There has been a problem with your fetch operation:', error));
       }
-    },500)
-    
-    setTimeout(function() {
+    }, 500)
+
+    setTimeout(function () {
       div.style.display = 'none';
-      if(
-          (input.id === `vehicleYear${numberCar}` &&  selectValueVehicleYearFromList[numberCar] === false) 
-          || 
-          (input.id === `vehicleMark${numberCar}` &&  selectValueVehicleMarkFromList[numberCar] === false)
-          ||
-          (input.id === `vehicleModel${numberCar}` &&  selectValueVehicleModelFromList[numberCar] === false)
-      ){
+      if (
+        (input.id === `vehicleYear${numberCar}` && selectValueVehicleYearFromList[numberCar] === false)
+        ||
+        (input.id === `vehicleMark${numberCar}` && selectValueVehicleMarkFromList[numberCar] === false)
+        ||
+        (input.id === `vehicleModel${numberCar}` && selectValueVehicleModelFromList[numberCar] === false)
+      ) {
         input.value = ''
-        switch(input.id){
+        switch (input.id) {
           case `vehicleYear${numberCar}`:
             followInput = document.getElementById(`vehicleMark${numberCar}`)
             followInput.setAttribute("disabled", "")
@@ -431,7 +431,7 @@ function controlListAndInput (input, div, numberCar){
         }
       } else {
         let followInput = null
-        switch(input.id){
+        switch (input.id) {
           case `vehicleYear${numberCar}`:
             followInput = document.getElementById(`vehicleMark${numberCar}`)
             followInput.removeAttribute("disabled")
@@ -446,13 +446,13 @@ function controlListAndInput (input, div, numberCar){
   });
 }
 
-function cleanForm() {
+function cleanForm () {
   var formulario = document.getElementById('main_form');
-    Array.from(formulario.elements).forEach(function(element) {
-        if (element.type === "text" || element.type === "email" || element.type === "date") {
-            element.value = ""; // Limpia el valor del elemento
-        }
-    });
+  Array.from(formulario.elements).forEach(function (element) {
+    if (element.type === "text" || element.type === "email" || element.type === "date") {
+      element.value = ""; // Limpia el valor del elemento
+    }
+  });
 }
 
 (function () {
@@ -474,14 +474,14 @@ function cleanForm() {
     addYearsToList("");
     var inputVehicleYearList = document.getElementById('vehicleYear');
     var divVehicleYearList = document.getElementById('vehicleYearList');
-    inputVehicleYearList.addEventListener('input', () =>  {
+    inputVehicleYearList.addEventListener('input', () => {
       filterYearList(inputVehicleYearList, divVehicleYearList)
       selectValueVehicleYearFromList[0] = false
     });
     controlListAndInput(inputVehicleYearList, divVehicleYearList, "");
-  
+
     // Handle Input And List of Vehicle Mark
-    addMarksToList(""); 
+    addMarksToList("");
     var inputVehicleMarkList = document.getElementById('vehicleMark');
     var divVehicleMarkList = document.getElementById('vehicleMarkList');
     inputVehicleMarkList.addEventListener('input', () => {
@@ -542,13 +542,13 @@ function cleanForm() {
   };
 })();
 
-function onlyNumbers(event) {
+function onlyNumbers (event) {
   const input = event.target;
   let inputValue = input.value.replace(/[^\d]/g, "");
   inputValue = inputValue.slice(0, 10);
   input.value = inputValue;
 
-  if(inputValue.length < 10){
+  if (inputValue.length < 10) {
     input.classList.add('is-invalid');
     input.setCustomValidity("Please enter a 10-digit phone number.");
   } else {
@@ -557,7 +557,7 @@ function onlyNumbers(event) {
   }
 }
 
-function validateCars(event) {  
+function validateCars (event) {
   const input = event.target;
   const carInput = input.value.trim();
   const regex = /^(\d{4}\s[a-zA-Z]+\s[a-zA-Z0-9-]+)(,\s\d{4}\s[a-zA-Z]+\s[a-zA-Z0-9-]+)*$/; // Expresión regular para validar el formato
@@ -573,7 +573,7 @@ function validateCars(event) {
   }
 }
 
-async function mp_show_wait_animation_check_form(event) {
+async function mp_show_wait_animation_check_form (event) {
   event.preventDefault();
 
   const form = document.getElementById("main_form");
@@ -618,7 +618,7 @@ async function mp_show_wait_animation_check_form(event) {
   // Logic to save vehicles:
   var vehiclesFormatead = []
 
-  for(let vehiclesToRead = 1; vehiclesToRead <= countCars;  vehiclesToRead++){
+  for (let vehiclesToRead = 1; vehiclesToRead <= countCars; vehiclesToRead++) {
     let vehicle_model_year = vehiclesToRead === 1 ? document.getElementById(`vehicleYear`) : document.getElementById(`vehicleYear${vehiclesToRead}`);
     let vehicle_make = vehiclesToRead === 1 ? document.getElementById(`vehicleMark`) : document.getElementById(`vehicleMark${vehiclesToRead}`);
     let vehicle_model = vehiclesToRead === 1 ? document.getElementById(`vehicleModel`) : document.getElementById(`vehicleModel${vehiclesToRead}`);
@@ -650,7 +650,7 @@ async function mp_show_wait_animation_check_form(event) {
   }
 }
 
-function saveEmail(data) {
+function saveEmail (data) {
   let send = {
     ...data,
     origin:
@@ -684,7 +684,7 @@ function saveEmail(data) {
   localStorage.setItem("emailCayad", JSON.stringify(send));
 }
 
-function sendEmail(data) {
+function sendEmail (data) {
   return new Promise((resolve, reject) => {
     fetch("https://backupnode-production.up.railway.app/api/lead/send-email/", {
       method: "POST",
@@ -695,7 +695,7 @@ function sendEmail(data) {
       body: JSON.stringify({
         name: "FormSubmit",
         message: "I'm from Devro LABS"
-    }),
+      }),
     })
       .then((response) => response.json())
       .then((data) => resolve(true))
@@ -703,7 +703,7 @@ function sendEmail(data) {
   });
 }
 
-function saveLead(data) {
+function saveLead (data) {
   const dataToSend = {
     AuthKey: "f895aa95-10ea-41ae-984f-c123bf7e0ff0",
     ...data,
@@ -717,7 +717,7 @@ function saveLead(data) {
   localStorage.setItem("lead", JSON.stringify(dataToSend));
 }
 
-function sendLead(data) {
+function sendLead (data) {
   return new Promise((resolve, reject) => {
     fetch(`https://api.batscrm.com/leads`, {
       method: "POST",
@@ -735,59 +735,134 @@ function sendLead(data) {
   });
 }
 
-var useGoogleAddressInCityOrigin = false
-var useGoogleAddressInCityDestination = false
+var useGeoNamesAddressInCityOrigin = false;
+var useGeoNamesAddressInCityDestination = false;
 
-function extractFromAddress(components, type) {
-  return components.find(component => component.types.includes(type))?.short_name || '';
+function createAutocomplete (inputId, suggestionsId, isOrigin) {
+  const inputElement = document.getElementById(inputId);
+  const suggestionsContainer = document.getElementById(suggestionsId);
+
+  inputElement.addEventListener('input', async () => {
+    const query = inputElement.value;
+    suggestionsContainer.innerHTML = '';
+
+    if (query.length < 3) return;  // No buscar si la entrada tiene menos de 3 caracteres
+
+    const username = 'miguelaacho10';  // Reemplaza con tu username de GeoNames
+    const url = `http://api.geonames.org/searchJSON?name_startsWith=${query}&country=US&featureClass=P&maxRows=10&username=${username}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok.');
+      const data = await response.json();
+
+      data.geonames.forEach(city => {
+        const suggestionItem = document.createElement('li');
+        suggestionItem.textContent = `${city.name}, ${city.adminCode1}`;
+        suggestionItem.classList.add('autocomplete-suggestion');
+        suggestionItem.onclick = () => {
+          inputElement.value = `${city.name}, ${city.adminCode1}`;
+          suggestionsContainer.innerHTML = '';
+          if (isOrigin) {
+            useGeoNamesAddressInCityOrigin = true;
+          } else {
+            useGeoNamesAddressInCityDestination = true;
+          }
+        };
+        suggestionsContainer.appendChild(suggestionItem);
+      });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  });
 }
 
-function autocompleteGoogleMap(){
-  // Data to know if user selected a google option
-  // Data to handle options in autocomplete
-  const options = {
-    types: ['(regions)'],
-    componentRestrictions: { country: 'US' },
-  };
+function validateCity (event) {
+  const inputId = event.target.id;
 
-  let inputCityOrigin = document.getElementById('origin');
-  let autocompleteOrigin = new google.maps.places.Autocomplete(inputCityOrigin, options);
-  autocompleteOrigin.addListener('place_changed', function () {
-    useGoogleAddressInCityDestination = false
-    let place = autocompleteOrigin.getPlace();
-    let addressComponents = place.address_components;
-    originCity = extractFromAddress(addressComponents, 'locality');
-    originCountry = extractFromAddress(addressComponents, 'country');
-    originPostalCode = extractFromAddress(addressComponents, 'postal_code');
-    originState = extractFromAddress(addressComponents, 'administrative_area_level_1');
-  });
-
-  let inputCityDestination = document.getElementById('destination');
-  let autocompleteDestination = new google.maps.places.Autocomplete(inputCityDestination, options);
-  autocompleteDestination.addListener('place_changed', function () {
-    useGoogleAddressInCityDestination = false
-    let place = autocompleteDestination.getPlace();
-    let addressComponents = place.address_components;
-    destinationCity = extractFromAddress(addressComponents, 'locality');
-    destinationCountry = extractFromAddress(addressComponents, 'country');
-    destinationPostalCode = extractFromAddress(addressComponents, 'postal_code');
-    destinationState = extractFromAddress(addressComponents, 'administrative_area_level_1');
-  });
-}
-
-function validateCity(event) {
-  if (event.srcElement.id === 'origin') {
-    if (!useGoogleAddressInCityOrigin) {
-      let element = document.getElementById(event.srcElement.id);
+  if (inputId === 'origin') {
+    if (!useGeoNamesAddressInCityOrigin) {
+      let element = document.getElementById(inputId);
       element.value = "";
+      document.getElementById('validationOrigin').style.display = 'block';
+    } else {
+      document.getElementById('validationOrigin').style.display = 'none';
     }
   }
 
-  if (event.srcElement.id === 'destination') {
-    if (!useGoogleAddressInCityDestination) {
-      let element = document.getElementById(event.srcElement.id);
+  if (inputId === 'destination') {
+    if (!useGeoNamesAddressInCityDestination) {
+      let element = document.getElementById(inputId);
       element.value = "";
+      document.getElementById('validationDestination').style.display = 'block';
+    } else {
+      document.getElementById('validationDestination').style.display = 'none';
     }
   }
 }
+
+// Función para inicializar el autocompletado
+function initializeAutocomplete () {
+  createAutocomplete('origin', 'suggestions-origin', true);
+  createAutocomplete('destination', 'suggestions-destination', false);
+}
+
+// Llamada a la función de inicialización al cargar la página
+document.addEventListener('DOMContentLoaded', initializeAutocomplete);
+
+// var useGoogleAddressInCityOrigin = false
+// var useGoogleAddressInCityDestination = false
+
+// function extractFromAddress(components, type) {
+//   return components.find(component => component.types.includes(type))?.short_name || '';
+// }
+
+// function autocompleteGoogleMap(){
+//   // Data to know if user selected a google option
+//   // Data to handle options in autocomplete
+//   const options = {
+//     types: ['(regions)'],
+//     componentRestrictions: { country: 'US' },
+//   };
+
+//   let inputCityOrigin = document.getElementById('origin');
+//   let autocompleteOrigin = new google.maps.places.Autocomplete(inputCityOrigin, options);
+//   autocompleteOrigin.addListener('place_changed', function () {
+//     useGoogleAddressInCityDestination = false
+//     let place = autocompleteOrigin.getPlace();
+//     let addressComponents = place.address_components;
+//     originCity = extractFromAddress(addressComponents, 'locality');
+//     originCountry = extractFromAddress(addressComponents, 'country');
+//     originPostalCode = extractFromAddress(addressComponents, 'postal_code');
+//     originState = extractFromAddress(addressComponents, 'administrative_area_level_1');
+//   });
+
+//   let inputCityDestination = document.getElementById('destination');
+//   let autocompleteDestination = new google.maps.places.Autocomplete(inputCityDestination, options);
+//   autocompleteDestination.addListener('place_changed', function () {
+//     useGoogleAddressInCityDestination = false
+//     let place = autocompleteDestination.getPlace();
+//     let addressComponents = place.address_components;
+//     destinationCity = extractFromAddress(addressComponents, 'locality');
+//     destinationCountry = extractFromAddress(addressComponents, 'country');
+//     destinationPostalCode = extractFromAddress(addressComponents, 'postal_code');
+//     destinationState = extractFromAddress(addressComponents, 'administrative_area_level_1');
+//   });
+// }
+
+// function validateCity(event) {
+//   if (event.srcElement.id === 'origin') {
+//     if (!useGoogleAddressInCityOrigin) {
+//       let element = document.getElementById(event.srcElement.id);
+//       element.value = "";
+//     }
+//   }
+
+//   if (event.srcElement.id === 'destination') {
+//     if (!useGoogleAddressInCityDestination) {
+//       let element = document.getElementById(event.srcElement.id);
+//       element.value = "";
+//     }
+//   }
+// }
 
