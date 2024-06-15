@@ -738,6 +738,23 @@ function sendLead (data) {
 var useGeoNamesAddressInCityOrigin = false;
 var useGeoNamesAddressInCityDestination = false;
 
+async function fetchGeoNamesSuggestions (query) {
+  const username = 'miguelaacho10';
+  const url = `https://secure.geonames.org/searchJSON?name_startsWith=${query}&country=US&featureClass=P&maxRows=10&username=${username}`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok.');
+    }
+    const data = await response.json();
+    return data.geonames;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return []; // Manejar el error como sea necesario en tu aplicación
+  }
+}
+
 function createAutocomplete (inputId, suggestionsId, isOrigin) {
   const inputElement = document.getElementById(inputId);
   const suggestionsContainer = document.getElementById(suggestionsId);
@@ -748,15 +765,10 @@ function createAutocomplete (inputId, suggestionsId, isOrigin) {
 
     if (query.length < 3) return;  // No buscar si la entrada tiene menos de 3 caracteres
 
-    const username = 'miguelaacho10';  // Reemplaza con tu username de GeoNames
-    const url = `http://api.geonames.org/searchJSON?name_startsWith=${query}&country=US&featureClass=P&maxRows=10&username=${username}`;
-
     try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Network response was not ok.');
-      const data = await response.json();
+      const suggestions = await fetchGeoNamesSuggestions(query);
 
-      data.geonames.forEach(city => {
+      suggestions.forEach(city => {
         const suggestionItem = document.createElement('li');
         suggestionItem.textContent = `${city.name}, ${city.adminCode1}`;
         suggestionItem.classList.add('autocomplete-suggestion');
@@ -778,7 +790,6 @@ function createAutocomplete (inputId, suggestionsId, isOrigin) {
     }
   });
 }
-
 
 function validateCity (event) {
   const inputId = event.target.id;
@@ -808,6 +819,7 @@ function initializeAutocomplete () {
 
 // Llamada a la función de inicialización al cargar la página
 document.addEventListener('DOMContentLoaded', initializeAutocomplete);
+
 
 // var useGoogleAddressInCityOrigin = false
 // var useGoogleAddressInCityDestination = false
