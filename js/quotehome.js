@@ -734,6 +734,7 @@ function sendLead (data) {
 }
 
 // Variables globales para almacenar los datos de las ciudades
+// Variables globales para almacenar los datos de las ciudades
 var originCity = "";
 var destinationCity = "";
 
@@ -774,6 +775,7 @@ function autocompleteOrigin (inputElement, suggestionsContainer) {
           inputElement.value = `${city.name}, ${city.adminCode1}`;
           suggestionsContainer.innerHTML = '';
           originCity = city.name;
+          validateCity(inputElement, 'validationOrigin', originCity);
         };
         suggestionsContainer.appendChild(suggestionItem);
       });
@@ -802,6 +804,7 @@ function autocompleteDestination (inputElement, suggestionsContainer) {
           inputElement.value = `${city.name}, ${city.adminCode1}`;
           suggestionsContainer.innerHTML = '';
           destinationCity = city.name;
+          validateCity(inputElement, 'validationDestination', destinationCity);
         };
         suggestionsContainer.appendChild(suggestionItem);
       });
@@ -812,23 +815,11 @@ function autocompleteDestination (inputElement, suggestionsContainer) {
 }
 
 // Función para validar las ciudades
-function validateCity (event) {
-  const inputId = event.target.id;
-
-  if (inputId === 'origin') {
-    if (!originCity) {
-      document.getElementById('validationOrigin').style.display = 'block';
-    } else {
-      document.getElementById('validationOrigin').style.display = 'none';
-    }
-  }
-
-  if (inputId === 'destination') {
-    if (!destinationCity) {
-      document.getElementById('validationDestination').style.display = 'block';
-    } else {
-      document.getElementById('validationDestination').style.display = 'none';
-    }
+function validateCity (inputElement, validationElementId, city) {
+  if (!city) {
+    document.getElementById(validationElementId).style.display = 'block';
+  } else {
+    document.getElementById(validationElementId).style.display = 'none';
   }
 }
 
