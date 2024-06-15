@@ -457,9 +457,8 @@ function cleanForm () {
 
 (function () {
   window.onload = async function () {
-
     // Clean inputs
-    cleanForm()
+    cleanForm();
 
     // Init the date
     const fechaActual = new Date();
@@ -498,8 +497,6 @@ function cleanForm () {
     });
     controlListAndInput(inputVehicleModelList, divVehicleModelList, "");
 
-    autocompleteGoogleMap()
-
     const lead = await localStorage.getItem("lead");
     const emailCayad = await localStorage.getItem("emailCayad");
     const sendedLead = await localStorage.getItem("sendedLead");
@@ -520,19 +517,19 @@ function cleanForm () {
 
     maskPhone();
 
-
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.getElementsByClassName("needs-validation");
     // Loop over them and prevent submission
     var validation = Array.prototype.filter.call(forms, function (form) {
       form.addEventListener(
         "submit",
-        function (event) {
+        async function (event) {
           if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
           } else {
-            mp_show_wait_animation_check_form(event);
+            // Add your animation or processing logic here
+            await mp_show_wait_animation_check_form(event);
           }
           form.classList.add("was-validated");
         },
@@ -541,6 +538,7 @@ function cleanForm () {
     });
   };
 })();
+
 
 function onlyNumbers (event) {
   const input = event.target;
@@ -735,9 +733,11 @@ function sendLead (data) {
   });
 }
 
-var useGeoNamesAddressInCityOrigin = false;
-var useGeoNamesAddressInCityDestination = false;
+// Variables globales para almacenar los datos de las ciudades
+var originCity = "";
+var destinationCity = "";
 
+// Función para obtener sugerencias de ciudades desde GeoNames
 async function fetchGeoNamesSuggestions (query) {
   const username = 'miguelaacho10';
   const url = `https://secure.geonames.org/searchJSON?name_startsWith=${query}&country=US&featureClass=P&maxRows=10&username=${username}`;
@@ -755,10 +755,8 @@ async function fetchGeoNamesSuggestions (query) {
   }
 }
 
-function createAutocomplete (inputId, suggestionsId, isOrigin) {
-  const inputElement = document.getElementById(inputId);
-  const suggestionsContainer = document.getElementById(suggestionsId);
-
+// Función para autocompletar la ciudad de origen
+function autocompleteOrigin (inputElement, suggestionsContainer) {
   inputElement.addEventListener('input', async () => {
     const query = inputElement.value;
     suggestionsContainer.innerHTML = '';
@@ -775,13 +773,7 @@ function createAutocomplete (inputId, suggestionsId, isOrigin) {
         suggestionItem.onclick = () => {
           inputElement.value = `${city.name}, ${city.adminCode1}`;
           suggestionsContainer.innerHTML = '';
-          if (isOrigin) {
-            useGeoNamesAddressInCityOrigin = true;
-            validateCity({ target: inputElement });
-          } else {
-            useGeoNamesAddressInCityDestination = true;
-            validateCity({ target: inputElement });
-          }
+          originCity = city.name;
         };
         suggestionsContainer.appendChild(suggestionItem);
       });
@@ -791,11 +783,40 @@ function createAutocomplete (inputId, suggestionsId, isOrigin) {
   });
 }
 
+// Función para autocompletar la ciudad de destino
+function autocompleteDestination (inputElement, suggestionsContainer) {
+  inputElement.addEventListener('input', async () => {
+    const query = inputElement.value;
+    suggestionsContainer.innerHTML = '';
+
+    if (query.length < 3) return;  // No buscar si la entrada tiene menos de 3 caracteres
+
+    try {
+      const suggestions = await fetchGeoNamesSuggestions(query);
+
+      suggestions.forEach(city => {
+        const suggestionItem = document.createElement('li');
+        suggestionItem.textContent = `${city.name}, ${city.adminCode1}`;
+        suggestionItem.classList.add('autocomplete-suggestion');
+        suggestionItem.onclick = () => {
+          inputElement.value = `${city.name}, ${city.adminCode1}`;
+          suggestionsContainer.innerHTML = '';
+          destinationCity = city.name;
+        };
+        suggestionsContainer.appendChild(suggestionItem);
+      });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  });
+}
+
+// Función para validar las ciudades
 function validateCity (event) {
   const inputId = event.target.id;
 
   if (inputId === 'origin') {
-    if (!useGeoNamesAddressInCityOrigin) {
+    if (!originCity) {
       document.getElementById('validationOrigin').style.display = 'block';
     } else {
       document.getElementById('validationOrigin').style.display = 'none';
@@ -803,7 +824,7 @@ function validateCity (event) {
   }
 
   if (inputId === 'destination') {
-    if (!useGeoNamesAddressInCityDestination) {
+    if (!destinationCity) {
       document.getElementById('validationDestination').style.display = 'block';
     } else {
       document.getElementById('validationDestination').style.display = 'none';
@@ -813,12 +834,44 @@ function validateCity (event) {
 
 // Función para inicializar el autocompletado
 function initializeAutocomplete () {
-  createAutocomplete('origin', 'suggestions-origin', true);
-  createAutocomplete('destination', 'suggestions-destination', false);
+  const inputCityOrigin = document.getElementById('origin');
+  const suggestionsContainerOrigin = document.getElementById('suggestions-origin');
+  autocompleteOrigin(inputCityOrigin, suggestionsContainerOrigin);
+
+  const inputCityDestination = document.getElementById('destination');
+  const suggestionsContainerDestination = document.getElementById('suggestions-destination');
+  autocompleteDestination(inputCityDestination, suggestionsContainerDestination);
+}
+
+// Función para validar el formulario
+function validateForm () {
+  const form = document.getElementById('main_form');
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const isValid = form.checkValidity();
+    form.classList.add('was-validated');
+
+    if (isValid) {
+      // Aquí puedes procesar o enviar los datos del formulario
+      console.log('Formulario válido. Datos a enviar:');
+      console.log('Origen:', originCity);
+      console.log('Destino:', destinationCity);
+      console.log('Resto de datos del formulario:', new FormData(form));
+
+      // Aquí puedes agregar tu lógica para enviar el formulario, como por ejemplo:
+      // await enviarFormulario(new FormData(form));
+    }
+  }, false);
 }
 
 // Llamada a la función de inicialización al cargar la página
-document.addEventListener('DOMContentLoaded', initializeAutocomplete);
+document.addEventListener('DOMContentLoaded', function () {
+  initializeAutocomplete();
+  validateForm();
+});
 
 
 // var useGoogleAddressInCityOrigin = false
