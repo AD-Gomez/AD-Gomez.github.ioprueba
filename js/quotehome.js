@@ -765,8 +765,10 @@ function createAutocomplete (inputId, suggestionsId, isOrigin) {
           suggestionsContainer.innerHTML = '';
           if (isOrigin) {
             useGeoNamesAddressInCityOrigin = true;
+            validateCity({ target: inputElement });
           } else {
             useGeoNamesAddressInCityDestination = true;
+            validateCity({ target: inputElement });
           }
         };
         suggestionsContainer.appendChild(suggestionItem);
@@ -777,13 +779,12 @@ function createAutocomplete (inputId, suggestionsId, isOrigin) {
   });
 }
 
+
 function validateCity (event) {
   const inputId = event.target.id;
 
   if (inputId === 'origin') {
     if (!useGeoNamesAddressInCityOrigin) {
-      let element = document.getElementById(inputId);
-      element.value = "";
       document.getElementById('validationOrigin').style.display = 'block';
     } else {
       document.getElementById('validationOrigin').style.display = 'none';
@@ -792,8 +793,6 @@ function validateCity (event) {
 
   if (inputId === 'destination') {
     if (!useGeoNamesAddressInCityDestination) {
-      let element = document.getElementById(inputId);
-      element.value = "";
       document.getElementById('validationDestination').style.display = 'block';
     } else {
       document.getElementById('validationDestination').style.display = 'none';
