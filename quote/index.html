@@ -128,6 +128,28 @@
       border-bottom-color: #f00;
       /* Red */
     }
+
+    .autocomplete-suggestions {
+      border: 1px solid #e4e4e4;
+      max-height: 150px;
+      overflow-y: auto;
+      background-color: #fff;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .autocomplete-suggestion {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .autocomplete-suggestion:hover {
+      background-color: #e4e4e4;
+    }
   </style>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0VUs3BClENXZNUGnZzsgXvxcw3fVnSQY&libraries=places">
@@ -161,7 +183,7 @@
   <!-- Event snippet for lead_ad (1) conversion page
   In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
   <script>
-    function gtag_report_conversion(url) {
+    function gtag_report_conversion (url) {
       var callback = function () {
         if (typeof (url) != 'undefined') {
           window.location = url;
@@ -249,9 +271,11 @@
               <input oninput="onlyNumbers(event)" maxlength="5" minlength="5" autocomplete="new-password"
                 id="zip_origin" name="zip_origin" type="tel" pattern="\d{5,}" data-toggle="tooltip" data-placement="top"
                 class="form-control" placeholder="Zip Code" aria-label="Zip Code" aria-describedby="basic-addon1" />
+
               <input style="display: none" id="city_origin" name="city_origin" type="tel" data-toggle="tooltip"
                 data-placement="top" class="form-control" placeholder="City" aria-label="City"
                 aria-describedby="basic-addon1" maxlength="32" onblur="validateCity(event)" />
+              <ul id="suggestions-origin" class="autocomplete-suggestions"></ul>
 
               <input type="hidden" name="city_zip_state_city_pickup" id="city_zip_state_city_pickup" value="" />
               <input type="hidden" name="city_zip_state_state_pickup" id="city_zip_state_state_pickup" value="" />
@@ -267,9 +291,11 @@
               <input oninput="onlyNumbers(event)" maxlength="5" minlength="5" type="tel" autocomplete="new-password"
                 id="zip_destination" pattern="\d{5,}" name="zip_destination" class="form-control" data-toggle="tooltip"
                 data-placement="top" placeholder="Zip Code" aria-label="Zip Code" aria-describedby="basic-addon1" />
+
               <input style="display: none" autocomplete="new-password" id="city_destination" name="city_destination"
                 type="tel" data-toggle="tooltip" data-placement="top" class="form-control" placeholder="City"
                 aria-label="City" aria-describedby="basic-addon1" maxlength="32" onblur="validateCity(event)" />
+              <ul id="suggestions-destination" class="autocomplete-suggestions"></ul>
               <input type="hidden" name="city_zip_state_city_dropoff" id="city_zip_state_city_dropoff" value="" />
               <input type="hidden" name="city_zip_state_state_dropoff" id="city_zip_state_state_dropoff" value="" />
             </div>
@@ -598,40 +624,85 @@
   <!-- Code to autocomplete cities -->
   <script>
     // Data to know if user selected a google option
-    var useGoogleAddressInCityOrigin = false
-    var useGoogleAddressInCityDestination = false
-    // Data to handle options in autocomplete
-    const options = {
-      types: ['(regions)'],
-      componentRestrictions: { country: 'US' },
-    };
+    var useGeoNamesAddressInCityOrigin = false;
+    var useGeoNamesAddressInCityDestination = false;
 
     document.addEventListener('DOMContentLoaded', function () {
+      // Función para obtener sugerencias de GeoNames
+      function fetchGeoNamesSuggestions (query, suggestionsContainer, isOrigin) {
+        const username = 'miguelaacho10';  // Reemplaza con tu username de GeoNames
+        const url = `http://api.geonames.org/searchJSON?name_startsWith=${query}&country=US&featureClass=P&maxRows=10&username=${username}`;
+
+        fetch(url)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok.');
+            }
+            return response.json();
+          })
+          .then(data => {
+            suggestionsContainer.innerHTML = '';
+
+            data.geonames.forEach(city => {
+              const suggestionItem = document.createElement('li');
+              suggestionItem.textContent = `${city.name}, ${city.adminCode1}`;
+              suggestionItem.classList.add('autocomplete-suggestion');
+              suggestionItem.onclick = () => {
+                if (isOrigin) {
+                  document.getElementById('city_origin').value = `${city.name}, ${city.adminCode1}`;
+                  useGeoNamesAddressInCityOrigin = true;
+                } else {
+                  document.getElementById('city_destination').value = `${city.name}, ${city.adminCode1}`;
+                  useGeoNamesAddressInCityDestination = true;
+                }
+                suggestionsContainer.innerHTML = '';
+              };
+              suggestionsContainer.appendChild(suggestionItem);
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+          });
+      }
+
+      // Evento input para sugerencias de GeoNames en city_origin
       let inputCityOrigin = document.getElementById('city_origin');
-      let autocompleteOrigin = new google.maps.places.Autocomplete(inputCityOrigin, options);
-      autocompleteOrigin.addListener('place_changed', function () {
-        useGoogleAddressInCityDestination = false
+      inputCityOrigin.addEventListener('input', () => {
+        const query = inputCityOrigin.value.trim();
+        const suggestionsContainer = document.getElementById('suggestions-origin');
+        if (query.length >= 3) {
+          fetchGeoNamesSuggestions(query, suggestionsContainer, true);
+        } else {
+          suggestionsContainer.innerHTML = '';
+        }
       });
 
+      // Evento input para sugerencias de GeoNames en city_destination
       let inputCityDestination = document.getElementById('city_destination');
-      let autocompleteDestination = new google.maps.places.Autocomplete(inputCityDestination, options);
-      autocompleteDestination.addListener('place_changed', function () {
-        useGoogleAddressInCityDestination = false
+      inputCityDestination.addEventListener('input', () => {
+        const query = inputCityDestination.value.trim();
+        const suggestionsContainer = document.getElementById('suggestions-destination');
+        if (query.length >= 3) {
+          fetchGeoNamesSuggestions(query, suggestionsContainer, false);
+        } else {
+          suggestionsContainer.innerHTML = '';
+        }
       });
     });
 
-    function validateCity(event) {
-      console.log(event.srcElement.id)
-      if (event.srcElement.id === 'city_origin') {
-        if (!useGoogleAddressInCityOrigin) {
-          let element = document.getElementById(event.srcElement.id);
+    function validateCity (event) {
+      const inputId = event.target.id;
+
+      if (inputId === 'city_origin') {
+        if (!useGeoNamesAddressInCityOrigin) {
+          let element = document.getElementById(inputId);
           element.value = "";
         }
       }
 
-      if (event.srcElement.id === 'city_destination') {
-        if (!useGoogleAddressInCityDestination) {
-          let element = document.getElementById(event.srcElement.id);
+      if (inputId === 'city_destination') {
+        if (!useGeoNamesAddressInCityDestination) {
+          let element = document.getElementById(inputId);
           element.value = "";
         }
       }

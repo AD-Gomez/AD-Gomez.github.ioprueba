@@ -286,6 +286,27 @@
         .video {
             margin-right: 10px;
         }
+
+        .autocomplete-suggestions {
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: #fff;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .autocomplete-suggestion {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .autocomplete-suggestion:hover {
+            background-color: #e4e4e4;
+        }
     </style>
     <link rel="stylesheet" href="./css/home.css">
     <!-- Google Maps -->
@@ -422,21 +443,21 @@
                         <div class="form--group form--group--section">
                             <label for="origin">Transport Vehicle TO <span>*</span></label>
                             <input id="origin" class="form-control" placeholder="Miami, Florida, EE. UU." name="origin"
-                                type="text" onblur="validateCity(event)" aria-describedby="
-                                validationOrigin" required>
+                                type="text" onblur="validateCity(event)" aria-describedby="validationOrigin" required>
                             <div id="validationOrigin" class="invalid-feedback">
                                 Please provide a valid city or zip code.
                             </div>
+                            <ul id="suggestions-origin" class="autocomplete-suggestions"></ul>
                         </div>
                         <div class="form--group form--group--section">
-                            <label for="destination">Transport Vehicle FROM
-                                <span>*</span></label>
+                            <label for="destination">Transport Vehicle FROM <span>*</span></label>
                             <input id="destination" class="form-control" placeholder="Alameda, California, EE. UU."
-                                name="destination" type="text" onblur="validateCity(event)" aria-describedby="
-                                validationDestination" required>
+                                name="destination" type="text" onblur="validateCity(event)"
+                                aria-describedby="validationDestination" required>
                             <div id="validationDestination" class="invalid-feedback">
                                 Please provide a valid city or zip code.
                             </div>
+                            <ul id="suggestions-destination" class="autocomplete-suggestions"></ul>
                         </div>
                         <div class="form--group--inline">
                             <p>Select <b>Transport Type</b></p>
@@ -1319,24 +1340,24 @@
 
 
 
-<!-- GetButton.io widget -->
-<script type="text/javascript">
-    (function () {
-        var options = {
-            facebook: "116222094837969", // Facebook page ID
-            whatsapp: "+14696190747", // WhatsApp number
-            call_to_action: "Hurry up to connect with us!", // Call to action
-            button_color: "#03e9bb", // Color of button
-            position: "right", // Position may be 'right' or 'left'
-            order: "whatsapp,facebook", // Order of buttons
-        };
-        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-    })();
-</script>
-<!-- /GetButton.io widget -->
+    <!-- GetButton.io widget -->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                facebook: "116222094837969", // Facebook page ID
+                whatsapp: "+14696190747", // WhatsApp number
+                call_to_action: "Hurry up to connect with us!", // Call to action
+                button_color: "#03e9bb", // Color of button
+                position: "right", // Position may be 'right' or 'left'
+                order: "whatsapp,facebook", // Order of buttons
+            };
+            var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!-- /GetButton.io widget -->
 
 
 

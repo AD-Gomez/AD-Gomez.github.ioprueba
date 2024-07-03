@@ -342,39 +342,6 @@
 
           <div class="w3-row">&nbsp;</div>
 
-          <div class="w3-full" style="
-                text-align: left;
-                background-color: white;
-                color: black;
-                border: 1px solid #cccccc;
-                padding-top: 6px;
-                padding-bottom: 6px;
-              ">
-            <!-- <div class="mapouter">
-              <div class="gmap_canvas"><iframe width="323" height="250" id="gmap_canvas"
-                  src="https://maps.google.com/maps?q=636+5th+Ave%2C+New+York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                  href="https://online-timer.me/"></a><br><a href="https://online.stopwatch-timer.net/"></a><br>
-                <style>
-                  .mapouter {
-                    position: relative;
-                    text-align: right;
-                    height: 250px;
-                    width: 323px;
-                  }
-                </style><a href="https://www.embedmaps.co">custom google maps embed</a>
-                <style>
-                  .gmap_canvas {
-                    overflow: hidden;
-                    background: none !important;
-                    height: 250px;
-                    width: 323px;
-                  }
-                </style>
-              </div>
-            </div> -->
-            <div id="map"></div>
-          </div>
 
           <div class="w3-row">&nbsp;</div>
 
@@ -548,10 +515,10 @@
         image.src = "../img/op.png";
       }
     };
-    async function goback() {
+    async function goback () {
       location.href = "../quote/index.html";
     }
-    async function loadMap(dataLead) {
+    async function loadMap (dataLead) {
       const coorOrigin = await search(
         dataLead.destination_postal_code !== ""
           ? dataLead.destination_postal_code
@@ -590,7 +557,7 @@
         });
     }
 
-    function search(address) {
+    function search (address) {
       return new Promise((resolve, reject) => {
         const authentication = arcgisRest.ApiKeyManager.fromKey(apiKeyArcGis);
         arcgisRest
@@ -615,7 +582,7 @@
       });
     }
 
-    async function sendInformation() {
+    async function sendInformation () {
       if (finishEmail) {
         enabledButtons();
       }
@@ -686,7 +653,7 @@
       }
     }
 
-    async function disabledButtons() {
+    async function disabledButtons () {
       const message = document.getElementById("messageLoading");
       const link = document.getElementById("linkhome");
       const btn = document.getElementById("createQuote");
@@ -697,7 +664,7 @@
       btn.disabled = true;
     }
 
-    async function enabledButtons() {
+    async function enabledButtons () {
       const message = document.getElementById("messageLoading");
       const link = document.getElementById("linkhome");
       const btn = document.getElementById("createQuote");
